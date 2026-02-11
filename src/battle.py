@@ -1,7 +1,9 @@
-from json import load, dump
+from json import load
 from random import randint
 from PIL import Image
 from pokemon import Pokemon
+from os import path
+
 class Battle:
     def __init__(self, user_pkm):
         self.__turn = 0
@@ -33,7 +35,10 @@ class Battle:
             pkm = data[rdm] 
             
             try:
-                img = Image.open(f"../assets/{rdm + 1}.png")
+                script_dir = path.dirname(path.abspath(__file__))
+                sprites_path = path.join(script_dir, "..", "assets", "images", "sprites", "fronts", f"{rdm + 1}.png")
+
+                img = Image.open(sprites_path)
             except:
                 img = None
 
@@ -78,3 +83,5 @@ battle = Battle(mon_starter)
 
 print(f"Combat lancé contre : {battle.wild_pokemon.name}")
 print(f"HP du sauvage : {battle.wild_pokemon.max_hp}")
+
+battle.wild_pokemon.sprite.show()
