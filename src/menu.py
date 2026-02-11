@@ -1,27 +1,39 @@
 from src.battle import Battle
 from src.user import User
+from src.display import Display
 import pygame
 
 class Menu:
     
-    def __init__(self, buttons: dict, user: User):
-        self.buttons = buttons
-        self.user = user
+    def __init__(self, buttons: list, user: User):
+        self.__buttons = buttons
+        self.__user = user
     
     def run(self,screen,clock,fonts):
-        background = pygame.Surface((screen.get_width(),screen.get_height()))
-        background.fill(pygame.Color("#8CD3FF"))
 
+        display = Display(screen,fonts)
         is_running = True
-
         while is_running:
             for event in pygame.event.get():
+                for button in self.__buttons:
+                    if button.rect.collidepoint(pygame.mouse.get_pos()):
+                        #pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+                        #pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+                        button.hovered()
+                    else:
+                        button.avoided()
+                
                 if event.type == pygame.QUIT:
                     is_running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    for button in self.__buttons:
+                        pass
 
-            screen.blit(background, (0, 0))
+                    
+            display.display_menu(self.__buttons)
+            
 
-            pygame.display.update()
+            
     
     def call_button_action(self):
         #Si bouton "Lancer une partie" -> self.__run_battle_mode()
@@ -31,7 +43,7 @@ class Menu:
         pass
 
     def __run_battle_mode(self):
-        battle = Battle(self.user)
+        battle = Battle(self.__user)
 
     def __run_add_pokemon_mode(self):
         pass
