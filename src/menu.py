@@ -1,5 +1,6 @@
 from src.battle import Battle
 from src.user import User
+import pygame
 
 class Menu:
     
@@ -7,8 +8,20 @@ class Menu:
         self.buttons = buttons
         self.user = user
     
-    def run(self):
-        pass
+    def run(self,screen,clock,fonts):
+        background = pygame.Surface((screen.get_width(),screen.get_height()))
+        background.fill(pygame.Color("#8CD3FF"))
+
+        is_running = True
+
+        while is_running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    is_running = False
+
+            screen.blit(background, (0, 0))
+
+            pygame.display.update()
     
     def call_button_action(self):
         #Si bouton "Lancer une partie" -> self.__run_battle_mode()
