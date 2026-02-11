@@ -1,11 +1,14 @@
 from src.battle import Battle
 from src.user import User
 
-class menu:
+class Menu:
     
     def __init__(self, buttons: dict, user: User):
         self.buttons = buttons
         self.user = user
+    
+    def run(self):
+        pass
     
     def call_button_action(self):
         #Si bouton "Lancer une partie" -> self.__run_battle_mode()
