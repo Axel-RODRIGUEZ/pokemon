@@ -20,6 +20,8 @@ def main():
     screen = pygame.display.set_mode((1300, 731))
     clock = pygame.time.Clock()
     fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50)
+    
+    # -- TEST -- #
     data = data_file[0]
     stats = data['stats']
     xp = 3000
@@ -29,7 +31,7 @@ def main():
     running = True
 
     button1 = Button(fonts, screen, "totofunction", (50,200), text="TOTO") # BUTTON DEMO -> TO REMOVE WHEN MORE ADVANCED
-
+    # -- FIN TEST -- #
     while running:
         screen.fill((202,228,241))
 
