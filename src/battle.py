@@ -5,28 +5,46 @@ from pokemon import Pokemon
 from os import path
 
 class Battle:
-    def __init__(self, user_pkm):
+    def __init__(self, user_pkm:object):
         self.__turn = 0
         self.user_pkm = user_pkm
-        self.user_pokedex = self.get_user_pokedex()
-        self.wild_pokemon = self.choose_rdm_pokemon()
-        # self.weakness_ratios = self.get_weakness_ratios()
+        self.user_pokedex = self.__get_user_pokedex()
+        self.wild_pokemon = self.__choose_rdm_pokemon()
+        self.weakness_ratios = self.get_weakness_ratios()
 
-    def get_user_pokedex(self):
+    def __get_user_pokedex(self):
         try:
             with open("data/pokedex.json", "r", encoding='utf-8') as f:
                 return load(f)
         except FileNotFoundError:
             return []
             
-    # def get_weakness_ratios(self):
-    #     data = None
-    #     with open("data/types.json", "r") as f:
-    #         data = load(f[self.user_pkm.types]), load(f[self.wild_pokemon.types])
+    def get_weakness_ratios(self):
+        with open("data/types.json", "r") as f:
+            type_data = load(f)
 
-    #     self.weakness_ratios = data
+        types_dict = {k.lower(): v for k, v in type_data.items()}
 
-    def choose_rdm_pokemon(self):
+        user_ratios = {}
+        for t in self.user_pkm.types:
+            original_name = t["name"]           
+            search_name = original_name.lower() 
+            
+            data = types_dict.get(search_name)
+            user_ratios[original_name] = data
+        
+        wild_ratios = {}
+        for t in self.wild_pokemon.types:
+                original_name = t["name"]
+                search_name = original_name.lower()
+                
+                data = types_dict.get(search_name)
+                wild_ratios[original_name] = data
+
+        return (user_ratios, wild_ratios)
+
+
+    def __choose_rdm_pokemon(self):
         rdm = randint(0, 150)
         
         with open("data/pokemon.json", "r", encoding='utf-8') as f:
@@ -71,7 +89,6 @@ class Battle:
     #     if 
     #     check1 = self.weakness_ratios[self.user_pkm.types]
 
-battle = Battle("test")
 
 mon_starter = Pokemon(
     name="Dracaufeu", 
@@ -85,3 +102,5 @@ print(f"Combat lancé contre : {battle.wild_pokemon.name}")
 print(f"HP du sauvage : {battle.wild_pokemon.max_hp}")
 
 battle.wild_pokemon.sprite.show()
+
+print(battle.weakness_ratios)
