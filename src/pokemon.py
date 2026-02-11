@@ -59,6 +59,8 @@ class Pokemon:
         self.speed += 1
         return None
     
+    def get_max_hp(self):
+        return self.max_hp
 
     def evolve(self):
         if not self.evolution:
