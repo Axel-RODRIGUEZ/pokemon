@@ -27,13 +27,16 @@ def main():
     data = data_file[0]
     stats = data['stats']
     xp = 3000
-    pokemon1= Pokemon(data['name']['fr'], stats['hp'], stats['atk'], stats['def'], stats['vit'], data["types"], xp)
-    Pokemon.check_xp(pokemon1)
-    print(pokemon1.level)
+    #pokemon1= Pokemon(data['name']['fr'], stats['hp'], stats['atk'], stats['def'], stats['vit'], data["types"], xp)
+    #Pokemon.check_xp(pokemon1)
+    #print(pokemon1.level)
 
     user = User("Arthur")
-    menu = Menu({"battle_mode": Button("battle", (200,200), text="Lancer une partie")}, user)
-    menu.run()
+    menu = Menu({"battle_mode": Button("battle", (200,200), text="Lancer une partie"),
+                 "add_pokemon_mode": Button("add_pokemon", (400,200), text="Ajouter un Pokémon"),
+                 "pokedex_mode": Button("pokedex", (600,200), text="Accéder au Pokédex")
+                 }, user)
+    menu.run(screen,clock,fonts)
    
 if __name__ == "__main__":
 
