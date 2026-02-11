@@ -1,5 +1,5 @@
-import json
-import os
+from json import load, dump, JSONDecodeError
+from os import path
 
 class User:
     def __init__(self, name_input):
@@ -13,12 +13,15 @@ class User:
     def create_user_save(self):
         data = {}
         
-        if os.path.exists(self.json_file):
+        if path.exists(self.json_file):
             try:
                 with open(self.json_file, "r") as f:
-                    data = json.load(f)
-            except json.JSONDecodeError:
+                    data = load(f)
+            except JSONDecodeError:
                 data = {}
+        else:
+            with open(self.json_file, "w") as f:
+                dump("", f, indent=4)
 
         existing_ids = []
         for key in data.keys():
@@ -41,24 +44,28 @@ class User:
         }
 
         with open(self.json_file, "w") as f:
-            json.dump(data, f, indent=4)
+            dump(data, f, indent=4)
 
     def delete_user(self):
-        if not os.path.exists(self.json_file):
-            return
+        if not path.exists(self.json_file):
+            with open(self.json_file, "w") as f:
+                dump("", f, indent=4)
+                print("Le fichier est vide.")
 
         with open(self.json_file, "r") as f:
-            data = json.load(f)
+            data = load(f)
 
         user_key = f"save_id_{self.__save_id}"
         
         if user_key in data:
             del data[user_key]
             with open(self.json_file, "w") as f:
-                json.dump(data, f, indent=4)
+                dump(data, f, indent=4)
             
             self.__save_id = None
             self.pokedex = {}
+        else:
+            print("Le joueur recherché n'existe pas")
 
     def get_save_id(self):
         return self.__save_id
