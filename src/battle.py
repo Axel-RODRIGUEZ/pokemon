@@ -1,9 +1,13 @@
+from os import path
 from json import load
 from random import randint
 from PIL import Image
-from pokemon import Pokemon
-from os import path
-from user import User
+if __name__ == "__main__":
+    from pokemon import Pokemon
+    from user import User
+else:
+    from src.pokemon import Pokemon
+    from src.user import User
 
 class Battle:
     def __init__(self, user:User):
@@ -132,15 +136,17 @@ class Battle:
     #         if pokemon.is_main == True:
     #             self.user_pkm == pokemon
 
-mon_starter = Pokemon(
-    name="Dracaufeu", 
-    max_hp=100, attack=80, defense=70, speed=1, 
-    types=[{"name": "Feu"}] 
-)
+if __name__ == "__main__":
 
-battle = Battle("test", mon_starter)
+    mon_starter = Pokemon(
+        name="Dracaufeu", 
+        max_hp=100, attack=80, defense=70, speed=1, 
+        types=[{"name": "Feu"}] 
+    )
 
-print(f"Combat lancé contre : {battle.wild_pokemon.name}")
-print(f"HP du sauvage : {battle.wild_pokemon.max_hp}")
+    battle = Battle("test")
+
+    print(f"Combat lancé contre : {battle.wild_pokemon.name}")
+    print(f"HP du sauvage : {battle.wild_pokemon.max_hp}")
 
 # battle.wild_pokemon.sprite.show()
