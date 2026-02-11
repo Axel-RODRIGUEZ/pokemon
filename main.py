@@ -9,9 +9,11 @@ from src.button import Button
 BASE_DIR = path.dirname(path.abspath(__file__))
 FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
 
+SPRITE_PATH = path.join(BASE_DIR, "assets", "images", "sprites")
 
 with open ('data/pokemon.json','r', encoding="utf-8") as f:
     data_file = json.load(f)
+
 def main():
 
     pygame.init()
@@ -20,6 +22,8 @@ def main():
     screen = pygame.display.set_mode((1300, 731))
     clock = pygame.time.Clock()
     fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50)
+    
+    # -- TEST -- #
     data = data_file[0]
     stats = data['stats']
     xp = 3000
