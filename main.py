@@ -24,30 +24,21 @@ def main():
     pokemon1= Pokemon(data['name']['fr'], stats['hp'], stats['atk'], stats['def'], stats['vit'], data["types"], xp)
     Pokemon.check_xp(pokemon1)
     print(pokemon1.level)
+    
     running = True
-
-    button1 = Button(fonts, screen, "totofunction", (50,200), text="TOTO") # BUTTON DEMO -> TO REMOVE WHEN MORE ADVANCED
-
+ 
     while running:
         screen.fill((202,228,241))
-
-        button1.draw() # BUTTON DEMO
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
-        if button1.get_rect().collidepoint(pygame.mouse.get_pos()): # BUTTON DEMO
-            button1.hovered() # BUTTON DEMO
-        else:
-            button1.avoided() # BUTTON DEMO
 
         clock.tick(60)
         pygame.display.update()
 
     pygame.quit()
    
-
 if __name__ == "__main__":
 
     main()
