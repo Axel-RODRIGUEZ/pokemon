@@ -1,8 +1,10 @@
 import json
 import pygame
 from os import path
-from src.button import Button
 from src.pokemon import Pokemon
+from src.menu import Menu
+from src.user import User
+from src.button import Button
 
 BASE_DIR = path.dirname(path.abspath(__file__))
 FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
@@ -28,20 +30,10 @@ def main():
     pokemon1= Pokemon(data['name']['fr'], stats['hp'], stats['atk'], stats['def'], stats['vit'], data["types"], xp)
     Pokemon.check_xp(pokemon1)
     print(pokemon1.level)
-    
-    running = True
- 
-    while running:
-        screen.fill((202,228,241))
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        clock.tick(60)
-        pygame.display.update()
-
-    pygame.quit()
+    user = User("Arthur")
+    menu = Menu({"battle_mode": Button("battle", (200,200), text="Lancer une partie")}, user)
+    menu.run()
    
 if __name__ == "__main__":
 
