@@ -7,9 +7,11 @@ from src.pokemon import Pokemon
 BASE_DIR = path.dirname(path.abspath(__file__))
 FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
 
+SPRITE_PATH = path.join(BASE_DIR, "assets", "images", "sprites")
 
 with open ('data/pokemon.json','r', encoding="utf-8") as f:
     data_file = json.load(f)
+
 def main():
 
     pygame.init()
