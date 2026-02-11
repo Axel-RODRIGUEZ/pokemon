@@ -1613,15 +1613,15 @@
   {
     "pokedex_id": 35,
     "generation": 1,
-    "category": "Pokémon Fée",
+    "category": "Pokémon Fee",
     "name": {
-      "fr": "Mélofée",
+      "fr": "MéloFee",
       "en": "Clefairy",
       "jp": "ピッピ "
     },
     "types": [
       {
-        "name": "Fée"
+        "name": "Fee"
       }
     ],
     "talents": [
@@ -1663,7 +1663,7 @@
   {
     "pokedex_id": 36,
     "generation": 1,
-    "category": "Pokémon Fée",
+    "category": "Pokémon Fee",
     "name": {
       "fr": "Mélodelfe",
       "en": "Clefable",
@@ -1671,7 +1671,7 @@
     },
     "types": [
       {
-        "name": "Fée"
+        "name": "Fee"
       }
     ],
     "talents": [
@@ -1702,7 +1702,7 @@
         },
         {
           "pokedex_id": 35,
-          "name": "Mélofée",
+          "name": "MéloFee",
           "condition": "Pierre Lune"
         }
       ],
@@ -1805,7 +1805,7 @@
         "name": "Normal"
       },
       {
-        "name": "Fée"
+        "name": "Fee"
       }
     ],
     "talents": [
@@ -1858,7 +1858,7 @@
         "name": "Normal"
       },
       {
-        "name": "Fée"
+        "name": "Fee"
       }
     ],
     "talents": [
@@ -5720,7 +5720,7 @@
         "name": "Psy"
       },
       {
-        "name": "Fée"
+        "name": "Fee"
       }
     ],
     "talents": [
@@ -6248,7 +6248,7 @@
         {
           "pokedex_id": 700,
           "name": "Nymphali",
-          "condition": "2 coeurs d'affections Poké Récré / Poké Détente + 1 niveau avec une capacité Fée (Avant EB) / Bonheur + capacité Fée (Depuis EB sauf DEPS)"
+          "condition": "2 coeurs d'affections Poké Récré / Poké Détente + 1 niveau avec une capacité Fee (Avant EB) / Bonheur + capacité Fee (Depuis EB sauf DEPS)"
         }
       ]
     }
