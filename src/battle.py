@@ -17,18 +17,19 @@ from random import random
 class Battle:
     def __init__(self, user:User):
         self.__turn = 0
-        self.data = DataManagement()
-        self.user = user
-        self.wild_pokemon = self.__choose_random_pokemon()
-        self.weakness_ratios = self.get_weakness_ratios()
+        self.__data = DataManagement()
+        self.__user = user
+        self.__wild_pokemon = self.__choose_random_pokemon()
+        self.__weakness_ratios = self.get_weakness_ratios()
             
     def get_weakness_ratios(self):
-        type_data = self.data.load_weakness_ratio()
+        self.__weakness_ratios = []
+        type_data = self.__data.load_weakness_ratio()
 
         types_dict = {k.lower(): v for k, v in type_data.items()}
 
         user_ratios = {}
-        for t in self.user_pkm.types:
+        for t in self.__user.main.types:
             original_name = t["name"]           
             search_name = original_name.lower() 
             
@@ -36,7 +37,7 @@ class Battle:
             user_ratios[original_name] = data
         
         wild_ratios = {}
-        for t in self.wild_pokemon.types:
+        for t in self.__wild_pokemon.types:
                 original_name = t["name"]
                 search_name = original_name.lower()
                 
@@ -49,7 +50,7 @@ class Battle:
     def __choose_random_pokemon(self):
         random = randint(0, 150)
         
-        data = self.data.load_pokemon()
+        data = self.__data.load_pokemon()
         
         pkm = data[random] 
         
@@ -76,29 +77,29 @@ class Battle:
 
     def __check_turn(self):
         if self.__turn == 0:
-            if self.user_pkm.speed > self.wild_pokemon.speed:
-                self.__turn = self.user_pkm
-            elif self.user_pkm.speed < self.wild_pokemon.speed:
-                self.__turn = self.wild_pokemon
+            if self.__user.main.speed > self.__wild_pokemon.speed:
+                self.__turn = self.__user.main
+            elif self.__user.main.speed < self.__wild_pokemon.speed:
+                self.__turn = self.__wild_pokemon
             else:
-                self.__turn = self.user_pkm if randint(1, 2) == 1 else self.wild_pokemon
+                self.__turn = self.__user.main if randint(1, 2) == 1 else self.__wild_pokemon
         else:
-            self.__turn = self.wild_pokemon if self.__turn == self.user_pkm else self.user_pkm
+            self.__turn = self.__wild_pokemon if self.__turn == self.__user.main else self.__user.main
 
 
     def __assign_attack_multi(self):
-        ratios_user, ratios_wild = self.weakness_ratios
+        ratios_user, ratios_wild = self.__weakness_ratios
 
         if isinstance(ratios_user, list):
             ratios_user = ratios_user[0]
         if isinstance(ratios_wild, list):
             ratios_wild = ratios_wild[0]
 
-        if self.__turn == self.user_pkm:
-            attacker = self.user_pkm
+        if self.__turn == self.__user.main:
+            attacker = self.__user.main
             defender_list = ratios_wild 
         else:
-            attacker = self.wild_pokemon
+            attacker = self.__wild_pokemon
             defender_list = ratios_user
 
         total_bonus = 0
@@ -116,23 +117,23 @@ class Battle:
 
         return total_bonus
     
-    def attack(self):
+    def __attack(self):
         self.__check_turn()
         attack_multi = self.__assign_attack_multi()
         prob = random()
 
-        if self.__turn == self.user_pkm:
+        if self.__turn == self.__user.main:
             if prob < 0.09:
                 print("Le pokémon a raté son attaque !")
             else: 
-                self.wild_pokemon.max_hp -= int(attack)
-                attack = self.user_pkm.attack * attack_multi
+                self.__wild_pokemon.hp -= int(attack)
+                attack = self.__user.main.attack * attack_multi
         else:
             if prob < 0.09:
                 print("Le pokémon a raté son attaque !")
             else:
-                attack = self.wild_pokemon.attack * attack_multi
-                self.user_pkm.max_hp -= int(attack)
+                attack = self.__wild_pokemon.attack * attack_multi
+                self.__user.main.hp -= int(attack)
 
     def check_hp(self, pokemon):
         pass
@@ -150,6 +151,6 @@ if __name__ == "__main__":
     battle = Battle("test")
 
     print(f"Combat lancé contre : {battle.wild_pokemon.name}")
-    print(f"HP du sauvage : {battle.wild_pokemon.max_hp}")
+    print(f"HP du sauvage : {battle.wild_pokemon.hp}")
 
     battle.attack()
