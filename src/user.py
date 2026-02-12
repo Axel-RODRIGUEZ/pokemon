@@ -6,16 +6,16 @@ else:
     from src.data_management import DataManagement
 class User:
     def __init__(self, is_new:bool, id = 1, name_input = "", main= None):
-        self.is_new = is_new
+        self.__is_new = is_new
         self.__data = DataManagement()
 
-        if self.is_new == True:
+        if self.__is_new == True:
             self.__name = name_input
             self.main = main
             self.__save_id = self.__create_user_save()
             self.pokedex = self.__load_pokedex()
         else:
-            self.id = id
+            self.__id = id
             self.__name = None
             self.main = None
             self.__save_id = None
@@ -87,7 +87,7 @@ class User:
         
     def __load_user(self):
         data = self.__data.load_pokedex()
-        save_id = f"save_id_{self.id}"
+        save_id = f"save_id_{self.__id}"
 
         if save_id in data:
             for d in data:
@@ -99,6 +99,3 @@ class User:
                     self.main = data[d]["main"]
         else:
             print("Error : id not recognized. Please try again.")
-
-    def get_infos(self):
-        print(self.__save_id, self.pokedex, self.main, self.__name)
