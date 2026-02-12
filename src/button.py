@@ -21,7 +21,7 @@ class Button:
                 if isinstance(text, str):
                     self.text = text
                     if isinstance(target_name, str):
-                        self.__target_name = str
+                        self.__target_name = target_name
                         if isinstance(color, tuple):
                             self.__color = color
                             self.current_color = color

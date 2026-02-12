@@ -1,11 +1,11 @@
 from src.battle import Battle
 from src.user import User
-from src.display_main_menu import DisplayMainMenu
+from src.display_main_menu import *
 import pygame
 
 class MainMenu:
     
-    def __init__(self, buttons: list, user: User):
+    def __init__(self, buttons: list[Button], user: User):
         self.__buttons = buttons
         self.__user = user
     
@@ -17,35 +17,33 @@ class MainMenu:
             for event in pygame.event.get():
                 for button in self.__buttons:
                     if button.rect.collidepoint(pygame.mouse.get_pos()):
-                        #pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
-                        #pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            match button.get_target_name():
+                                case "battle":
+                                    is_running = self.__run_battle_mode()
+                                case "add_pokemon":
+                                    is_running = self.__run_add_pokemon_mode()
+                                case "pokedex":
+                                    is_running = self.__run_pokedex_mode()
                         button.hovered()
                     else:
                         button.avoided()
                 
                 if event.type == pygame.QUIT:
                     is_running = False
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    for button in self.__buttons:
-                        pass
 
             menu_display.display(self.__buttons)
-    
-    def call_button_action(self):
-        #Si bouton "Lancer une partie" -> self.__run_battle_mode()
-        #Si bouton "Ajouter un Pokémon" -> self.__run_add_pokemon()
-        #Si bouton "Accéder à son Pokedex" -> self.__run_pokedex()
-        #Si Exit game -> __exit_game
-        pass
 
     def __run_battle_mode(self):
         battle = Battle(self.__user)
+        is_running = battle.run()
+        return is_running
 
     def __run_add_pokemon_mode(self):
-        pass
+        print("Run add pokemon mode")
 
     def __run_pokedex_mode(self):
-        pass
+        print("Run pokedex mode")
 
     def __exit_game(self):
         pass
