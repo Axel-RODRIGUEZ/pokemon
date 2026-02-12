@@ -38,12 +38,12 @@
         {
           "pokedex_id": 2,
           "name": "Herbizarre",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 3,
           "name": "Florizarre",
-          "condition": "Niveau 32"
+          "condition": 32
         }
       ]
     }
@@ -86,14 +86,14 @@
         {
           "pokedex_id": 1,
           "name": "Bulbizarre",
-          "condition": "Niveau 16"
+          "condition": 16
         }
       ],
       "next": [
         {
           "pokedex_id": 3,
           "name": "Florizarre",
-          "condition": "Niveau 32"
+          "condition": 32
         }
       ]
     }
@@ -136,12 +136,12 @@
         {
           "pokedex_id": 1,
           "name": "Bulbizarre",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 2,
           "name": "Herbizarre",
-          "condition": "Niveau 32"
+          "condition": 32
         }
       ],
       "next": null
@@ -183,12 +183,12 @@
         {
           "pokedex_id": 5,
           "name": "Reptincel",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 6,
           "name": "Dracaufeu",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ]
     }
@@ -228,14 +228,14 @@
         {
           "pokedex_id": 4,
           "name": "Salamèche",
-          "condition": "Niveau 16"
+          "condition": 16
         }
       ],
       "next": [
         {
           "pokedex_id": 6,
           "name": "Dracaufeu",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ]
     }
@@ -278,12 +278,12 @@
         {
           "pokedex_id": 4,
           "name": "Salamèche",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 5,
           "name": "Reptincel",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ],
       "next": null
@@ -325,12 +325,12 @@
         {
           "pokedex_id": 8,
           "name": "Carabaffe",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 9,
           "name": "Tortank",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ]
     }
@@ -370,14 +370,14 @@
         {
           "pokedex_id": 7,
           "name": "Carapuce",
-          "condition": "Niveau 16"
+          "condition": 16
         }
       ],
       "next": [
         {
           "pokedex_id": 9,
           "name": "Tortank",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ]
     }
@@ -417,12 +417,12 @@
         {
           "pokedex_id": 7,
           "name": "Carapuce",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 8,
           "name": "Carabaffe",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ],
       "next": null
@@ -464,12 +464,12 @@
         {
           "pokedex_id": 11,
           "name": "Chrysacier",
-          "condition": "Niveau 7"
+          "condition": 7
         },
         {
           "pokedex_id": 12,
           "name": "Papilusion",
-          "condition": "Niveau 10"
+          "condition": 10
         }
       ]
     }
@@ -506,14 +506,14 @@
         {
           "pokedex_id": 10,
           "name": "Chenipan",
-          "condition": "Niveau 7"
+          "condition": 7
         }
       ],
       "next": [
         {
           "pokedex_id": 12,
           "name": "Papilusion",
-          "condition": "Niveau 10"
+          "condition": 10
         }
       ]
     }
@@ -556,12 +556,12 @@
         {
           "pokedex_id": 10,
           "name": "Chenipan",
-          "condition": "Niveau 7"
+          "condition": 7
         },
         {
           "pokedex_id": 11,
           "name": "Chrysacier",
-          "condition": "Niveau 10"
+          "condition": 10
         }
       ],
       "next": null
@@ -606,12 +606,12 @@
         {
           "pokedex_id": 14,
           "name": "Coconfort",
-          "condition": "Niveau 7"
+          "condition": 7
         },
         {
           "pokedex_id": 15,
           "name": "Dardargnan",
-          "condition": "Niveau 10"
+          "condition": 10
         }
       ]
     }
@@ -651,14 +651,14 @@
         {
           "pokedex_id": 13,
           "name": "Aspicot",
-          "condition": "Niveau 7"
+          "condition": 7
         }
       ],
       "next": [
         {
           "pokedex_id": 15,
           "name": "Dardargnan",
-          "condition": "Niveau 10"
+          "condition": 10
         }
       ]
     }
@@ -701,12 +701,12 @@
         {
           "pokedex_id": 13,
           "name": "Aspicot",
-          "condition": "Niveau 7"
+          "condition": 7
         },
         {
           "pokedex_id": 14,
           "name": "Coconfort",
-          "condition": "Niveau 10"
+          "condition": 10
         }
       ],
       "next": null
@@ -754,12 +754,12 @@
         {
           "pokedex_id": 17,
           "name": "Roucoups",
-          "condition": "Niveau 18"
+          "condition": 18
         },
         {
           "pokedex_id": 18,
           "name": "Roucarnage",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ]
     }
@@ -805,14 +805,14 @@
         {
           "pokedex_id": 16,
           "name": "Roucool",
-          "condition": "Niveau 18"
+          "condition": 18
         }
       ],
       "next": [
         {
           "pokedex_id": 18,
           "name": "Roucarnage",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ]
     }
@@ -858,12 +858,12 @@
         {
           "pokedex_id": 16,
           "name": "Roucool",
-          "condition": "Niveau 18"
+          "condition": 18
         },
         {
           "pokedex_id": 17,
           "name": "Roucoups",
-          "condition": "Niveau 36"
+          "condition": 36
         }
       ],
       "next": null
@@ -908,7 +908,7 @@
         {
           "pokedex_id": 20,
           "name": "Rattatac",
-          "condition": "Niveau 20"
+          "condition": 20
         }
       ]
     }
@@ -951,7 +951,7 @@
         {
           "pokedex_id": 19,
           "name": "Rattata",
-          "condition": "Niveau 20"
+          "condition": 20
         }
       ],
       "next": null
@@ -996,7 +996,7 @@
         {
           "pokedex_id": 22,
           "name": "Rapasdepic",
-          "condition": "Niveau 20"
+          "condition": 20
         }
       ]
     }
@@ -1039,7 +1039,7 @@
         {
           "pokedex_id": 21,
           "name": "Piafabec",
-          "condition": "Niveau 20"
+          "condition": 20
         }
       ],
       "next": null
@@ -1084,7 +1084,7 @@
         {
           "pokedex_id": 24,
           "name": "Arbok",
-          "condition": "Niveau 22"
+          "condition": 22
         }
       ]
     }
@@ -1127,7 +1127,7 @@
         {
           "pokedex_id": 23,
           "name": "Abo",
-          "condition": "Niveau 22"
+          "condition": 22
         }
       ],
       "next": null
@@ -1262,7 +1262,7 @@
         {
           "pokedex_id": 28,
           "name": "Sablaireau",
-          "condition": "Niveau 22"
+          "condition": 22
         }
       ]
     }
@@ -1302,7 +1302,7 @@
         {
           "pokedex_id": 27,
           "name": "Sabelette",
-          "condition": "Niveau 22"
+          "condition": 22
         }
       ],
       "next": null
@@ -1347,7 +1347,7 @@
         {
           "pokedex_id": 30,
           "name": "Nidorina",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 31,
@@ -1395,7 +1395,7 @@
         {
           "pokedex_id": 29,
           "name": "Nidoran♀",
-          "condition": "Niveau 16"
+          "condition": 16
         }
       ],
       "next": [
@@ -1448,7 +1448,7 @@
         {
           "pokedex_id": 29,
           "name": "Nidoran♀",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 30,
@@ -1498,7 +1498,7 @@
         {
           "pokedex_id": 33,
           "name": "Nidorino",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 34,
@@ -1546,7 +1546,7 @@
         {
           "pokedex_id": 32,
           "name": "Nidoran♂",
-          "condition": "Niveau 16"
+          "condition": 16
         }
       ],
       "next": [
@@ -1599,7 +1599,7 @@
         {
           "pokedex_id": 32,
           "name": "Nidoran♂",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 33,
@@ -1935,7 +1935,7 @@
         {
           "pokedex_id": 42,
           "name": "Nosferalto",
-          "condition": "Niveau 22"
+          "condition": 22
         },
         {
           "pokedex_id": 169,
@@ -1983,7 +1983,7 @@
         {
           "pokedex_id": 41,
           "name": "Nosferapti",
-          "condition": "Niveau 22"
+          "condition": 22
         }
       ],
       "next": [
@@ -2034,7 +2034,7 @@
         {
           "pokedex_id": 44,
           "name": "Ortide",
-          "condition": "Niveau 21"
+          "condition": 21
         },
         {
           "pokedex_id": 45,
@@ -2087,7 +2087,7 @@
         {
           "pokedex_id": 43,
           "name": "Mystherbe",
-          "condition": "Niveau 21"
+          "condition": 21
         }
       ],
       "next": [
@@ -2142,7 +2142,7 @@
         {
           "pokedex_id": 43,
           "name": "Mystherbe",
-          "condition": "Niveau 21"
+          "condition": 21
         },
         {
           "pokedex_id": 44,
@@ -2195,7 +2195,7 @@
         {
           "pokedex_id": 47,
           "name": "Parasect",
-          "condition": "Niveau 24"
+          "condition": 24
         }
       ]
     }
@@ -2241,7 +2241,7 @@
         {
           "pokedex_id": 46,
           "name": "Paras",
-          "condition": "Niveau 24"
+          "condition": 24
         }
       ],
       "next": null
@@ -2289,7 +2289,7 @@
         {
           "pokedex_id": 49,
           "name": "Aéromite",
-          "condition": "Niveau 31"
+          "condition": 31
         }
       ]
     }
@@ -2335,7 +2335,7 @@
         {
           "pokedex_id": 48,
           "name": "Mimitoss",
-          "condition": "Niveau 31"
+          "condition": 31
         }
       ],
       "next": null
@@ -2380,7 +2380,7 @@
         {
           "pokedex_id": 51,
           "name": "Triopikeur",
-          "condition": "Niveau 26"
+          "condition": 26
         }
       ]
     }
@@ -2423,7 +2423,7 @@
         {
           "pokedex_id": 50,
           "name": "Taupiqueur",
-          "condition": "Niveau 26"
+          "condition": 26
         }
       ],
       "next": null
@@ -2468,7 +2468,7 @@
         {
           "pokedex_id": 53,
           "name": "Persian",
-          "condition": "Niveau 28"
+          "condition": 28
         }
       ]
     }
@@ -2511,7 +2511,7 @@
         {
           "pokedex_id": 52,
           "name": "Miaouss",
-          "condition": "Niveau 28"
+          "condition": 28
         }
       ],
       "next": null
@@ -2556,7 +2556,7 @@
         {
           "pokedex_id": 55,
           "name": "Akwakwak",
-          "condition": "Niveau 33"
+          "condition": 33
         }
       ]
     }
@@ -2599,7 +2599,7 @@
         {
           "pokedex_id": 54,
           "name": "Psykokwak",
-          "condition": "Niveau 33"
+          "condition": 33
         }
       ],
       "next": null
@@ -2644,7 +2644,7 @@
         {
           "pokedex_id": 57,
           "name": "Colossinge",
-          "condition": "Niveau 28"
+          "condition": 28
         },
         {
           "pokedex_id": 979,
@@ -2692,7 +2692,7 @@
         {
           "pokedex_id": 56,
           "name": "Férosinge",
-          "condition": "Niveau 28"
+          "condition": 28
         }
       ],
       "next": [
@@ -2831,7 +2831,7 @@
         {
           "pokedex_id": 61,
           "name": "Têtarte",
-          "condition": "Niveau 25"
+          "condition": 25
         },
         {
           "pokedex_id": 62,
@@ -2884,7 +2884,7 @@
         {
           "pokedex_id": 60,
           "name": "Ptitard",
-          "condition": "Niveau 25"
+          "condition": 25
         }
       ],
       "next": [
@@ -2942,7 +2942,7 @@
         {
           "pokedex_id": 60,
           "name": "Ptitard",
-          "condition": "Niveau 25"
+          "condition": 25
         },
         {
           "pokedex_id": 61,
@@ -2992,7 +2992,7 @@
         {
           "pokedex_id": 64,
           "name": "Kadabra",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 65,
@@ -3040,7 +3040,7 @@
         {
           "pokedex_id": 63,
           "name": "Abra",
-          "condition": "Niveau 16"
+          "condition": 16
         }
       ],
       "next": [
@@ -3090,7 +3090,7 @@
         {
           "pokedex_id": 63,
           "name": "Abra",
-          "condition": "Niveau 16"
+          "condition": 16
         },
         {
           "pokedex_id": 64,
@@ -3140,7 +3140,7 @@
         {
           "pokedex_id": 67,
           "name": "Machopeur",
-          "condition": "Niveau 28"
+          "condition": 28
         },
         {
           "pokedex_id": 68,
@@ -3188,7 +3188,7 @@
         {
           "pokedex_id": 66,
           "name": "Machoc",
-          "condition": "Niveau 28"
+          "condition": 28
         }
       ],
       "next": [
@@ -3238,7 +3238,7 @@
         {
           "pokedex_id": 66,
           "name": "Machoc",
-          "condition": "Niveau 28"
+          "condition": 28
         },
         {
           "pokedex_id": 67,
@@ -3288,7 +3288,7 @@
         {
           "pokedex_id": 70,
           "name": "Boustiflor",
-          "condition": "Niveau 21"
+          "condition": 21
         },
         {
           "pokedex_id": 71,
@@ -3336,7 +3336,7 @@
         {
           "pokedex_id": 69,
           "name": "Chétiflor",
-          "condition": "Niveau 21"
+          "condition": 21
         }
       ],
       "next": [
@@ -3386,7 +3386,7 @@
         {
           "pokedex_id": 69,
           "name": "Chétiflor",
-          "condition": "Niveau 21"
+          "condition": 21
         },
         {
           "pokedex_id": 70,
@@ -3439,7 +3439,7 @@
         {
           "pokedex_id": 73,
           "name": "Tentacruel",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ]
     }
@@ -3485,7 +3485,7 @@
         {
           "pokedex_id": 72,
           "name": "Tentacool",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ],
       "next": null
@@ -3533,7 +3533,7 @@
         {
           "pokedex_id": 75,
           "name": "Gravalanch",
-          "condition": "Niveau 25"
+          "condition": 25
         },
         {
           "pokedex_id": 76,
@@ -3584,7 +3584,7 @@
         {
           "pokedex_id": 74,
           "name": "Racaillou",
-          "condition": "Niveau 25"
+          "condition": 25
         }
       ],
       "next": [
@@ -3637,7 +3637,7 @@
         {
           "pokedex_id": 74,
           "name": "Racaillou",
-          "condition": "Niveau 25"
+          "condition": 25
         },
         {
           "pokedex_id": 75,
@@ -3687,7 +3687,7 @@
         {
           "pokedex_id": 78,
           "name": "Galopa",
-          "condition": "Niveau 40"
+          "condition": 40
         }
       ]
     }
@@ -3730,7 +3730,7 @@
         {
           "pokedex_id": 77,
           "name": "Ponyta",
-          "condition": "Niveau 40"
+          "condition": 40
         }
       ],
       "next": null
@@ -3778,7 +3778,7 @@
         {
           "pokedex_id": 80,
           "name": "Flagadoss",
-          "condition": "Niveau 37"
+          "condition": 37
         },
         {
           "pokedex_id": 199,
@@ -3829,7 +3829,7 @@
         {
           "pokedex_id": 79,
           "name": "Ramoloss",
-          "condition": "Niveau 37"
+          "condition": 37
         }
       ],
       "next": null
@@ -3877,7 +3877,7 @@
         {
           "pokedex_id": 82,
           "name": "Magnéton",
-          "condition": "Niveau 30"
+          "condition": 30
         },
         {
           "pokedex_id": 462,
@@ -3928,7 +3928,7 @@
         {
           "pokedex_id": 81,
           "name": "Magnéti",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ],
       "next": [
@@ -4020,7 +4020,7 @@
         {
           "pokedex_id": 85,
           "name": "Dodrio",
-          "condition": "Niveau 31"
+          "condition": 31
         }
       ]
     }
@@ -4066,7 +4066,7 @@
         {
           "pokedex_id": 84,
           "name": "Doduo",
-          "condition": "Niveau 31"
+          "condition": 31
         }
       ],
       "next": null
@@ -4111,7 +4111,7 @@
         {
           "pokedex_id": 87,
           "name": "Lamantine",
-          "condition": "Niveau 34"
+          "condition": 34
         }
       ]
     }
@@ -4157,7 +4157,7 @@
         {
           "pokedex_id": 86,
           "name": "Otaria",
-          "condition": "Niveau 34"
+          "condition": 34
         }
       ],
       "next": null
@@ -4202,7 +4202,7 @@
         {
           "pokedex_id": 89,
           "name": "Grotadmorv",
-          "condition": "Niveau 38"
+          "condition": 38
         }
       ]
     }
@@ -4245,7 +4245,7 @@
         {
           "pokedex_id": 88,
           "name": "Tadmorv",
-          "condition": "Niveau 38"
+          "condition": 38
         }
       ],
       "next": null
@@ -4378,7 +4378,7 @@
         {
           "pokedex_id": 93,
           "name": "Spectrum",
-          "condition": "Niveau 25"
+          "condition": 25
         },
         {
           "pokedex_id": 94,
@@ -4423,7 +4423,7 @@
         {
           "pokedex_id": 92,
           "name": "Fantominus",
-          "condition": "Niveau 25"
+          "condition": 25
         }
       ],
       "next": [
@@ -4473,7 +4473,7 @@
         {
           "pokedex_id": 92,
           "name": "Fantominus",
-          "condition": "Niveau 25"
+          "condition": 25
         },
         {
           "pokedex_id": 93,
@@ -4570,7 +4570,7 @@
         {
           "pokedex_id": 97,
           "name": "Hypnomade",
-          "condition": "Niveau 26"
+          "condition": 26
         }
       ]
     }
@@ -4613,7 +4613,7 @@
         {
           "pokedex_id": 96,
           "name": "Soporifik",
-          "condition": "Niveau 26"
+          "condition": 26
         }
       ],
       "next": null
@@ -4658,7 +4658,7 @@
         {
           "pokedex_id": 99,
           "name": "Krabboss",
-          "condition": "Niveau 28"
+          "condition": 28
         }
       ]
     }
@@ -4701,7 +4701,7 @@
         {
           "pokedex_id": 98,
           "name": "Krabby",
-          "condition": "Niveau 28"
+          "condition": 28
         }
       ],
       "next": null
@@ -4746,7 +4746,7 @@
         {
           "pokedex_id": 101,
           "name": "Électrode",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ]
     }
@@ -4789,7 +4789,7 @@
         {
           "pokedex_id": 100,
           "name": "Voltorbe",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ],
       "next": null
@@ -4922,7 +4922,7 @@
         {
           "pokedex_id": 105,
           "name": "Ossatueur",
-          "condition": "Niveau 28"
+          "condition": 28
         }
       ]
     }
@@ -4965,7 +4965,7 @@
         {
           "pokedex_id": 104,
           "name": "Osselait",
-          "condition": "Niveau 28"
+          "condition": 28
         }
       ],
       "next": null
@@ -5009,7 +5009,7 @@
         {
           "pokedex_id": 236,
           "name": "Debugant",
-          "condition": "Niveau 20 + Attaque > Défense"
+          "condition": 20
         }
       ],
       "next": null
@@ -5053,7 +5053,7 @@
         {
           "pokedex_id": 236,
           "name": "Debugant",
-          "condition": "Niveau 20 + Attaque < Défense"
+          "condition": 20
         }
       ],
       "next": null
@@ -5142,7 +5142,7 @@
         {
           "pokedex_id": 110,
           "name": "Smogogo",
-          "condition": "Niveau 35"
+          "condition": 35
         }
       ]
     }
@@ -5185,7 +5185,7 @@
         {
           "pokedex_id": 109,
           "name": "Smogo",
-          "condition": "Niveau 35"
+          "condition": 35
         }
       ],
       "next": null
@@ -5233,7 +5233,7 @@
         {
           "pokedex_id": 112,
           "name": "Rhinoféros",
-          "condition": "Niveau 42"
+          "condition": 42
         },
         {
           "pokedex_id": 464,
@@ -5284,7 +5284,7 @@
         {
           "pokedex_id": 111,
           "name": "Rhinocorne",
-          "condition": "Niveau 42"
+          "condition": 42
         }
       ],
       "next": [
@@ -5467,7 +5467,7 @@
         {
           "pokedex_id": 117,
           "name": "Hypocéan",
-          "condition": "Niveau 32"
+          "condition": 32
         },
         {
           "pokedex_id": 230,
@@ -5515,7 +5515,7 @@
         {
           "pokedex_id": 116,
           "name": "Hypotrempe",
-          "condition": "Niveau 32"
+          "condition": 32
         }
       ],
       "next": [
@@ -5566,7 +5566,7 @@
         {
           "pokedex_id": 119,
           "name": "Poissoroy",
-          "condition": "Niveau 33"
+          "condition": 33
         }
       ]
     }
@@ -5609,7 +5609,7 @@
         {
           "pokedex_id": 118,
           "name": "Poissirène",
-          "condition": "Niveau 33"
+          "condition": 33
         }
       ],
       "next": null
@@ -5846,7 +5846,7 @@
         {
           "pokedex_id": 238,
           "name": "Lippouti",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ],
       "next": null
@@ -5887,7 +5887,7 @@
         {
           "pokedex_id": 239,
           "name": "Élekid",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ],
       "next": [
@@ -5934,7 +5934,7 @@
         {
           "pokedex_id": 240,
           "name": "Magby",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ],
       "next": [
@@ -6055,7 +6055,7 @@
         {
           "pokedex_id": 130,
           "name": "Léviator",
-          "condition": "Niveau 20"
+          "condition": 20
         }
       ]
     }
@@ -6098,7 +6098,7 @@
         {
           "pokedex_id": 129,
           "name": "Magicarpe",
-          "condition": "Niveau 20"
+          "condition": 20
         }
       ],
       "next": null
@@ -6467,7 +6467,7 @@
         {
           "pokedex_id": 139,
           "name": "Amonistar",
-          "condition": "Niveau 40"
+          "condition": 40
         }
       ]
     }
@@ -6513,7 +6513,7 @@
         {
           "pokedex_id": 138,
           "name": "Amonita",
-          "condition": "Niveau 40"
+          "condition": 40
         }
       ],
       "next": null
@@ -6561,7 +6561,7 @@
         {
           "pokedex_id": 141,
           "name": "Kabutops",
-          "condition": "Niveau 40"
+          "condition": 40
         }
       ]
     }
@@ -6607,7 +6607,7 @@
         {
           "pokedex_id": 140,
           "name": "Kabuto",
-          "condition": "Niveau 40"
+          "condition": 40
         }
       ],
       "next": null
@@ -6839,12 +6839,12 @@
         {
           "pokedex_id": 148,
           "name": "Draco",
-          "condition": "Niveau 30"
+          "condition": 30
         },
         {
           "pokedex_id": 149,
           "name": "Dracolosse",
-          "condition": "Niveau 55"
+          "condition": 55
         }
       ]
     }
@@ -6884,14 +6884,14 @@
         {
           "pokedex_id": 147,
           "name": "Minidraco",
-          "condition": "Niveau 30"
+          "condition": 30
         }
       ],
       "next": [
         {
           "pokedex_id": 149,
           "name": "Dracolosse",
-          "condition": "Niveau 55"
+          "condition": 55
         }
       ]
     }
@@ -6934,12 +6934,12 @@
         {
           "pokedex_id": 147,
           "name": "Minidraco",
-          "condition": "Niveau 30"
+          "condition": 30
         },
         {
           "pokedex_id": 148,
           "name": "Draco",
-          "condition": "Niveau 55"
+          "condition": 55
         }
       ],
       "next": null
