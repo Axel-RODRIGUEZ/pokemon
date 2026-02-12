@@ -1,17 +1,17 @@
 from src.battle import Battle
 from src.user import User
-from src.display import Display
+from src.display_main_menu import DisplayMainMenu
 import pygame
 
-class Menu:
+class MainMenu:
     
     def __init__(self, buttons: list, user: User):
         self.__buttons = buttons
         self.__user = user
     
-    def run(self,screen,clock,fonts):
+    def run(self,screen,fonts):
 
-        display = Display(screen,fonts)
+        menu_display = DisplayMainMenu(screen,fonts)
         is_running = True
         while is_running:
             for event in pygame.event.get():
@@ -29,11 +29,7 @@ class Menu:
                     for button in self.__buttons:
                         pass
 
-                    
-            display.display_menu(self.__buttons)
-            
-
-            
+            menu_display.display(self.__buttons)
     
     def call_button_action(self):
         #Si bouton "Lancer une partie" -> self.__run_battle_mode()
