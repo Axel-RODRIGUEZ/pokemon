@@ -2,7 +2,7 @@ import json
 import pygame
 from os import path
 from src.pokemon import Pokemon
-from src.menu import Menu
+from src.main_menu import MainMenu
 from src.user import User
 from src.button import Button
 
@@ -31,12 +31,12 @@ def main():
     #Pokemon.check_xp(pokemon1)
     #print(pokemon1.level)
 
-    user = User("Arthur")
-    menu = Menu([Button("battle", (200,200), text="Lancer une partie"),
+    user = User("Arthur",None)
+    menu = MainMenu([Button("battle", (200,200), text="Lancer une partie"),
                  Button("add_pokemon", (200,400), text="Ajouter un Pokémon"),
                  Button("pokedex", (200,600), text="Accéder au Pokédex")
                  ], user)
-    menu.run(screen,clock,fonts)
+    menu.run(screen,fonts)
    
 if __name__ == "__main__":
 
