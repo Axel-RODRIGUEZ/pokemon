@@ -64,6 +64,9 @@ class Pokemon:
     
     def get_max_hp(self):
         return self.__max_hp
+    
+    def get_level(self):
+        return self.__level
 
     def __evolve(self):
         if not self.__evolution:
