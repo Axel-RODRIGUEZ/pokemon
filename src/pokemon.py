@@ -25,6 +25,7 @@ class Pokemon:
         self.__max_stats = max_stats # how we check this point in battle?
         self.xp = xp
         self.__level = level
+        self.ko = False
         self.__xp_levels_cub = [0]
         for n in range(1, 100):
             self.__xp_levels_cub.append(int(n ** 3))
