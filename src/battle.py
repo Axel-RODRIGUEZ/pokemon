@@ -1,24 +1,29 @@
-from os import path
+from os import path, pardir
 from json import load
 from random import randint
-from PIL import Image
+from pygame import image
 if __name__ == "__main__":
     from pokemon import Pokemon
     from user import User
+    from data_management import DataManagement
 else:
     from src.pokemon import Pokemon
     from src.user import User
+    from src.data_management import DataManagement
+from random import random
+
+
 
 class Battle:
     def __init__(self, user:User):
         self.__turn = 0
-        self.wild_pokemon = self.__choose_random_pokemon()
+        self.data = DataManagement()
         self.user = user
+        self.wild_pokemon = self.__choose_random_pokemon()
         self.weakness_ratios = self.get_weakness_ratios()
             
     def get_weakness_ratios(self):
-        with open("data/types.json", "r") as f:
-            type_data = load(f)
+        type_data = self.data.load_weakness_ratio()
 
         types_dict = {k.lower(): v for k, v in type_data.items()}
 
@@ -44,30 +49,29 @@ class Battle:
     def __choose_random_pokemon(self):
         random = randint(0, 150)
         
-        with open("data/pokemon.json", "r", encoding='utf-8') as f:
-            data = load(f)
-            
-            pkm = data[random] 
-            
-            try:
-                script_dir = path.dirname(path.abspath(__file__))
-                sprites_path = path.join(script_dir, "..", "assets", "images", "sprites", "fronts", f"{random + 1}.png")
+        data = self.data.load_pokemon()
+        
+        pkm = data[random] 
+        
+        try:
+            script_dir = path.dirname(path.abspath(__file__))
+            sprites_path = path.join(script_dir, pardir, "assets", "images", "sprites", "fronts", f"{random + 1}.png")
 
-                img = Image.open(sprites_path)
-            except:
-                img = None
+            img = image.load(sprites_path)
+        except:
+            img = None
 
-            wild_pkm = Pokemon(
-                name=pkm["name"]["fr"],
-                max_hp=pkm["stats"]["hp"],
-                attack=pkm["stats"]["atk"],
-                defense=pkm["stats"]["def"],
-                speed=pkm["stats"]["vit"],
-                types=pkm["types"], 
-                sprite=img
-            )
-            
-            return wild_pkm
+        wild_pkm = Pokemon(
+            name=pkm["name"]["fr"],
+            max_hp=pkm["stats"]["hp"],
+            attack=pkm["stats"]["atk"],
+            defense=pkm["stats"]["def"],
+            speed=pkm["stats"]["vit"],
+            types=pkm["types"], 
+            sprite=img
+        )
+        
+        return wild_pkm
 
 
     def __check_turn(self):
@@ -115,20 +119,32 @@ class Battle:
     def attack(self):
         self.__check_turn()
         attack_multi = self.__assign_attack_multi()
+        prob = random()
 
         if self.__turn == self.user_pkm:
-            attack = self.user_pkm.attack * attack_multi
-            self.wild_pokemon.max_hp -= int(attack)
+            if prob < 0.09:
+                print("Le pokémon a raté son attaque !")
+            else: 
+                self.wild_pokemon.max_hp -= int(attack)
+                attack = self.user_pkm.attack * attack_multi
         else:
-            attack = self.wild_pokemon.attack * attack_multi
-            self.user_pkm.max_hp -= int(attack)
+            if prob < 0.09:
+                print("Le pokémon a raté son attaque !")
+            else:
+                attack = self.wild_pokemon.attack * attack_multi
+                self.user_pkm.max_hp -= int(attack)
+
+    def check_hp(self, pokemon):
+        pass
+
             
 if __name__ == "__main__":
 
     mon_starter = Pokemon(
         name="Dracaufeu", 
-        max_hp=100, attack=80, defense=70, speed=1, 
-        types=[{"name": "Feu"}] 
+        max_hp=100, attack=80, defense=70, speed=100, 
+        types=[{"name": "Feu"}], 
+        sprite=None,
     )
 
     battle = Battle("test")
@@ -136,4 +152,4 @@ if __name__ == "__main__":
     print(f"Combat lancé contre : {battle.wild_pokemon.name}")
     print(f"HP du sauvage : {battle.wild_pokemon.max_hp}")
 
-# battle.wild_pokemon.sprite.show()
+    battle.attack()
