@@ -1,5 +1,4 @@
 from os import path, pardir
-from json import load
 from random import randint
 from pygame import image
 if __name__ == "__main__":
@@ -125,32 +124,80 @@ class Battle:
         if self.__turn == self.__user.main:
             if prob < 0.09:
                 print("Le pokémon a raté son attaque !")
+                return True
             else: 
-                self.__wild_pokemon.hp -= int(attack)
                 attack = self.__user.main.attack * attack_multi
+                self.__wild_pokemon.hp -= int(attack)
+
+                self.__check_hp(self.__wild_pokemon)
+                if self.__wild_pokemon.ko:
+                    print("Le pokémon sauvage est mort !")
+                    self.__write_pokedex()
+                    return False
+                else: 
+                    return True
         else:
             if prob < 0.09:
                 print("Le pokémon a raté son attaque !")
+                return True
             else:
                 attack = self.__wild_pokemon.attack * attack_multi
                 self.__user.main.hp -= int(attack)
 
-    def check_hp(self, pokemon):
-        pass
+                all_ko = self.__check_hp(self.__user.main)
+                if all_ko == False:
+                    print("Le joueur a perdu !")
+                    return False
+                else:
+                    return True
 
-            
-if __name__ == "__main__":
+    def __change_pokemon(self, name):
+        for pokemon in self.__user.pokedex:
+            if pokemon.name == name:
+                self.__user.main = pokemon
 
-    mon_starter = Pokemon(
-        name="Dracaufeu", 
-        max_hp=100, attack=80, defense=70, speed=100, 
-        types=[{"name": "Feu"}], 
-        sprite=None,
-    )
+    def __check_hp(self, pokemon:Pokemon):
+        if pokemon == self.__user.main:
+            if pokemon.hp <= 0:
+                print(f"Le pokémon {pokemon.name} est ko")
+                pokemon.ko = True
 
-    battle = Battle("test")
+                check = True
 
-    print(f"Combat lancé contre : {battle.wild_pokemon.name}")
-    print(f"HP du sauvage : {battle.wild_pokemon.hp}")
+                for pkm in self.__user.pokedex:
+                    if pkm.ko:
+                        check = False
 
-    battle.attack()
+                    else:
+                        check = True
+                        self.__change_pokemon(None) # need function that let the user choose a pokemon in his pokedex and return his name
+                        break
+
+                return check
+
+            else:
+                return True
+        else:
+            if pokemon.hp <= 0:
+                pokemon.ko = True
+    
+    def __check_pokedex(self):
+        datas = self.__data.load_pokedex()
+        for data in datas:
+            if self.__wild_pokemon.name == data.name:
+                if self.__wild_pokemon.get_level() > data.get_level():
+                    return self.__wild_pokemon
+                else: 
+                    return data
+
+    def __write_pokedex(self):
+        datas = self.__data.load_pokedex()
+        pokemon = self.__check_pokedex
+        for data in datas:
+            if pokemon == data:
+                return
+            else:
+                if pokemon.name == data.name:
+                    datas[self.__user.get_save_id()["pokemons"]].remove(data)
+                    datas[self.__user.get_save_id()]["pokemons"].append(pokemon)
+                    self.__data.save_pokedex(datas)
