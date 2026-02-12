@@ -36,7 +36,7 @@ class MainMenu:
 
     def __run_battle_mode(self):
         battle = Battle(self.__user)
-        is_running = battle.run()
+        is_running = battle.run_battle()
         return is_running
 
     def __run_add_pokemon_mode(self):

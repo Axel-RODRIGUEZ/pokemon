@@ -57,7 +57,7 @@ class Battle:
             script_dir = path.dirname(path.abspath(__file__))
             sprites_path = path.join(script_dir, pardir, "assets", "images", "sprites", "fronts", f"{random + 1}.png")
 
-            img = image.load(sprites_path)
+            img = image.load(sprites_path).convert_alpha()
         except:
             img = None
 
