@@ -144,8 +144,8 @@ class Battle:
                 attack = self.__wild_pokemon.attack * attack_multi
                 self.__user.main.hp -= int(attack)
 
-                all_ko = self.__check_hp(self.__user.main)
-                if all_ko == False:
+                pkm_alive = self.__check_hp(self.__user.main)
+                if pkm_alive == False:
                     print("Le joueur a perdu !")
                     return False
                 else:
