@@ -1,15 +1,19 @@
 import json
 import pygame
 from os import path
-from src.button import Button
 from src.pokemon import Pokemon
+from src.menu import Menu
+from src.user import User
+from src.button import Button
 
 BASE_DIR = path.dirname(path.abspath(__file__))
 FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
 
+SPRITE_PATH = path.join(BASE_DIR, "assets", "images", "sprites")
 
 with open ('data/pokemon.json','r', encoding="utf-8") as f:
     data_file = json.load(f)
+
 def main():
 
     pygame.init()
@@ -18,36 +22,22 @@ def main():
     screen = pygame.display.set_mode((1300, 731))
     clock = pygame.time.Clock()
     fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50)
+    
+    # -- TEST -- #
     data = data_file[0]
     stats = data['stats']
     xp = 3000
-    pokemon1= Pokemon(data['name']['fr'], stats['hp'], stats['atk'], stats['def'], stats['vit'], data["types"], xp)
-    Pokemon.check_xp(pokemon1)
-    print(pokemon1.level)
-    running = True
+    #pokemon1= Pokemon(data['name']['fr'], stats['hp'], stats['atk'], stats['def'], stats['vit'], data["types"], xp)
+    #Pokemon.check_xp(pokemon1)
+    #print(pokemon1.level)
 
-    button1 = Button(fonts, screen, "totofunction", (50,200), text="TOTO") # BUTTON DEMO -> TO REMOVE WHEN MORE ADVANCED
-
-    while running:
-        screen.fill((202,228,241))
-
-        button1.draw() # BUTTON DEMO
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        if button1.get_rect().collidepoint(pygame.mouse.get_pos()): # BUTTON DEMO
-            button1.hovered() # BUTTON DEMO
-        else:
-            button1.avoided() # BUTTON DEMO
-
-        clock.tick(60)
-        pygame.display.update()
-
-    pygame.quit()
+    user = User("Arthur")
+    menu = Menu([Button("battle", (200,200), text="Lancer une partie"),
+                 Button("add_pokemon", (200,400), text="Ajouter un Pokémon"),
+                 Button("pokedex", (200,600), text="Accéder au Pokédex")
+                 ], user)
+    menu.run(screen,clock,fonts)
    
-
 if __name__ == "__main__":
 
     main()
