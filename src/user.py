@@ -1,34 +1,28 @@
-from json import load, dump, JSONDecodeError
+from json import JSONDecodeError
 from os import path
-from src.data_management import DataManagement
+if __name__ == "__main__":
+    from data_management import DataManagement
+else:
+    from src.data_management import DataManagement
 class User:
-    def __init__(self, name_input:str):
-        self.data = DataManagement()
+    def __init__(self, name_input:str, main:object):
+
+        self.__data = DataManagement()
         self.__name = name_input
-        self.pokedex = self.load_user()
-        self.json_file = "data/pokedex.json"
-        self.main = self.check_main()
-        self.__save_id = self.create_user_save()  
+        self.main = main
+        self.__save_id = self.__create_user_save()
+        self.pokedex = self.__load_user()
 
-    def check_main(self):
-        for pokemon in self.pokedex:
-            if pokemon.is_main == True:
-                self.main = pokemon
-            else:
-                self.main = None
-
-    def create_user_save(self):
+    def __create_user_save(self):
         data = {}
         
-        if path.exists(self.json_file):
+        if path.exists(self.__data.pokedex_path):
             try:
-                with open(self.json_file, "r") as f:
-                    data = load(f)
+                data = self.__data.load_pokedex()
             except JSONDecodeError:
                 data = {}
         else:
-            with open(self.json_file, "w") as f:
-                dump("", f, indent=4)
+            self.__data.save_pokedex("")
 
         existing_ids = []
         for key in data.keys():
@@ -47,27 +41,24 @@ class User:
         user_key = f"save_id_{save_id}"
         data[user_key] = {
             "name": self.__name,
-            "pokemons": {}
+            "pokemons": {},
+            "main": self.main,
         }
 
-        with open(self.json_file, "w") as f:
-            dump(data, f, indent=4)
+        self.__data.save_pokedex(data)
 
     def delete_user(self):
-        if not path.exists(self.json_file):
-            with open(self.json_file, "w") as f:
-                dump("", f, indent=4)
-                print("File cannot be deleted : Fresh file.")
+        if not path.exists(self.__data.pokedex_path):
+            self.__data.save_pokedex("")
+            print("File cannot be deleted : Fresh file.")
 
-        with open(self.json_file, "r") as f:
-            data = load(f)
+        data = self.__data.load_pokedex()
 
         user_key = f"save_id_{self.__save_id}"
         
         if user_key in data:
             del data[user_key]
-            with open(self.json_file, "w") as f:
-                dump(data, f, indent=4)
+            self.__data.save_pokedex(data)
             
             self.__save_id = None
             self.pokedex = {}
@@ -77,10 +68,9 @@ class User:
     def get_save_id(self):
         return self.__save_id
     
-    def load_user(self):
-        pokedex = self.data.load_pokedex()
-        for i in pokedex:
-            if i.keys() == self.__save_id:
-                return i
-            else: 
-                return {}
+    def __load_user(self):
+        pokedex = self.__data.load_pokedex()
+        if pokedex.keys() == self.__save_id:
+            return pokedex
+        else: 
+            return {}

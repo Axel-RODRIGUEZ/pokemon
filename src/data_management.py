@@ -33,6 +33,6 @@ class DataManagement:
             self.weaknes_ratio_data = json.load(f)
         return self.weaknes_ratio_data
     
-    def save_pokedex(self,):
-        with open (self.pokedex_path,'r', encoding="utf-8") as f:
-            json.dump(self.pokedex_data, f, indent = 4)
+    def save_pokedex(self, save):
+        with open (self.pokedex_path,'w', encoding="utf-8") as f:
+            json.dump(save, f, indent = 4)
