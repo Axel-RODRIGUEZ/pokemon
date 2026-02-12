@@ -1,9 +1,13 @@
+from os import path
 from json import load
 from random import randint
 from PIL import Image
-from pokemon import Pokemon
-from os import path
-from user import User
+if __name__ == "__main__":
+    from pokemon import Pokemon
+    from user import User
+else:
+    from src.pokemon import Pokemon
+    from src.user import User
 
 class Battle:
     def __init__(self, user:User):
@@ -120,6 +124,12 @@ class Battle:
             self.user_pkm.max_hp -= int(attack)
             
 if __name__ == "__main__":
+
+    mon_starter = Pokemon(
+        name="Dracaufeu", 
+        max_hp=100, attack=80, defense=70, speed=1, 
+        types=[{"name": "Feu"}] 
+    )
 
     battle = Battle("test")
 
