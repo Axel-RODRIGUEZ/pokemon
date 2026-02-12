@@ -5,7 +5,7 @@ class Button:
     def __init__(self,
                  target_name: str,
                  lefttop: tuple[int,int],
-                 widthheight: tuple[int,int] = (250,60),
+                 widthheight: tuple[int,int] = (300,60),
                  text: str = "", 
                  color: tuple[int,int,int] = (100,100,200),  
                  hover_color: tuple[int,int,int] = (50,50,100),
