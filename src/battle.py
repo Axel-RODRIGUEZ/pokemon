@@ -15,13 +15,6 @@ class Battle:
         self.wild_pokemon = self.__choose_random_pokemon()
         self.user = user
         self.weakness_ratios = self.get_weakness_ratios()
-
-    # def __get_user_pokedex(self):
-    #     try:
-    #         with open("data/pokedex.json", "r", encoding='utf-8') as f:
-    #             return load(f)
-    #     except FileNotFoundError:
-    #         return []
             
     def get_weakness_ratios(self):
         with open("data/types.json", "r") as f:
@@ -129,13 +122,7 @@ class Battle:
         else:
             attack = self.wild_pokemon.attack * attack_multi
             self.user_pkm.max_hp -= int(attack)
-
-
-    # def check_main(self):
-    #     for pokemon in self.user_pokedex:
-    #         if pokemon.is_main == True:
-    #             self.user_pkm == pokemon
-
+            
 if __name__ == "__main__":
 
     mon_starter = Pokemon(
