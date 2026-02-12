@@ -4,7 +4,7 @@ class Button:
 
     def __init__(self,
                  target_name: str,
-                 topleft: tuple[int,int],
+                 lefttop: tuple[int,int],
                  widthheight: tuple[int,int] = (250,60),
                  text: str = "", 
                  color: tuple[int,int,int] = (100,100,200),  
@@ -13,9 +13,11 @@ class Button:
                  hover_font_color: tuple[int,int,int] = (255,255,200)
                  ):
 
-        if isinstance(topleft, tuple): 
+        if isinstance(lefttop, tuple): 
+            self.lefttop = lefttop
             if isinstance(widthheight, tuple):
-                self.rect = Rect(topleft,widthheight)
+                self.rect = Rect(lefttop,widthheight)
+                self.widthheight = widthheight
                 if isinstance(text, str):
                     self.text = text
                     if isinstance(target_name, str):
@@ -45,7 +47,7 @@ class Button:
             else:
                 raise Exception("Button.__init__(): widthheight should be a tuple of int: (int,int).")
         else:
-            raise Exception("Button.__init__(): topleft should be a tuple of int: (int,int).")
+            raise Exception("Button.__init__(): lefttop should be a tuple of int: (int,int).")
 
     def get_target_name(self):
         return self.__target_name
