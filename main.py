@@ -32,9 +32,9 @@ def main():
     #print(pokemon1.level)
 
     user = User(is_new=False)
-    menu = MainMenu([Button("battle", (525,450), text="Lancer une partie"),
-                 Button("add_pokemon", (525,550), text="Ajouter un Pokémon"),
-                 Button("pokedex", (525,650), text="Accéder au Pokédex")
+    menu = MainMenu([Button("battle", (500,450), text="Lancer une partie"),
+                 Button("add_pokemon", (500,550), text="Ajouter un Pokémon"),
+                 Button("pokedex", (500,650), text="Accéder au Pokédex")
                  ], user)
     menu.run(screen,fonts)
    
