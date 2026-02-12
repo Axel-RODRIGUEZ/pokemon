@@ -15,6 +15,9 @@ class DataManagement:
         self.__pokemon_data = {}
         self.__weaknes_ratio_data = {}
     
+    def get_pokedex_path(self):
+        return self.__pokedex_path
+
     #Load pokedex
     def load_pokedex(self):
         with open (self.__pokedex_path,'r', encoding="utf-8") as f:
@@ -34,5 +37,5 @@ class DataManagement:
         return self.__weaknes_ratio_data
     
     def save_pokedex(self, save):
-        with open (self.pokedex_path,'w', encoding="utf-8") as f:
+        with open (self.__pokedex_path,'w', encoding="utf-8") as f:
             json.dump(save, f, indent = 4)

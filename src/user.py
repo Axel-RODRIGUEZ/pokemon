@@ -16,7 +16,7 @@ class User:
     def __create_user_save(self):
         data = {}
         
-        if path.exists(self.__data.pokedex_path):
+        if path.exists(self.__data.get_pokedex_path()):
             try:
                 data = self.__data.load_pokedex()
             except JSONDecodeError:
@@ -48,7 +48,7 @@ class User:
         self.__data.save_pokedex(data)
 
     def delete_user(self):
-        if not path.exists(self.__data.pokedex_path):
+        if not path.exists(self.__data.get_pokedex_path()):
             self.__data.save_pokedex("")
             print("File cannot be deleted : Fresh file.")
 
