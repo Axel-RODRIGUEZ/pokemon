@@ -201,3 +201,8 @@ class Battle:
                     datas[self.__user.get_save_id()["pokemons"]].remove(data)
                     datas[self.__user.get_save_id()]["pokemons"].append(pokemon)
                     self.__data.save_pokedex(datas)
+
+    def run_battle(self):
+        running = True
+        while running:
+            running = self.__attack()
