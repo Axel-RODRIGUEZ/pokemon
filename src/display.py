@@ -15,7 +15,7 @@ class Display(ABC):
         self._background.fill(Color("#8CD3FF"))
     
     @abstractmethod
-    def display(self, buttons: list = []):
+    def display(self, buttons: list[Button] = []):
         pass
 
     def _draw_button(self, button: Button):
