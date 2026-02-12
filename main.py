@@ -1,7 +1,6 @@
 import json
 import pygame
 from os import path
-from src.pokemon import Pokemon
 from src.main_menu import MainMenu
 from src.user import User
 from src.button import Button
@@ -22,14 +21,6 @@ def main():
     screen = pygame.display.set_mode((1300, 731))
     clock = pygame.time.Clock()
     fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50)
-    
-    # -- TEST -- #
-    data = data_file[0]
-    stats = data['stats']
-    xp = 3000
-    #pokemon1= Pokemon(data['name']['fr'], stats['hp'], stats['atk'], stats['def'], stats['vit'], data["types"], xp)
-    #Pokemon.check_xp(pokemon1)
-    #print(pokemon1.level)
 
     user = User(is_new=False)
     menu = MainMenu([Button("battle", (500,450), text="Lancer une partie"),
