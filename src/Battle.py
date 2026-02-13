@@ -122,7 +122,13 @@ class Battle:
         prob = random()
 
         if self.__turn == self.__user.main:
-            if prob < 0.09:
+            miss_prob_base = 0.15 - (self.__user.main.get_level() / 1000)
+
+            speed_ratio_user = self.__user.main.speed / self.__wild_pokemon.speed
+            miss_prob = miss_prob_base / speed_ratio_user
+            miss_prob = min(miss_prob, 0.4)
+
+            if miss_prob > prob:
                 print("Le pokémon a raté son attaque !")
                 return True
             else: 
@@ -137,7 +143,12 @@ class Battle:
                 else: 
                     return True
         else:
-            if prob < 0.09:
+            miss_prob_base = 0.15 - (self.__wild_pokemon.get_level() / 1000)
+            speed_ratio_wild = self.__wild_pokemon.speed / self.__user.main.speed
+            miss_prob = miss_prob_base / speed_ratio_wild
+            miss_prob = min(miss_prob, 0.4)
+
+            if miss_prob > prob:
                 print("Le pokémon a raté son attaque !")
                 return True
             else:
