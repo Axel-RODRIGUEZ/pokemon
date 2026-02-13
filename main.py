@@ -1,42 +1,30 @@
-import json
 import pygame
 from os import path
-from src.pokemon import Pokemon
-from src.main_menu import MainMenu
-from src.user import User
-from src.button import Button
-
-BASE_DIR = path.dirname(path.abspath(__file__))
-FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
-
-SPRITE_PATH = path.join(BASE_DIR, "assets", "images", "sprites")
-
-with open ('data/pokemon.json','r', encoding="utf-8") as f:
-    data_file = json.load(f)
+from src.MainMenu import MainMenu
+from src.User import User
+from src.Button import Button
 
 def main():
+
+    BASE_DIR = path.dirname(path.abspath(__file__))
+    FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
 
     pygame.init()
     pygame.mixer.init()
     pygame.display.set_caption('Pokemon')
+    
     screen = pygame.display.set_mode((1300, 731))
     clock = pygame.time.Clock()
     fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50)
-    
-    # -- TEST -- #
-    data = data_file[0]
-    stats = data['stats']
-    xp = 3000
-    #pokemon1= Pokemon(data['name']['fr'], stats['hp'], stats['atk'], stats['def'], stats['vit'], data["types"], xp)
-    #Pokemon.check_xp(pokemon1)
-    #print(pokemon1.level)
 
     user = User(is_new=False)
-    menu = MainMenu([Button("battle", (525,450), text="Lancer une partie"),
-                 Button("add_pokemon", (525,550), text="Ajouter un Pokémon"),
-                 Button("pokedex", (525,650), text="Accéder au Pokédex")
-                 ], user)
-    menu.run(screen,fonts)
+    menu = MainMenu(screen, 
+                    [Button("battle", (500,450), text="Lancer une partie"),
+                    Button("add_pokemon", (500,550), text="Ajouter un Pokémon"),
+                    Button("pokedex", (500,650), text="Accéder au Pokédex")], 
+                    user, 
+                    fonts)
+    menu.run()
    
 if __name__ == "__main__":
 

@@ -1,21 +1,20 @@
-from pygame import display,Surface,time,font,Color,image
-from os import path,pardir
-from src.button import Button
+from pygame import Surface,font,Color
+from os import path
+from src.Button import Button
 from abc import ABC, abstractmethod
-
-BASE_DIR = path.dirname(path.abspath(__file__))
 
 class Display(ABC):
     def __init__(self, 
                  screen: Surface, 
                  fonts: tuple[font.Font, font.Font]):
+        self._BASE_DIR = path.dirname(path.abspath(__file__))
         self._screen = screen
         self._fonts = fonts
         self._background = Surface((screen.get_width(),screen.get_height()))
         self._background.fill(Color("#8CD3FF"))
     
     @abstractmethod
-    def display(self, buttons: list = []):
+    def update(self, buttons: list[Button] = []):
         pass
 
     def _draw_button(self, button: Button):
