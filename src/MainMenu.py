@@ -1,23 +1,29 @@
-from src.Battle import Battle
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT
+
+from src.Ui import Ui
+from src.DisplayMainMenu import DisplayMainMenu
+
+from src.Button import Button
 from src.User import User
-from src.DisplayMainMenu import *
-import pygame
+from src.Battle import Battle
 
-class MainMenu:
+class MainMenu(Ui):
     
-    def __init__(self, buttons: list[Button], user: User):
-        self.__buttons = buttons
-        self.__user = user
+    def __init__(self, 
+                 screen: Surface, 
+                 buttons: list[Button], 
+                 user: User, 
+                 fonts: list[font.Font, font.Font]):
+        Ui.__init__(self, screen, buttons, user, fonts)
     
-    def run(self,screen,fonts):
-
-        menu_display = DisplayMainMenu(screen,fonts)
+    def run(self):
+        menu_display = DisplayMainMenu(self._screen, self._fonts)
         is_running = True
         while is_running:
-            for event in pygame.event.get():
-                for button in self.__buttons:
-                    if button.rect.collidepoint(pygame.mouse.get_pos()):
-                        if event.type == pygame.MOUSEBUTTONDOWN:
+            for current_event in event.get():
+                for button in self._buttons:
+                    if button.rect.collidepoint(mouse.get_pos()):
+                        if current_event.type == MOUSEBUTTONDOWN:
                             match button.get_target_name():
                                 case "battle":
                                     is_running = self.__run_battle_mode()
@@ -29,13 +35,13 @@ class MainMenu:
                     else:
                         button.avoided()
                 
-                if event.type == pygame.QUIT:
+                if current_event.type == QUIT:
                     is_running = False
 
-            menu_display.display(self.__buttons)
+            menu_display.display(self._buttons)
 
     def __run_battle_mode(self):
-        battle = Battle(self.__user)
+        battle = Battle(self._user)
         is_running = battle.run_battle()
         return is_running
 
@@ -44,6 +50,3 @@ class MainMenu:
 
     def __run_pokedex_mode(self):
         print("Run pokedex mode")
-
-    def __exit_game(self):
-        pass
