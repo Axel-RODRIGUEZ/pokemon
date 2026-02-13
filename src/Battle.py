@@ -69,7 +69,8 @@ class Battle(Ui):
             defense=pkm["stats"]["def"],
             speed=pkm["stats"]["vit"],
             types=pkm["types"], 
-            sprite=img
+            sprite=img,
+            evolution=pkm["evolution"]["next"]
         )
         
         return wild_pkm
