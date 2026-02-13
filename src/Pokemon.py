@@ -16,7 +16,7 @@ class Pokemon:
                  ):
         self.__data_management = DataManagement()
         self.__BASE_DIR = path.dirname(path.abspath(__file__))
-        self.__data_all = self.__data_management.load_pokemon()
+        self.__data_all = self.__data_management.load_pokemons()
         self.__data = None
         self.__name = name
         self.__id = self.get_id_per_name()
@@ -25,13 +25,14 @@ class Pokemon:
         self.attack = attack
         self.defense = defense
         self.speed = speed
-        self.types = types
+        self.__types = types
         self.__evolution = evolution
-        self.sprite = self.get_sprite
+        self.__sprites = self.get_sprite
         self.__max_stats = max_stats
-        self.xp = xp
+        self.__xp = xp
         self.__level = level
         self.ko = False
+        self.json_pokemon = self.pokemon_to_json
         self.__xp_levels_cub = [0]
         for n in range(1, 100):
             self.__xp_levels_cub.append(int(n ** 3))
@@ -39,8 +40,9 @@ class Pokemon:
     # ------ CHECK XP AND LEVEL UP ------ #    
     def check_xp(self):
         for n in range(self.__level, 100):
-            if self.xp > self.__xp_levels_cub[n]:
+            if self.__xp > self.__xp_levels_cub[n]:
                 self.__level_up()
+        self.pokemon_to_json
 
     def __level_up(self): 
         self.__level += 1
@@ -100,7 +102,7 @@ class Pokemon:
         return sprites
         
     # ------ END GET SOMETHING ------ #            
-
+    # ------ EVOLVE ------ # 
     def __evolve(self):
         if not self.__evolution:
             return None
@@ -126,11 +128,11 @@ class Pokemon:
                 self.attack = self.__max_stats['atk']
                 self.defense = self.__max_stats['def']
                 self.speed = self.__max_stats['vit']
-                self.type = self.__data['types'] # getter ?
+                self.__types = self.__data['types'] # getter ?
                 # change id to reload sprite
                 self.__id = self.get_id_per_name()
                 # change sprite 
-                self.sprite = self.get_sprite()
+                self.__sprites = self.get_sprite()
 
                 # Check if poke had a next.....
                 self.__evolution = self.__data['evolution']['next']
@@ -141,8 +143,28 @@ class Pokemon:
                 else:
                     self.__max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
     
+    # ------ END EVOLVE ------ #
 
+    # ------ JSON ------ #
 
+    def pokemon_to_json(self):
+        json_pokemon = {
+            "pokedex_id": self.__id,
+            "name": self.__name,
+            "hp": self.__max_hp,
+            "atk": self.attack,
+            "def": self.defense,
+            "vit": self.speed,
+            "types" : self.__types,
+            "evolution": self.__evolution,
+            "sprites": self.__sprites,
+            "xp": self.__xp, 
+            "max_stats" :self.__max_stats,
+            "level": self.__level
+        }
+        return json_pokemon
+
+    # ------ END JSON ------ #
 
 if __name__ == "__main__":
     poke_test = Pokemon('Bulbizarre',

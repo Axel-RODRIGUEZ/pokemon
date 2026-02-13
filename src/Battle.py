@@ -50,7 +50,7 @@ class Battle(Ui):
     def __choose_random_pokemon(self):
         random = randint(0, 150)
         
-        data = self.__data.load_pokemon()
+        data = self.__data.load_pokemons()
         
         pkm = data[random] 
         
