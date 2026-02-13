@@ -5,13 +5,23 @@ if __name__ == "__main__":
 else:
     from src.data_management import DataManagement
 class User:
-    def __init__(self, name_input:str, main:object):
-
+    def __init__(self, is_new:bool, id = 1, name_input = "", main= None):
+        self.__is_new = is_new
         self.__data = DataManagement()
-        self.__name = name_input
-        self.main = main
-        self.__save_id = self.__create_user_save()
-        self.pokedex = self.__load_user()
+
+        if self.__is_new == True:
+            self.__name = name_input
+            self.main = main
+            self.__save_id = self.__create_user_save()
+            self.pokedex = self.__load_pokedex()
+        else:
+            self.__id = id
+            self.__name = None
+            self.main = None
+            self.__save_id = None
+            self.pokedex = None
+
+            self.__load_user()
 
     def __create_user_save(self):
         data = {}
@@ -41,7 +51,7 @@ class User:
         user_key = f"save_id_{save_id}"
         data[user_key] = {
             "name": self.__name,
-            "pokemons": {},
+            "pokemons": [],
             "main": self.main,
         }
 
@@ -68,9 +78,24 @@ class User:
     def get_save_id(self):
         return self.__save_id
     
-    def __load_user(self):
+    def __load_pokedex(self):
         pokedex = self.__data.load_pokedex()
         if pokedex.keys() == self.__save_id:
             return pokedex
         else: 
             return {}
+        
+    def __load_user(self):
+        data = self.__data.load_pokedex()
+        save_id = f"save_id_{self.__id}"
+
+        if save_id in data:
+            for d in data:
+                if save_id == d:
+                    self.__save_id = d
+
+                    self.__name = data[d]["name"]
+                    self.pokedex = data[d]["pokemons"]
+                    self.main = data[d]["main"]
+        else:
+            print("Error : id not recognized. Please try again.")

@@ -31,10 +31,10 @@ def main():
     #Pokemon.check_xp(pokemon1)
     #print(pokemon1.level)
 
-    user = User("Arthur",None)
-    menu = MainMenu([Button("battle", (200,200), text="Lancer une partie"),
-                 Button("add_pokemon", (200,400), text="Ajouter un Pokémon"),
-                 Button("pokedex", (200,600), text="Accéder au Pokédex")
+    user = User(is_new=False)
+    menu = MainMenu([Button("battle", (525,450), text="Lancer une partie"),
+                 Button("add_pokemon", (525,550), text="Ajouter un Pokémon"),
+                 Button("pokedex", (525,650), text="Accéder au Pokédex")
                  ], user)
     menu.run(screen,fonts)
    
