@@ -68,7 +68,8 @@ class Battle:
             defense=pkm["stats"]["def"],
             speed=pkm["stats"]["vit"],
             types=pkm["types"], 
-            sprite=img
+            sprite=img,
+            evolution=pkm["evolution"]["next"]
         )
         
         return wild_pkm
@@ -229,6 +230,4 @@ class Battle:
         else:
             print("You tried to run away but the wild pokemon stopped you !")
             return True
-
-# battle.wild_pokemon.sprite.show()
  
