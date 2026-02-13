@@ -112,7 +112,6 @@ class Pokemon:
                     self.__max_stats = self.__data_all[evo_id]['stats']
                 else:
                     self.__max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
-                    self.__evolution = self.__data_all[evo_id]['evolution']['next']
                 
 
 
