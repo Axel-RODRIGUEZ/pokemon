@@ -1,4 +1,4 @@
-from data_management import DataManagement
+from DataManagement import DataManagement
 class Pokemon:
     def __init__(self, 
                  name : str, 
