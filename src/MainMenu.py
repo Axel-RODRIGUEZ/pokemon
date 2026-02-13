@@ -38,11 +38,11 @@ class MainMenu(Ui):
                 if current_event.type == QUIT:
                     is_running = False
 
-            menu_display.display(self._buttons)
+            menu_display.update(self._buttons)
 
     def __run_battle_mode(self):
         battle = Battle(self._user)
-        is_running = battle.run_battle()
+        is_running = battle.run()
         return is_running
 
     def __run_add_pokemon_mode(self):
