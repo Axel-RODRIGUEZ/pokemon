@@ -1,4 +1,4 @@
-from data_management import DataManagement
+from src.DataManagement import DataManagement
 class Pokemon:
     def __init__(self, 
                  name : str, 
@@ -17,6 +17,7 @@ class Pokemon:
         #self.__BASE_DIR = 
         self.__data_all = self.__data_management.load_pokemon()
         self.__data = None
+        #a faire
         
         self.__name = name
         self.__max_hp = max_hp
@@ -34,6 +35,7 @@ class Pokemon:
         self.__xp_levels_cub = [0]
         for n in range(1, 100):
             self.__xp_levels_cub.append(int(n ** 3))
+        self.__id = self.get_id_per_name()
     
     def check_xp(self):
         for n in range(self.__level, 100):
@@ -75,7 +77,9 @@ class Pokemon:
 
     def get_name(self):
         return self.__name
-        
+    def get_id(self):
+        return self.__id
+
     def __evolve(self):
         if not self.__evolution:
             return None
@@ -112,7 +116,12 @@ class Pokemon:
                     self.__max_stats = self.__data_all[evo_id]['stats']
                 else:
                     self.__max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
-                
+    
+    def get_id_per_name(self):
+        for entry in self.__data_all:
+            if entry['name']['fr'] == self.__name:
+                return entry['pokedex_id']
+
 
 
 if __name__ == "__main__":
@@ -127,17 +136,18 @@ if __name__ == "__main__":
                         {"hp": 60,"atk": 62,"def": 63,"spe_atk": 80,"spe_def": 80,"vit": 60},
                         15
                         )
+    print(poke_test.id)
     #1ere evo
-    poke_test.check_xp()
-    print(poke_test)
-    poke_test.xp = 30000
-    #2ieme evo
-    poke_test.check_xp()
-    print(poke_test)
-    poke_test.xp = 43000
-    #Plus test
-    poke_test.check_xp()
-    print(poke_test)
+    #poke_test.check_xp()
+    #print(poke_test)
+    #poke_test.xp = 30000
+    ##2ieme evo
+    #poke_test.check_xp()
+    #print(poke_test)
+    #poke_test.xp = 43000
+    ##Plus test
+    #poke_test.check_xp()
+    #print(poke_test)
     #poke_test_2 = Pokemon('Herbizarre',
     #                    45,
     #                    42,
