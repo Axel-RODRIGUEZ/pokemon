@@ -137,3 +137,4 @@ if __name__ == "__main__":
     print(f"HP du sauvage : {battle.wild_pokemon.max_hp}")
 
 # battle.wild_pokemon.sprite.show()
+ 

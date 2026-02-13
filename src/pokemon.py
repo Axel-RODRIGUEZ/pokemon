@@ -1,3 +1,4 @@
+from data_management import DataManagement
 class Pokemon:
     def __init__(self, 
                  name : str, 
@@ -7,22 +8,26 @@ class Pokemon:
                  speed: int,
                  types : dict,
                  evolution: dict,
-                 sprite : dict,
-                 max_stats = None,
                  xp = 0, 
-                 level = 1
+                 max_stats = None,
+                 level = 1,
+                 sprite = None
                  ):
+        self.__data_management = DataManagement()
+        #self.__BASE_DIR = 
+        self.__data_all = self.__data_management.load_pokemon()
+        self.__data = None
         
-        self.name = name
+        self.__name = name
         self.__max_hp = max_hp
         self.hp = max_hp
         self.attack = attack
         self.defense = defense
         self.speed = speed
         self.types = types
-        self.__evolution = evolution # how to get this in level_up?
+        self.__evolution = evolution
         self.sprite = sprite
-        self.__max_stats = max_stats # how we check this point in battle?
+        self.__max_stats = max_stats
         self.xp = xp
         self.__level = level
         self.__xp_levels_cub = [0]
@@ -31,7 +36,7 @@ class Pokemon:
     
     def check_xp(self):
         for n in range(self.__level, 100):
-            if self.xp > self.__xp_levels_cub[n-1]:
+            if self.xp > self.__xp_levels_cub[n]:
                 self.__level_up()
 
     def __level_up(self): 
@@ -44,36 +49,117 @@ class Pokemon:
         return None
     
     def __increase_hp(self):
-        if self.hp + 1 < self.__max_stats:
+        if self.hp + 1 < self.__max_stats['hp']:
             self.hp += 1
+            self.__max_hp += 1
         return None
 
     def __increase_atk(self):
-        if self.__level % 2 == 0 and self.attack  + 2 < self.__max_stats:
+        if self.__level % 2 == 0 and self.attack  + 2 < self.__max_stats['atk']:
             self.attack += 2
         return None
     def __increase_def(self):
-        if self.__level % 2 != 0 and self.defense  + 2 < self.__max_stats:
+        if self.__level % 2 != 0 and self.defense  + 2 < self.__max_stats['def']:
             self.defense += 2
         return None
     def __increase_speed(self):
-        if self.speed + 1 < self.__max_stats:
+        if self.speed + 1 < self.__max_stats['vit']:
             self.speed += 1
         return None
-    
     def get_max_hp(self):
         return self.__max_hp
 
+    def get_name(self):
+        return self.__name
+        
     def __evolve(self):
         if not self.__evolution:
             return None
          
-        evo_level = self.__evolution["next"][0]["condition"]
-        evo_id = self.__evolution["next"][0]["pokedex_id"]
+        #self.__evolution = self.__data['evolution']['next'] 
+        if isinstance(self.__evolution, list):
 
-        if evo_level and evo_id and self.__level >= evo_level:
-            self.name = evo_id
-            self.hp = self.__max_stats('hp')
-            self.attack = self.__max_stats('atk')
-            self.defense = self.__max_stats('def')
-            self.speed = self.__max_stats('vit')
+            evo_level = self.__evolution[0]["condition"]
+            evo_id = self.__evolution[0]["pokedex_id"]
+
+            if evo_level and evo_id and self.__level >= evo_level:
+                self.__data = self.__data_all[evo_id -1 ]
+            
+            #Change max stats to init stats of the evo
+                self.__max_stats = self.__data['stats']
+            
+            # Change all stats and the name for the new poke
+                
+                self.__name = self.__data['name']['fr']
+                self.hp = self.__max_stats['hp']
+                self.__max_hp = self.__max_stats['hp']
+                self.attack = self.__max_stats['atk']
+                self.defense = self.__max_stats['def']
+                self.speed = self.__max_stats['vit']
+                self.type = self.__data['types'] # getter ?
+                # need to change sprite 
+                # self.sprite = 
+
+            # Check if poke had a next.....
+                self.__evolution = self.__data['evolution']['next']
+            
+                if  isinstance(self.__evolution, list): 
+                    # if next exist need to change evolution / and max_stats(if exist or not)
+                    self.__max_stats = self.__data_all[evo_id]['stats']
+                else:
+                    self.__max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
+                    self.__evolution = self.__data_all[evo_id]['evolution']['next']
+                
+
+
+if __name__ == "__main__":
+    poke_test = Pokemon('Bulbizarre',
+                        45,
+                        42,
+                        40,
+                        40,
+                        [{'name': 'Plante'},{'name': 'Poison'}],
+                        [{"pokedex_id": 2,"name": "Herbizarre","condition": 16  },{"pokedex_id": 3,"name": "Florizarre","condition": 32}],
+                        3380,
+                        {"hp": 60,"atk": 62,"def": 63,"spe_atk": 80,"spe_def": 80,"vit": 60},
+                        15
+                        )
+    #1ere evo
+    poke_test.check_xp()
+    print(poke_test)
+    poke_test.xp = 30000
+    #2ieme evo
+    poke_test.check_xp()
+    print(poke_test)
+    poke_test.xp = 43000
+    #Plus test
+    poke_test.check_xp()
+    print(poke_test)
+    #poke_test_2 = Pokemon('Herbizarre',
+    #                    45,
+    #                    42,
+    #                    40,
+    #                    40,
+    #                    [{'name': 'Plante'},{'name': 'Poison'}],
+    #                    [{"pokedex_id": 3,"name": "Florizarre","condition": 32}],
+    #                    30000,
+    #                    {"hp": 80,"atk": 82,"def": 83,"spe_atk": 1000,"spe_def": 100,"vit": 20},
+    #                    31
+    #                    )
+    #poke_test_2.check_xp()
+    #print(poke_test_2)
+#
+    #poke_test_3 = Pokemon('Florizarre',
+    #                    45,
+    #                    42,
+    #                    40,
+    #                    40,
+    #                    [{'name': 'Plante'},{'name': 'Poison'}],
+    #                    None,
+    #                    30000,
+    #                    {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000},
+    #                    32
+    #                    )
+    #poke_test_3.check_xp()
+    #print(poke_test_3)
+    #
