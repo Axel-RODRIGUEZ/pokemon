@@ -1,9 +1,9 @@
 import json
 import pygame
 from os import path
-from src.main_menu import MainMenu
-from src.user import User
-from src.button import Button
+from src.MainMenu import MainMenu
+from src.User import User
+from src.Button import Button
 
 BASE_DIR = path.dirname(path.abspath(__file__))
 FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")

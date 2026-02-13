@@ -1,6 +1,6 @@
 from pygame import display,Surface,time,font,Color,image
 from os import path,pardir
-from src.button import Button
+from src.Button import Button
 from abc import ABC, abstractmethod
 
 BASE_DIR = path.dirname(path.abspath(__file__))

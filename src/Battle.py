@@ -2,13 +2,13 @@ from os import path, pardir
 from random import randint
 from pygame import image
 if __name__ == "__main__":
-    from pokemon import Pokemon
-    from user import User
-    from data_management import DataManagement
+    from Pokemon import Pokemon
+    from User import User
+    from DataManagement import DataManagement
 else:
-    from src.pokemon import Pokemon
-    from src.user import User
-    from src.data_management import DataManagement
+    from src.Pokemon import Pokemon
+    from src.User import User
+    from src.DataManagement import DataManagement
 from random import random
 
 

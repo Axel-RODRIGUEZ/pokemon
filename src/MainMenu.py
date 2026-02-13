@@ -1,6 +1,6 @@
-from src.battle import Battle
-from src.user import User
-from src.display_main_menu import *
+from src.Battle import Battle
+from src.User import User
+from src.DisplayMainMenu import *
 import pygame
 
 class MainMenu:

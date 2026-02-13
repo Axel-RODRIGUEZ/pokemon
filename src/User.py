@@ -1,10 +1,10 @@
 from json import JSONDecodeError
-from src.pokemon import Pokemon
+from src.Pokemon import Pokemon
 from os import path
 if __name__ == "__main__":
-    from data_management import DataManagement
+    from DataManagement import DataManagement
 else:
-    from src.data_management import DataManagement
+    from src.DataManagement import DataManagement
 class User:
     def __init__(self, is_new:bool, id = 1, name_input = "", main: Pokemon= None):
         self.__is_new = is_new

@@ -1,4 +1,4 @@
-from src.display import *
+from src.Display import *
 
 UI_IMAGES_PATH = path.join(BASE_DIR, pardir, "assets", "images", "ui")
 
