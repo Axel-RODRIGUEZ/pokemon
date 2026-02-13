@@ -140,6 +140,7 @@ class Battle(Ui):
                 self.__check_hp(self.__wild_pokemon)
                 if self.__wild_pokemon.ko:
                     print("Le pokémon sauvage est mort !")
+                    self.__user.main.check_xp()
                     self.__write_pokedex()
                     return False
                 else: 
@@ -207,13 +208,14 @@ class Battle(Ui):
         datas = self.__data.load_pokedex()
         pokemon = self.__check_pokedex
         for data in datas:
-            if pokemon == data:
+            if pokemon.get_name() == data["name"] and pokemon.get_level() == data["level"]:
                 return
-            else:
-                if pokemon.name == data.name:
+            elif pokemon.get_name() == data["name"]:
+                    
                     datas[self.__user.get_save_id()["pokemons"]].remove(data)
                     datas[self.__user.get_save_id()]["pokemons"].append(pokemon)
                     self.__data.save_pokedex(datas)
+                
         
     def __run_away(self):
         run_prob = self.__user.main.get_level() / (self.__user.main.get_level() + self.__wild_pokemon.get_level())
