@@ -1,6 +1,6 @@
 from os import path, pardir
 from random import randint
-from pygame import image
+from pygame import image, Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT
 if __name__ == "__main__":
     from Pokemon import Pokemon
     from User import User
@@ -9,11 +9,12 @@ else:
     from src.Pokemon import Pokemon
     from src.User import User
     from src.DataManagement import DataManagement
+    from src.Ui import Ui
 from random import random
 
 
 
-class Battle:
+class Battle(Ui):
     def __init__(self, user:User):
         self.__turn = 0
         self.__data = DataManagement()
@@ -139,6 +140,7 @@ class Battle:
                 self.__check_hp(self.__wild_pokemon)
                 if self.__wild_pokemon.ko:
                     print("Le pokémon sauvage est mort !")
+                    self.__user.main.check_xp()
                     self.__write_pokedex()
                     return False
                 else: 
@@ -206,21 +208,16 @@ class Battle:
         datas = self.__data.load_pokedex()
         pokemon = self.__check_pokedex
         for data in datas:
-            if pokemon == data:
+            if pokemon.get_name() == data["name"] and pokemon.get_level() == data["level"]:
                 return
-            else:
-                if pokemon.name == data.name:
+            elif pokemon.get_name() == data["name"]:
+                    
                     datas[self.__user.get_save_id()["pokemons"]].remove(data)
                     datas[self.__user.get_save_id()]["pokemons"].append(pokemon)
                     self.__data.save_pokedex(datas)
-
-    def run(self):
-        running = True
-        while running:
-            running = self.__attack()
-            return running
+                
         
-    def run_away(self):
+    def __run_away(self):
         run_prob = self.__user.main.get_level() / (self.__user.main.get_level() + self.__wild_pokemon.get_level())
         prob = random()
 
@@ -231,3 +228,23 @@ class Battle:
             print("You tried to run away but the wild pokemon stopped you !")
             return True
  
+    def run(self):
+        is_running = True
+        while is_running:
+            for current_event in event.get():
+                for button in self._buttons:
+                    if button.rect.collidepoint(mouse.get_pos()):
+                        if current_event.type == MOUSEBUTTONDOWN:
+                            match button.get_target_name():
+                                case "attack":
+                                    is_running = self.__attack()
+                                case "run_away":
+                                    is_running = self.__run_away()
+                                case "pokedex":
+                                    is_running = self.__run_pokedex_mode()
+                        button.hovered()
+                    else:
+                        button.avoided()
+                        
+                if current_event.type == QUIT:
+                    is_running = False
