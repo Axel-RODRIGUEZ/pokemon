@@ -127,8 +127,10 @@ class Pokemon:
                 self.defense = self.__max_stats['def']
                 self.speed = self.__max_stats['vit']
                 self.type = self.__data['types'] # getter ?
-                # need to change sprite 
-                # self.sprite = 
+                # change id to reload sprite
+                self.__id = self.get_id_per_name()
+                # change sprite 
+                self.sprite = self.get_sprite()
 
                 # Check if poke had a next.....
                 self.__evolution = self.__data['evolution']['next']
