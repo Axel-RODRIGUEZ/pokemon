@@ -213,7 +213,20 @@ class Battle:
                     datas[self.__user.get_save_id()]["pokemons"].append(pokemon)
                     self.__data.save_pokedex(datas)
 
-    def run_battle(self):
+    def run(self):
         running = True
         while running:
             running = self.__attack()
+            return running
+        
+    def run_away(self):
+        run_prob = self.__user.main.get_level() / (self.__user.main.get_level() + self.__wild_pokemon.get_level())
+        prob = random()
+
+        if run_prob >= prob:
+            print("You have sucessfully run away !")
+            return False
+        else:
+            print("You tried to run away but the wild pokemon stopped you !")
+            return True
+
