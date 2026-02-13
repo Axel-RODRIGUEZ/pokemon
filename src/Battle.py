@@ -230,3 +230,5 @@ class Battle:
             print("You tried to run away but the wild pokemon stopped you !")
             return True
 
+# battle.wild_pokemon.sprite.show()
+ 
