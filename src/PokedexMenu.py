@@ -26,7 +26,7 @@ class PokedexMenu(Ui):
                 for button in self._buttons:
                     if button.rect.collidepoint(mouse.get_pos()):
                         button.hovered()
-                        for pokemon in self._user.pokedex:
+                        for pokemon in self.__user.pokedex:
                             if str(pokemon["pokedex_id"]) == button.get_target_name():
                                 pokemon_details = pokemon
                     else:
