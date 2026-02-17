@@ -17,7 +17,8 @@ class StarterMenu(Ui):
                  buttons: list[Button], 
                  user: User, 
                  fonts: list[font.Font, font.Font]):
-        Ui.__init__(self, screen, buttons, user, fonts)
+        Ui.__init__(self, screen, buttons, fonts)
+        self.__user = user
         self.__data_manager = DataManagement()
         self.__pokemons_data = self.__data_manager.load_pokemons()
         self.__starters = self.starter_load()
@@ -42,12 +43,12 @@ class StarterMenu(Ui):
                         if current_even.type == MOUSEBUTTONDOWN:
                             match button.get_target_name():
                                 case "Pokemon 1":
-                                    self._user.pokedex.append(self.__starters[0])
+                                    self.__user.pokedex.append(self.__starters[0])
                                 case "Pokemon 2":
-                                    self._user.pokedex.append(self.__starters[1])
+                                    self.__user.pokedex.append(self.__starters[1])
                                 case "Pokemon 3":
-                                    self._user.pokedex.append(self.__starters[2])
-                            self._user.main = self._user.pokedex[0]["pokedex_id"]
+                                    self.__user.pokedex.append(self.__starters[2])
+                            self.__user.main = self.__user.pokedex[0]["pokedex_id"]
                             is_running = self.__run_MainMenu()
                 if current_even.type == QUIT:
                     is_running = False
@@ -73,7 +74,7 @@ class StarterMenu(Ui):
                     text="Accéder au Pokédex", 
                     bg_image=image.load(path.join(UI_IMAGES_PATH, "button.png")), 
                     hover_bg_image=image.load(path.join(UI_IMAGES_PATH, "hover_button.png")))], 
-            self._user, 
+            self.__user, 
             self._fonts)
         is_running = menu.run()
         return is_running

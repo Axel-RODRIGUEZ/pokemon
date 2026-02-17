@@ -7,11 +7,9 @@ class Ui(ABC):
     def __init__(self,
                  screen: Surface,
                  buttons: list[Button], 
-                 user: User,
                  fonts: list[font.Font, font.Font]):
         self._screen = screen
         self._buttons = buttons
-        self._user = user
         self._fonts = fonts   
     
     @abstractmethod
