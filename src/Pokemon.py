@@ -13,7 +13,6 @@ class Pokemon:
                  xp = 0, 
                  max_stats = None,
                  level = 1,
-                 is_main = False,
                  ):
         self.__data_management = DataManagement()
         self.__BASE_DIR = path.dirname(path.abspath(__file__))
@@ -33,7 +32,6 @@ class Pokemon:
         self.__xp = xp
         self.__level = level
         self.ko = False
-        self.is_main = is_main
         self.json_pokemon = self.pokemon_to_json
         self.__xp_levels_cub = [0]
         for n in range(1, 100):
