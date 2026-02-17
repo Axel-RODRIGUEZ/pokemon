@@ -196,7 +196,7 @@ class Battle(Ui):
                 pokemon.ko = True
     
     def __check_pokedex(self):
-        datas = self.__data.load_pokedex()
+        datas = self.__data.load_pokedexs()
         for data in datas:
             if self.__wild_pokemon.name == data.name:
                 if self.__wild_pokemon.get_level() > data.get_level():
@@ -205,15 +205,15 @@ class Battle(Ui):
                     return data
 
     def __write_pokedex(self):
-        datas = self.__data.load_pokedex()
+        datas = self.__data.load_pokedexs()
         pokemon = self.__check_pokedex
         for data in datas:
             if pokemon.get_name() == data["name"] and pokemon.get_level() == data["level"]:
                 return
             elif pokemon.get_name() == data["name"]:
                     
-                    datas[self.__user.get_save_id()["pokemons"]].remove(data)
-                    datas[self.__user.get_save_id()]["pokemons"].append(pokemon)
+                    datas[self.__user.get_save_id()["pokedex"]].remove(data)
+                    datas[self.__user.get_save_id()]["pokedex"].append(pokemon)
                     self.__data.save_pokedex(datas)
                 
         

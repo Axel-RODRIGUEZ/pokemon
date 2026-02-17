@@ -29,7 +29,7 @@ class User:
         
         if path.exists(self.__data.get_pokedex_path()):
             try:
-                data = self.__data.load_pokedex()
+                data = self.__data.load_pokedexs()
             except JSONDecodeError:
                 data = {}
         else:
@@ -52,7 +52,7 @@ class User:
         user_key = f"save_id_{save_id}"
         data[user_key] = {
             "name": self.__name,
-            "pokemons": [],
+            "pokedex": [],
             "main": self.main,
         }
 
@@ -63,7 +63,7 @@ class User:
             self.__data.save_pokedex("")
             print("File cannot be deleted : Fresh file.")
 
-        data = self.__data.load_pokedex()
+        data = self.__data.load_pokedexs()
 
         user_key = f"save_id_{self.__save_id}"
         
@@ -80,14 +80,14 @@ class User:
         return self.__save_id
     
     def __load_pokedex(self):
-        pokedex = self.__data.load_pokedex()
+        pokedex = self.__data.load_pokedexs()
         if pokedex.keys() == self.__save_id:
             return pokedex
         else: 
             return {}
         
     def __load_user(self):
-        data = self.__data.load_pokedex()
+        data = self.__data.load_pokedexs()
         save_id = f"save_id_{self.__id}"
 
         if save_id in data:
@@ -96,7 +96,7 @@ class User:
                     self.__save_id = d
 
                     self.__name = data[d]["name"]
-                    self.pokedex = data[d]["pokemons"]
+                    self.pokedex = data[d]["pokedex"]
                     self.main = data[d]["main"]
         else:
             print("Error : id not recognized. Please try again.")
