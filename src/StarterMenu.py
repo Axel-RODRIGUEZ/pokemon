@@ -18,23 +18,20 @@ class StarterMenu(Ui):
                  fonts: list[font.Font, font.Font]):
         Ui.__init__(self, screen, buttons, user, fonts)
         self.__data_manager = DataManagement()
+        self.__pokemons_data = self.__data_manager.load_pokemons()
+        self.__starters = self.starter_load()
 
     def starter_load(self):
         starters = []
-        starters.append(self.__data_manager.load_pokemon_by_id(1))
-        starters.append(self.__data_manager.load_pokemon_by_id(4))
-        starters.append(self.__data_manager.load_pokemon_by_id(7))
-        for id in starters:
-            starters[id]['is_main']
+        starters.append(self.__pokemons_data[0])
+        starters.append(self.__pokemons_data[3])
+        starters.append(self.__pokemons_data[6])
         return starters
 
     def starter_save(self):
         self.__data_manager.save_pokedex()
 
     def run(self):
-        datas = DataManagement()
-        datas.load_pokedexs 
-        user_id = self._user.get_save_id()
         starter_display = DisplayStarterMenu(self._screen,self._fonts)
         is_running = True
         while is_running:
@@ -44,24 +41,18 @@ class StarterMenu(Ui):
                         if current_even.type == MOUSEBUTTONDOWN:
                             match button.get_target_name():
                                 case "Pokemon 1":
-                                    self._user.pokedex
-                                    #self._user.pokedex.append(self.starter_load()[0])
-                                    #self._user.pokedex["pokedex"].append()
-                                    is_running = self.__run_MainMenu()
+                                    self._user.pokedex.append(self.__starters[0])
                                 case "Pokemon 2":
-                                    self._user.pokedex.append(self.starter_load()[1])
-                                    is_running = self.__run_MainMenu()
+                                    self._user.pokedex.append(self.__starters[1])
                                 case "Pokemon 3":
-                                    self._user.pokedex.append(self.starter_load()[2])
-                                    is_running = self.__run_MainMenu()
+                                    self._user.pokedex.append(self.__starters[2])
+                            self._user.main = self._user.pokedex[0]["pokedex_id"]
+                            is_running = self.__run_MainMenu()
                 if current_even.type == QUIT:
                     is_running = False
             starter_display.update(self._buttons)
 
     def __run_MainMenu(self):
-        data = self.starter_load()
-        print(data)
-
 
         menu = MainMenu(self._screen, 
                     [Button("battle", (500,450), text="Lancer une partie"),

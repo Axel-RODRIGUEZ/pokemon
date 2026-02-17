@@ -3,5 +3,16 @@
         "name": "Axel",
         "pokedex": [],
         "main": null
+    },
+        "save_id_2": {
+        "name": "Marius",
+        "pokedex": [],
+        "main": null
+    },
+        "save_id_3": {
+        "name": "Arthur",
+        "pokedex": [],
+        "main": null
     }
+
 }
