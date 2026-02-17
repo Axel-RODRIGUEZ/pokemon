@@ -1,4 +1,5 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,image
+from os import path,pardir
 
 from src.Ui import Ui
 from src.DisplayStarterMenu import DisplayStarterMenu
@@ -53,13 +54,27 @@ class StarterMenu(Ui):
             starter_display.update(self._buttons)
 
     def __run_MainMenu(self):
-
+        BASE_DIR = path.dirname(path.abspath(__file__))
+        UI_IMAGES_PATH = path.join(BASE_DIR, pardir,"assets", "images", "ui", "menu")
+        print(UI_IMAGES_PATH)
         menu = MainMenu(self._screen, 
-                    [Button("battle", (500,450), text="Lancer une partie"),
-                    Button("add_pokemon", (500,550), text="Ajouter un Pokémon"),
-                    Button("pokedex", (500,650), text="Accéder au Pokédex")], 
-                    self._user, 
-                    self._fonts)
+            [Button("battle", 
+                    (500,450), 
+                    text="Lancer une partie", 
+                    bg_image=image.load(path.join(UI_IMAGES_PATH, "button.png")), 
+                    hover_bg_image=image.load(path.join(UI_IMAGES_PATH, "hover_button.png"))),
+            Button("add_pokemon", 
+                    (500,550), 
+                    text="Ajouter un Pokémon", 
+                    bg_image=image.load(path.join(UI_IMAGES_PATH, "button.png")), 
+                    hover_bg_image=image.load(path.join(UI_IMAGES_PATH, "hover_button.png"))),
+            Button("pokedex", 
+                    (500,650), 
+                    text="Accéder au Pokédex", 
+                    bg_image=image.load(path.join(UI_IMAGES_PATH, "button.png")), 
+                    hover_bg_image=image.load(path.join(UI_IMAGES_PATH, "hover_button.png")))], 
+            self._user, 
+            self._fonts)
         is_running = menu.run()
         return is_running
 
