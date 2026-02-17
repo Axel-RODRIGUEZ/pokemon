@@ -9,11 +9,11 @@ class DataManagement:
     def __init__(self):
         BASE_DIR = path.dirname(path.abspath(__file__))
         self.__pokedex_path = path.join(BASE_DIR,pardir, "data", "pokedexs.json")
-        self.__pokemon_path = path.join(BASE_DIR,pardir, "data", 'pokemon.json')
-        self.__weaknes_ratio_path = path.join(BASE_DIR,pardir, "data",'weakness_ratio.json')
+        self.__pokemon_path = path.join(BASE_DIR,pardir, "data", 'pokemons.json')
+        self.__weakness_ratios_path = path.join(BASE_DIR,pardir, "data",'weakness_ratios.json')
         self.__pokedex_data = self.load_pokedexs()
         self.__pokemons_data = self.load_pokemons()
-        self.__weaknes_ratio_data = {}
+        self.__weakness_ratios_data = {}
         self.__pokemon_data = {}
     
     def get_pokedex_path(self):
@@ -39,10 +39,10 @@ class DataManagement:
                 return self.__pokemon_data
 
     # Load weakness
-    def load_weakness_ratio(self):
-        with open (self.__weaknes_ratio_path,'r', encoding="utf-8") as f:
-            self.__weaknes_ratio_data = json.load(f)
-        return self.__weaknes_ratio_data
+    def load_weakness_ratios(self):
+        with open (self.__weakness_ratios_path,'r', encoding="utf-8") as f:
+            self.__weakness_ratios_data = json.load(f)
+        return self.__weakness_ratios_data
     
     # Save pokedex
     def save_pokedex(self, save):
