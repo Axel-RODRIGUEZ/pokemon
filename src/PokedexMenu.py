@@ -13,7 +13,8 @@ class PokedexMenu(Ui):
                  buttons: list[Button], 
                  user: User, 
                  fonts: list[font.Font, font.Font]):
-        Ui.__init__(self, screen, buttons, user, fonts)
+        Ui.__init__(self, screen, buttons, fonts)
+        self.__user = user
         self.__poke_list_area = Rect((0,0),(400,731))
 
     def run(self):
