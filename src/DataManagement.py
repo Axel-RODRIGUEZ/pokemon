@@ -11,8 +11,8 @@ class DataManagement:
         self.__pokedex_path = path.join(BASE_DIR,pardir, "data", "pokedexs.json")
         self.__pokemon_path = path.join(BASE_DIR,pardir, "data", 'pokemon.json')
         self.__weaknes_ratio_path = path.join(BASE_DIR,pardir, "data",'weakness_ratio.json')
-        self.__pokedex_data = {}
-        self.__pokemons_data = {}
+        self.__pokedex_data = self.load_pokedexs()
+        self.__pokemons_data = self.load_pokemons()
         self.__weaknes_ratio_data = {}
         self.__pokemon_data = {}
     
