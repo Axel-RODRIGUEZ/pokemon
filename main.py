@@ -18,7 +18,7 @@ def main():
 
     screen = pygame.display.set_mode((1300, 731))
     clock = pygame.time.Clock()
-    fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50)
+    fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50), pygame.font.Font(FONT_PATH, 20)
 
     WHITE = (255,255,255)
     BLACK = (0,0,0)

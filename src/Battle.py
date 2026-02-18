@@ -128,7 +128,7 @@ class Battle(Ui):
 
         total_bonus = 0
 
-        for t in attacker.types:
+        for t in attacker.get_types():
             atk_type_name = t["name"].lower() 
             
             current_type_score = 1
@@ -191,13 +191,13 @@ class Battle(Ui):
     def __check_hp(self, pokemon:Pokemon):
         if pokemon == self.__fighting_pokemon:
             if pokemon.hp <= 0:
-                print(f"Le pokémon {pokemon.name} est ko")
+                print(f"Le pokémon {pokemon.get_name()} est ko")
                 pokemon.ko = True
 
                 check = True
 
                 for pkm in self.__user.pokedex:
-                    if pkm.ko:
+                    if pkm["ko"] == True:
                         check = False
 
                     else:
@@ -216,7 +216,7 @@ class Battle(Ui):
     def __check_pokedex(self):
         datas = self.__data.load_pokedexs()
         for data in datas:
-            if self.__wild_pokemon.name == data.name:
+            if self.__wild_pokemon.get_name() == data.get_name():
                 if self.__wild_pokemon.get_level() > data.get_level():
                     return self.__wild_pokemon
                 else: 
@@ -224,7 +224,7 @@ class Battle(Ui):
 
     def __write_pokedex(self):
         datas = self.__data.load_pokedexs()
-        pokemon = self.__check_pokedex
+        pokemon = self.__check_pokedex()
         for data in datas:
             if pokemon.get_name() == data["name"] and pokemon.get_level() == data["level"]:
                 return
@@ -253,7 +253,7 @@ class Battle(Ui):
         user_sprite = self.__fighting_pokemon.get_sprites()["back"]
         wild_sprite = self.__wild_pokemon.get_sprites()["front"]
 
-        battle_display = DisplayBattle(self._screen, self._fonts, user_sprite, wild_sprite)
+        battle_display = DisplayBattle(self._screen, self._fonts, user_sprite, wild_sprite, self.__user, self.__wild_pokemon)
         while is_running:
             for current_event in event.get():
                 for button in self._buttons:
