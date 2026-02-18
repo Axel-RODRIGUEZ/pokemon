@@ -1,5 +1,5 @@
 {
-    "1": {
+    "save_id_1": {
         "name": "Axel",
         "pokedex": [
             {
@@ -699,6 +699,16 @@
                 }
             }
         ],
+        "main": null
+    },
+    "1": {
+        "name": "Toto",
+        "pokedex": [],
+        "main": null
+    },
+    "2": {
+        "name": "Toto",
+        "pokedex": [],
         "main": null
     }
 }

@@ -4,7 +4,6 @@ from os import path,pardir
 from src.Ui import Ui
 from src.DisplayStarterMenu import DisplayStarterMenu
 from src.DataManagement import DataManagement
-#from src.Pokemon import pokemon_to_on
 
 from src.Button import Button
 from src.User import User
@@ -43,6 +42,7 @@ class StarterMenu(Ui):
                         if current_even.type == MOUSEBUTTONDOWN:
                             match button.get_target_name():
                                 case "Pokemon 1":
+                                    print(self.__user.pokedex)
                                     self.__user.pokedex.append(self.__starters[0])
                                 case "Pokemon 2":
                                     self.__user.pokedex.append(self.__starters[1])
