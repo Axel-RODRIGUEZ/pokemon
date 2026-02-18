@@ -37,19 +37,18 @@ class User:
 
         existing_ids = []
         for key in data.keys():
-            if key.startswith("save_id_"):
-                try:
-                    uid = int(key.split("_")[-1])
-                    existing_ids.append(uid)
-                except ValueError:
-                    pass
+            try:
+                uid = int(key[0])
+                existing_ids.append(uid)
+            except ValueError:
+                pass
 
         if existing_ids:
             save_id = max(existing_ids) + 1
         else:
             save_id = 1
 
-        user_key = f"save_id_{save_id}"
+        user_key = f"{save_id}"
         data[user_key] = {
             "name": self.__name,
             "pokedex": [],
@@ -84,7 +83,7 @@ class User:
         if pokedex.keys() == self.__save_id:
             return pokedex
         else: 
-            return {}
+            return []
         
     def __load_user(self):
         data = self.__data.load_pokedexs()
@@ -100,3 +99,5 @@ class User:
                     self.main = data[d]["main"]
         else:
             print("Error : id not recognized. Please try again.")
+
+user = User(True)
