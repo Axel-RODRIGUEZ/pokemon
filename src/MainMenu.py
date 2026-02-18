@@ -6,6 +6,7 @@ from src.DisplayMainMenu import DisplayMainMenu
 from src.Button import Button
 from src.User import User
 from src.Battle import Battle
+from src.PokedexMenu import PokedexMenu
 
 class MainMenu(Ui):
     
@@ -14,8 +15,9 @@ class MainMenu(Ui):
                  buttons: list[Button], 
                  user: User, 
                  fonts: list[font.Font, font.Font]):
-        Ui.__init__(self, screen, buttons, user, fonts)
-    
+        Ui.__init__(self, screen, buttons, fonts)
+        self.__user = user
+
     def run(self):
         menu_display = DisplayMainMenu(self._screen, self._fonts)
         is_running = True
@@ -41,7 +43,7 @@ class MainMenu(Ui):
             menu_display.update(self._buttons)
 
     def __run_battle_mode(self):
-        battle = Battle(self._user)
+        battle = Battle(self.__user)
         is_running = battle.run()
         return is_running
 
@@ -49,4 +51,11 @@ class MainMenu(Ui):
         print("Run add pokemon mode")
 
     def __run_pokedex_mode(self):
-        print("Run pokedex mode")
+        buttons = []
+        for i,pokemon in enumerate(self.__user.pokedex):
+            buttons.append(Button(str(pokemon["pokedex_id"]), (50,100+90*i), text=pokemon["name"]["fr"]))
+        buttons.append(Button("return", (950,600), text="Retour"))
+
+        pokedex = PokedexMenu(self._screen, buttons, self.__user, self._fonts)
+        is_running = pokedex.run()
+        return is_running
