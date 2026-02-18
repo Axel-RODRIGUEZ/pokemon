@@ -19,38 +19,10 @@ def main():
     screen = pygame.display.set_mode((1300, 731))
     clock = pygame.time.Clock()
     fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50)
-    user = User(is_new = False)
-    #menu = MainMenu(screen, 
-    #            [Button("battle", 
-    #                    (500,450), 
-    #                    text="Lancer une partie", 
-    #                    bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
-    #                    hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png"))),
-    #            Button("add_pokemon", 
-    #                   (500,550), 
-    #                    text="Ajouter un Pokémon", 
-    #                    bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
-    #                    hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png"))),
-    #            Button("pokedex", 
-    #                   (500,650), 
-    #                    text="Accéder au Pokédex", 
-    #                    bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
-    #                    hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png")))], 
-    #            user, 
-    #            fonts)
-    ##menu.run()
-    #
+
     WHITE = (255,255,255)
     BLACK = (0,0,0)
     PURPLE = (200, 50, 50)
-    #starter_menu = StarterMenu(screen,
-    #                           [Button("Pokemon 1",(150,215),(300,300), text = "Pokemon 1", color = WHITE,font_color= BLACK), 
-    #                            Button("Pokemon 2",(500,215),(300,300), text = "Pokemon 2",color = BLACK),
-    #                            Button("Pokemon 3",(850,215),(300,300),text = "Pokemon 3",color = PURPLE)],
-    #                            user,
-    #                            fonts
-    #                            )
-    #starter_menu.run()
 
     user_menu = UserMenu(screen,
                                [Button("New Player",

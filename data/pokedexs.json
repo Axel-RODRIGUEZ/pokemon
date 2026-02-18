@@ -700,15 +700,5 @@
             }
         ],
         "main": null
-    },
-    "1": {
-        "name": "Toto",
-        "pokedex": [],
-        "main": null
-    },
-    "2": {
-        "name": "Toto",
-        "pokedex": [],
-        "main": null
     }
 }
