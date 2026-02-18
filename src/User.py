@@ -64,7 +64,7 @@ class User:
 
         data = self.__data.load_pokedexs()
 
-        user_key = f"save_id_{self.__save_id}"
+        user_key = f"{self.__save_id}"
         
         if user_key in data:
             del data[user_key]
@@ -87,7 +87,7 @@ class User:
         
     def __load_user(self):
         data = self.__data.load_pokedexs()
-        save_id = f"save_id_{self.__id}"
+        save_id = f"{self.__id}"
 
         if save_id in data:
             for d in data:
@@ -99,5 +99,3 @@ class User:
                     self.main = data[d]["main"]
         else:
             print("Error : id not recognized. Please try again.")
-
-user = User(True)
