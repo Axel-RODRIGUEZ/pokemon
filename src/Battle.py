@@ -241,14 +241,19 @@ class Battle(Ui):
 
         if run_prob >= prob:
             print("You have sucessfully run away !")
-            return False
+            return True
         else:
             print("You tried to run away but the wild pokemon stopped you !")
-            return True
+            return False
  
     def run(self):
         is_running = True
-        battle_display = DisplayBattle(self._screen, self._fonts)
+        successful_run_away = False
+
+        user_sprite = self.__fighting_pokemon.get_sprites()["back"]
+        wild_sprite = self.__wild_pokemon.get_sprites()["front"]
+
+        battle_display = DisplayBattle(self._screen, self._fonts, user_sprite, wild_sprite)
         while is_running:
             for current_event in event.get():
                 for button in self._buttons:
@@ -258,8 +263,8 @@ class Battle(Ui):
                                 case "attack":
                                     is_running = self.__attack()
                                 case "run_away":
-                                    is_running = self.__run_away()
-                                case "pokedex":
+                                    successful_run_away = self.__run_away()
+                                case "pokemons":
                                     is_running = self.__run_pokedex_mode()
                         button.hovered()
                     else:
@@ -268,4 +273,8 @@ class Battle(Ui):
                 if current_event.type == QUIT:
                     is_running = False
                     
-            battle_display.update()
+            if successful_run_away:
+                break
+
+            battle_display.update(self._buttons)
+        return is_running

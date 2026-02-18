@@ -27,12 +27,12 @@ class Pokemon:
         self.speed = speed
         self.__types = types
         self.__evolution = evolution
-        self.__sprites = self.get_sprite
+        self.__sprites = self.load_sprites()
         self.__max_stats = max_stats
         self.__xp = xp
         self.__level = level
         self.ko = False
-        self.json_pokemon = self.pokemon_to_json
+        self.json_pokemon = self.pokemon_to_json()
         self.__xp_levels_cub = [0]
         for n in range(1, 100):
             self.__xp_levels_cub.append(int(n ** 3))
@@ -97,8 +97,11 @@ class Pokemon:
         for entry in self.__data_all:
             if entry['name']['fr'] == self.__name:
                 return entry['pokedex_id']
+            
+    def get_sprites(self):
+        return self.__sprites
     
-    def get_sprite(self):
+    def load_sprites(self):
         sprite_front = path.join(self.__BASE_DIR, pardir, "assets", "images", "sprites", "fronts", f'{self.__id}.png')
         sprite_back = path.join(self.__BASE_DIR, pardir, "assets", "images", "sprites", "backs", f'{self.__id}.png')
         sprites = {"front": image.load(sprite_front).convert_alpha(),"back": image.load(sprite_back).convert_alpha()}
@@ -135,7 +138,7 @@ class Pokemon:
                 # change id to reload sprite
                 self.__id = self.get_id_per_name()
                 # change sprite 
-                self.__sprites = self.get_sprite()
+                self.__sprites = self.load_sprites()
 
                 # Check if poke had a next.....
                 self.__evolution = self.__data['evolution']['next']
@@ -163,8 +166,7 @@ class Pokemon:
             "sprites": self.__sprites,
             "xp": self.__xp, 
             "max_stats" :self.__max_stats,
-            "level": self.__level,
-            "main": self.is_main
+            "level": self.__level
         }
         return json_pokemon
 

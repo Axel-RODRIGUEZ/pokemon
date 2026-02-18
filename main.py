@@ -15,7 +15,7 @@ def main():
     pygame.init()
     pygame.mixer.init()
     pygame.display.set_caption('Pokemon')
-    
+
     screen = pygame.display.set_mode((1300, 731))
     clock = pygame.time.Clock()
     fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50)
