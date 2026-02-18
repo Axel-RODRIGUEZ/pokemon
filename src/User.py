@@ -81,7 +81,7 @@ class User:
     def __load_pokedex(self):
         pokedex = self.__data.load_pokedexs()
         if pokedex.keys() == self.__save_id:
-            return pokedex
+            return pokedex 
         else: 
             return []
         
