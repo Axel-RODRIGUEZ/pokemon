@@ -2,34 +2,41 @@ from os import path, pardir
 from random import randint
 from pygame import image, Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT
 if __name__ == "__main__":
+    from DisplayBattle import DisplayBattle
     from Pokemon import Pokemon
     from User import User
     from DataManagement import DataManagement
+    from Ui import Ui
+    from Button import Button
 else:
+    from src.DisplayBattle import DisplayBattle
     from src.Pokemon import Pokemon
     from src.User import User
     from src.DataManagement import DataManagement
     from src.Ui import Ui
+    from src.Button import Button
 from random import random
 
 
 
 class Battle(Ui):
-    def __init__(self, user:User):
+    def __init__(self, screen: Surface, buttons: Button, fonts: tuple[font.Font,font.Font], user:User):
+        Ui.__init__(self, screen, buttons, fonts)
         self.__turn = 0
         self.__data = DataManagement()
         self.__user = user
+        self.__fighting_pokemon = self.__change_pokemon(user.main)
         self.__wild_pokemon = self.__choose_random_pokemon()
         self.__weakness_ratios = self.get_weakness_ratios()
             
     def get_weakness_ratios(self):
         self.__weakness_ratios = []
-        type_data = self.__data.load_weakness_ratio()
+        type_data = self.__data.load_weakness_ratios()
 
         types_dict = {k.lower(): v for k, v in type_data.items()}
 
         user_ratios = {}
-        for t in self.__user.main.types:
+        for t in self.__fighting_pokemon.get_types():
             original_name = t["name"]           
             search_name = original_name.lower() 
             
@@ -37,7 +44,7 @@ class Battle(Ui):
             user_ratios[original_name] = data
         
         wild_ratios = {}
-        for t in self.__wild_pokemon.types:
+        for t in self.__wild_pokemon.get_types():
                 original_name = t["name"]
                 search_name = original_name.lower()
                 
@@ -46,6 +53,23 @@ class Battle(Ui):
 
         return user_ratios, wild_ratios
 
+    def __change_pokemon(self, name):
+        for pokemon in self.__user.pokedex:
+
+            if pokemon["name"]["fr"] == name:
+                if bool(pokemon["evolution"]):
+                    evolution = pokemon["evolution"]
+                else:
+                    evolution = None
+                return Pokemon(
+                            name=pokemon["name"]["fr"],
+                            max_hp=pokemon["stats"]["hp"],
+                            attack=pokemon["stats"]["atk"],
+                            defense=pokemon["stats"]["def"],
+                            speed=pokemon["stats"]["vit"],
+                            types=pokemon["types"],
+                            evolution=evolution
+                        )
 
     def __choose_random_pokemon(self):
         random = randint(0, 150)
@@ -54,13 +78,13 @@ class Battle(Ui):
         
         pkm = data[random] 
         
-        try:
-            script_dir = path.dirname(path.abspath(__file__))
-            sprites_path = path.join(script_dir, pardir, "assets", "images", "sprites", "fronts", f"{random + 1}.png")
+        script_dir = path.dirname(path.abspath(__file__))
+        sprites_path = path.join(script_dir, pardir, "assets", "images", "sprites", "fronts", f"{random + 1}.png")
 
-            img = image.load(sprites_path).convert_alpha()
-        except:
-            img = None
+        if bool(pkm["evolution"]):
+            evolution = pkm["evolution"]
+        else:
+            evolution = None
 
         wild_pkm = Pokemon(
             name=pkm["name"]["fr"],
@@ -68,9 +92,8 @@ class Battle(Ui):
             attack=pkm["stats"]["atk"],
             defense=pkm["stats"]["def"],
             speed=pkm["stats"]["vit"],
-            types=pkm["types"], 
-            sprite=img,
-            evolution=pkm["evolution"]["next"]
+            types=pkm["types"],
+            evolution=evolution
         )
         
         return wild_pkm
@@ -78,14 +101,14 @@ class Battle(Ui):
 
     def __check_turn(self):
         if self.__turn == 0:
-            if self.__user.main.speed > self.__wild_pokemon.speed:
-                self.__turn = self.__user.main
-            elif self.__user.main.speed < self.__wild_pokemon.speed:
+            if self.__fighting_pokemon.speed > self.__wild_pokemon.speed:
+                self.__turn = self.__fighting_pokemon
+            elif self.__fighting_pokemon.speed < self.__wild_pokemon.speed:
                 self.__turn = self.__wild_pokemon
             else:
-                self.__turn = self.__user.main if randint(1, 2) == 1 else self.__wild_pokemon
+                self.__turn = self.__fighting_pokemon if randint(1, 2) == 1 else self.__wild_pokemon
         else:
-            self.__turn = self.__wild_pokemon if self.__turn == self.__user.main else self.__user.main
+            self.__turn = self.__wild_pokemon if self.__turn == self.__fighting_pokemon else self.__fighting_pokemon
 
 
     def __assign_attack_multi(self):
@@ -96,8 +119,8 @@ class Battle(Ui):
         if isinstance(ratios_wild, list):
             ratios_wild = ratios_wild[0]
 
-        if self.__turn == self.__user.main:
-            attacker = self.__user.main
+        if self.__turn == self.__fighting_pokemon:
+            attacker = self.__fighting_pokemon
             defender_list = ratios_wild 
         else:
             attacker = self.__wild_pokemon
@@ -123,10 +146,10 @@ class Battle(Ui):
         attack_multi = self.__assign_attack_multi()
         prob = random()
 
-        if self.__turn == self.__user.main:
-            miss_prob_base = 0.15 - (self.__user.main.get_level() / 1000)
+        if self.__turn == self.__fighting_pokemon:
+            miss_prob_base = 0.15 - (self.__fighting_pokemon.get_level() / 1000)
 
-            speed_ratio_user = self.__user.main.speed / self.__wild_pokemon.speed
+            speed_ratio_user = self.__fighting_pokemon.speed / self.__wild_pokemon.speed
             miss_prob = miss_prob_base / speed_ratio_user
             miss_prob = min(miss_prob, 0.4)
 
@@ -134,20 +157,20 @@ class Battle(Ui):
                 print("Le pokémon a raté son attaque !")
                 return True
             else: 
-                attack = self.__user.main.attack * attack_multi
+                attack = self.__fighting_pokemon.attack * attack_multi
                 self.__wild_pokemon.hp -= int(attack)
 
                 self.__check_hp(self.__wild_pokemon)
                 if self.__wild_pokemon.ko:
                     print("Le pokémon sauvage est mort !")
-                    self.__user.main.check_xp()
+                    self.__fighting_pokemon.check_xp()
                     self.__write_pokedex()
                     return False
                 else: 
                     return True
         else:
             miss_prob_base = 0.15 - (self.__wild_pokemon.get_level() / 1000)
-            speed_ratio_wild = self.__wild_pokemon.speed / self.__user.main.speed
+            speed_ratio_wild = self.__wild_pokemon.speed / self.__fighting_pokemon.speed
             miss_prob = miss_prob_base / speed_ratio_wild
             miss_prob = min(miss_prob, 0.4)
 
@@ -156,22 +179,17 @@ class Battle(Ui):
                 return True
             else:
                 attack = self.__wild_pokemon.attack * attack_multi
-                self.__user.main.hp -= int(attack)
+                self.__fighting_pokemon.hp -= int(attack)
 
-                pkm_alive = self.__check_hp(self.__user.main)
+                pkm_alive = self.__check_hp(self.__fighting_pokemon)
                 if pkm_alive == False:
                     print("Le joueur a perdu !")
                     return False
                 else:
                     return True
 
-    def __change_pokemon(self, name):
-        for pokemon in self.__user.pokedex:
-            if pokemon.name == name:
-                self.__user.main = pokemon
-
     def __check_hp(self, pokemon:Pokemon):
-        if pokemon == self.__user.main:
+        if pokemon == self.__fighting_pokemon:
             if pokemon.hp <= 0:
                 print(f"Le pokémon {pokemon.name} est ko")
                 pokemon.ko = True
@@ -210,7 +228,7 @@ class Battle(Ui):
         for data in datas:
             if pokemon.get_name() == data["name"] and pokemon.get_level() == data["level"]:
                 return
-            elif pokemon.get_name() == data["name"]:
+            elif pokemon.get_name() == data["name"] and pokemon.get_level() != data["level"]:
                     
                     datas[self.__user.get_save_id()["pokedex"]].remove(data)
                     datas[self.__user.get_save_id()]["pokedex"].append(pokemon)
@@ -218,7 +236,7 @@ class Battle(Ui):
                 
         
     def __run_away(self):
-        run_prob = self.__user.main.get_level() / (self.__user.main.get_level() + self.__wild_pokemon.get_level())
+        run_prob = self.__fighting_pokemon.get_level() / (self.__fighting_pokemon.get_level() + self.__wild_pokemon.get_level())
         prob = random()
 
         if run_prob >= prob:
@@ -230,6 +248,7 @@ class Battle(Ui):
  
     def run(self):
         is_running = True
+        battle_display = DisplayBattle(self._screen, self._fonts)
         while is_running:
             for current_event in event.get():
                 for button in self._buttons:
@@ -245,6 +264,8 @@ class Battle(Ui):
                         button.hovered()
                     else:
                         button.avoided()
-                        
+            
                 if current_event.type == QUIT:
                     is_running = False
+                    
+            battle_display.update()

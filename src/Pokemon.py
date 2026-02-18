@@ -90,6 +90,9 @@ class Pokemon:
     def get_id(self):
         return self.__id
     
+    def get_types(self):
+        return self.__types
+    
     def get_id_per_name(self):
         for entry in self.__data_all:
             if entry['name']['fr'] == self.__name:

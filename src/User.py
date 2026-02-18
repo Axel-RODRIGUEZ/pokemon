@@ -6,7 +6,7 @@ if __name__ == "__main__":
 else:
     from src.DataManagement import DataManagement
 class User:
-    def __init__(self, is_new:bool, id = 1, name_input = "", main: Pokemon= None):
+    def __init__(self, is_new:bool, id = 1, name_input = "", main: str= None):
         self.__is_new = is_new
         self.__data = DataManagement()
 

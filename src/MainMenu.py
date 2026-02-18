@@ -43,7 +43,7 @@ class MainMenu(Ui):
             menu_display.update(self._buttons)
 
     def __run_battle_mode(self):
-        battle = Battle(self.__user)
+        battle = Battle(self._screen, [Button("attack", (500, 500), text="Attaquer" )], self._fonts, self.__user)
         is_running = battle.run()
         return is_running
 

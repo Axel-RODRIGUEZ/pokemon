@@ -48,7 +48,7 @@ class StarterMenu(Ui):
                                     self.__user.pokedex.append(self.__starters[1])
                                 case "Pokemon 3":
                                     self.__user.pokedex.append(self.__starters[2])
-                            self.__user.main = self.__user.pokedex[0]["pokedex_id"]
+                            self.__user.main = self.__user.pokedex[0]["name"]["fr"]
                             is_running = self.__run_MainMenu()
                 if current_even.type == QUIT:
                     is_running = False
