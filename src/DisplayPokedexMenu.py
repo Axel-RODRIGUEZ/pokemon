@@ -13,8 +13,23 @@ class DisplayPokedexMenu(Display):
         self._screen.blit(self._background, (0, 0))
         #self._screen.blit(self.__logo, (self.__logo.get_rect(center = self._background.get_rect().center)))
         if bool(pokemon_details): #Check if pokemon_details is empty
-            text_surf = self._fonts[0].render(pokemon_details["category"], True, (255,255,255))
-            self._screen.blit(text_surf, text_surf.get_rect(center = self._screen.get_rect().center))
+            poketypes = poketalents = ""
+            for poketype in pokemon_details["types"]: 
+                poketypes += f"{poketype["name"]} / "
+            for poketalent in pokemon_details["talents"]:
+                poketalents += f"{poketalent["name"]} / "
+            text_to_draw = f"""{pokemon_details["name"]["fr"]}
+Catégorie: {pokemon_details["category"]}
+Types: {poketypes[:-3]}
+Talents: {poketalents[:-3]}
+hp: {pokemon_details["stats"]["hp"]}
+atk: {pokemon_details["stats"]["atk"]}
+def: {pokemon_details["stats"]["def"]}
+spe_atk: {pokemon_details["stats"]["spe_atk"]}
+spe_def: {pokemon_details["stats"]["spe_def"]}
+vit: {pokemon_details["stats"]["vit"]}
+"""
+            self._draw_multi_line_text(text_to_draw, 500, 100, 40)
             
         if len(buttons) > 0:
             for button in buttons:
