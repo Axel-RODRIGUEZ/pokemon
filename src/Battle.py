@@ -54,17 +54,9 @@ class Battle(Ui):
         return user_ratios, wild_ratios
 
     def __change_pokemon(self, name):
-        data = self.__data.load_pokemons()
         for pokemon in self.__user.pokedex:
 
             if pokemon["name"]["fr"] == name:
-                if bool(pokemon["evolution"]):
-                    evolution = pokemon["evolution"]["next"]
-                    evo_id = evolution[0]["pokedex_id"]
-                    max_stats = data[evo_id]["stats"]
-                else:
-                    evolution = None
-                    max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
                 return Pokemon(
                             name=pokemon["name"]["fr"],
                             max_hp=pokemon["stats"]["hp"],
@@ -72,8 +64,6 @@ class Battle(Ui):
                             defense=pokemon["stats"]["def"],
                             speed=pokemon["stats"]["vit"],
                             types=pokemon["types"],
-                            evolution=evolution,
-                            max_stats= max_stats
                         )
 
     def __choose_random_pokemon(self):
@@ -83,12 +73,8 @@ class Battle(Ui):
         
         pkm = data[random] 
         level = randint((self.__fighting_pokemon.get_level() - 5), (self.__fighting_pokemon.get_level() + 5))
-
-        if bool(pkm["evolution"]):
-            evolution = pkm["evolution"]
-        else:
-            evolution = None
-
+        if level <= 0:
+            level = 1
         wild_pkm = Pokemon(
             name=pkm["name"]["fr"],
             max_hp=pkm["stats"]["hp"]+level,
@@ -96,7 +82,6 @@ class Battle(Ui):
             defense=pkm["stats"]["def"]+(level*2),
             speed=pkm["stats"]["vit"]+level,
             types=pkm["types"],
-            evolution=evolution,
             level=level
         )
         
