@@ -54,13 +54,17 @@ class Battle(Ui):
         return user_ratios, wild_ratios
 
     def __change_pokemon(self, name):
+        data = self.__data.load_pokemons()
         for pokemon in self.__user.pokedex:
 
             if pokemon["name"]["fr"] == name:
                 if bool(pokemon["evolution"]):
-                    evolution = pokemon["evolution"]
+                    evolution = pokemon["evolution"]["next"]
+                    evo_id = evolution[0]["pokedex_id"]
+                    max_stats = data[evo_id]["stats"]
                 else:
                     evolution = None
+                    max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
                 return Pokemon(
                             name=pokemon["name"]["fr"],
                             max_hp=pokemon["stats"]["hp"],
@@ -68,7 +72,8 @@ class Battle(Ui):
                             defense=pokemon["stats"]["def"],
                             speed=pokemon["stats"]["vit"],
                             types=pokemon["types"],
-                            evolution=evolution
+                            evolution=evolution,
+                            max_stats= max_stats
                         )
 
     def __choose_random_pokemon(self):
@@ -77,9 +82,7 @@ class Battle(Ui):
         data = self.__data.load_pokemons()
         
         pkm = data[random] 
-        
-        script_dir = path.dirname(path.abspath(__file__))
-        sprites_path = path.join(script_dir, pardir, "assets", "images", "sprites", "fronts", f"{random + 1}.png")
+        level = randint((self.__fighting_pokemon.get_level() - 5), (self.__fighting_pokemon.get_level() + 5))
 
         if bool(pkm["evolution"]):
             evolution = pkm["evolution"]
@@ -88,12 +91,13 @@ class Battle(Ui):
 
         wild_pkm = Pokemon(
             name=pkm["name"]["fr"],
-            max_hp=pkm["stats"]["hp"],
-            attack=pkm["stats"]["atk"],
-            defense=pkm["stats"]["def"],
-            speed=pkm["stats"]["vit"],
+            max_hp=pkm["stats"]["hp"]+level,
+            attack=pkm["stats"]["atk"]+(level*2),
+            defense=pkm["stats"]["def"]+(level*2),
+            speed=pkm["stats"]["vit"]+level,
             types=pkm["types"],
-            evolution=evolution
+            evolution=evolution,
+            level=level
         )
         
         return wild_pkm

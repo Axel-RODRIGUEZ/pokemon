@@ -42,7 +42,7 @@ class Pokemon:
         for n in range(self.__level, 100):
             if self.__xp > self.__xp_levels_cub[n]:
                 self.__level_up()
-        self.pokemon_to_json
+        self.pokemon_to_json()
 
     def __level_up(self): 
         self.__level += 1

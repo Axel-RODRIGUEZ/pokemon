@@ -43,7 +43,7 @@ class DisplayBattle(Display):
         self.__infos_background.fill((255, 255, 255))
         self._screen.blit(self.__infos_background, (350, 600))
 
-        self.draw_text(f"Niveau 12", (0,0,0), (400,620) ,self._screen) #Changer niveau
+        self.draw_text(f"Niveau {self.__fighting_pokemon.get_level()}", (0,0,0), (400,620) ,self._screen) #Changer niveau
         self.draw_text(self.__fighting_pokemon.get_name(), (0,0,0), (420,640), self._screen)
 
         draw.rect(self._screen, "black", (370, 660, 210, 30))
