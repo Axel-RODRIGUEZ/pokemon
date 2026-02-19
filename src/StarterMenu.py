@@ -30,7 +30,7 @@ class StarterMenu(Ui):
         return starters
 
     def starter_save(self):
-        self.__data_manager.save_pokedex()
+        self.__data_manager.write_pokedexs()
 
     def run(self):
         starter_display = DisplayStarterMenu(self._screen,self._fonts)

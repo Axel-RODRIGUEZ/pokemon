@@ -180,7 +180,8 @@ class Pokemon:
             "sprites": self.__sprites,
             "xp": self.__xp, 
             "max_stats" :self.__max_stats,
-            "level": self.__level
+            "level": self.__level,
+            "ko": self.ko
         }
         return json_pokemon
 
