@@ -99,12 +99,12 @@ class User:
             if pokemon_to_update.get_name() == pokemon["name"]["fr"]:
                 pokemon = pokemon_to_update.pokemon_to_json()
 
-    def capture_pokemon(self, pokemon_to_capture: Pokemon):
+    def capture_pokemon(self, pokemon_to_capture: dict):
         for pokemon in self.pokedex:
-            if pokemon_to_capture.get_name() == pokemon["name"]:
-                pokemon = pokemon_to_capture.pokemon_to_json()
+            if pokemon_to_capture["name"] == pokemon["name"]:
+                pokemon = pokemon_to_capture
         else:
-            self.pokedex.append(pokemon_to_capture.pokemon_to_json())
+            self.pokedex.append(pokemon_to_capture)
 
     def save_pokedex(self):
         all_datas = self.__data.read_pokedexs()

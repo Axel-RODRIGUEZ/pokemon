@@ -111,11 +111,12 @@ class Pokemon:
                 return data["evolution"]
             
     def __load_max_stats(self):
-        if self.__evolution["next"] == True:
+        if self.__evolution != None:
             evolution = self.__evolution["next"]
-            evo_id = evolution[0]["pokedex_id"]
-            if isinstance(self.__evolution, list): 
-                return self.__data_all[evo_id]['stats']
+            if evolution != None:
+                evo_id = evolution[0]["pokedex_id"]
+                if isinstance(self.__evolution, list): 
+                    return self.__data_all[evo_id]['stats']
         else:
             max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
             return max_stats
@@ -176,10 +177,7 @@ class Pokemon:
             "def": self.defense,
             "vit": self.speed,
             "types" : self.__types,
-            "evolution": self.__evolution,
-            "sprites": self.__sprites,
             "xp": self.__xp, 
-            "max_stats" :self.__max_stats,
             "level": self.__level,
             "ko": self.ko
         }

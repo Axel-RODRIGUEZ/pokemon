@@ -1,7 +1,74 @@
 {
     "1": {
         "name": "Toto",
-        "pokedex": [],
+        "pokedex": [
+            {
+                "category": "Pok\u00e9mon Graine",
+                "evolution": {
+                    "next": [
+                        {
+                            "condition": 16,
+                            "name": "Herbizarre",
+                            "pokedex_id": 2
+                        },
+                        {
+                            "condition": 32,
+                            "name": "Florizarre",
+                            "pokedex_id": 3
+                        }
+                    ],
+                    "pre": null
+                },
+                "generation": 1,
+                "ko": "False",
+                "name": {
+                    "en": "Bulbasaur",
+                    "fr": "Bulbizarre",
+                    "jp": "\u30d5\u30b7\u30ae\u30c0\u30cd"
+                },
+                "pokedex_id": 1,
+                "stats": {
+                    "atk": 49,
+                    "def": 49,
+                    "hp": 45,
+                    "spe_atk": 65,
+                    "spe_def": 65,
+                    "vit": 45
+                },
+                "talents": [
+                    {
+                        "name": "Engrais"
+                    },
+                    {
+                        "name": "Chlorophylle"
+                    }
+                ],
+                "types": [
+                    {
+                        "name": "Plante"
+                    },
+                    {
+                        "name": "Poison"
+                    }
+                ]
+            },
+            {
+                "pokedex_id": 56,
+                "name": "F\u00e9rosinge",
+                "hp": 42,
+                "atk": 30.666666666666668,
+                "def": 39,
+                "vit": 72,
+                "types": [
+                    {
+                        "name": "Combat"
+                    }
+                ],
+                "xp": 0,
+                "level": 2,
+                "ko": true
+            }
+        ],
         "main": null
     },
     "2": {
@@ -16,12 +83,74 @@
     },
     "4": {
         "name": "Toto",
-        "pokedex": [],
-        "main": null
-    },
-    "5": {
-        "name": "Toto",
-        "pokedex": [],
+        "pokedex": [
+            {
+                "category": "Pok\u00e9mon Graine",
+                "evolution": {
+                    "next": [
+                        {
+                            "condition": 16,
+                            "name": "Herbizarre",
+                            "pokedex_id": 2
+                        },
+                        {
+                            "condition": 32,
+                            "name": "Florizarre",
+                            "pokedex_id": 3
+                        }
+                    ],
+                    "pre": null
+                },
+                "generation": 1,
+                "ko": "False",
+                "name": {
+                    "en": "Bulbasaur",
+                    "fr": "Bulbizarre",
+                    "jp": "\u30d5\u30b7\u30ae\u30c0\u30cd"
+                },
+                "pokedex_id": 1,
+                "stats": {
+                    "atk": 49,
+                    "def": 49,
+                    "hp": 45,
+                    "spe_atk": 65,
+                    "spe_def": 65,
+                    "vit": 45
+                },
+                "talents": [
+                    {
+                        "name": "Engrais"
+                    },
+                    {
+                        "name": "Chlorophylle"
+                    }
+                ],
+                "types": [
+                    {
+                        "name": "Plante"
+                    },
+                    {
+                        "name": "Poison"
+                    }
+                ]
+            },
+            {
+                "pokedex_id": 116,
+                "name": "Hypotrempe",
+                "hp": 31,
+                "atk": 15.333333333333334,
+                "def": 72,
+                "vit": 61,
+                "types": [
+                    {
+                        "name": "Eau"
+                    }
+                ],
+                "xp": 0,
+                "level": 1,
+                "ko": true
+            }
+        ],
         "main": null
     }
 }

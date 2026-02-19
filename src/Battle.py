@@ -123,8 +123,9 @@ class Battle(Ui):
             current_type_score = 1
             
             for def_name, def_data in defender_list.items():
-                coeff = def_data.get(atk_type_name, 1)
-                current_type_score *= coeff
+                if def_data != None:
+                    coeff = def_data.get(atk_type_name, 1)
+                    current_type_score *= coeff
         
             total_bonus += current_type_score
 
@@ -154,6 +155,9 @@ class Battle(Ui):
                 return True
             else: 
                 attack = (self.__fighting_pokemon.attack * attack_multi) - (self.__wild_pokemon.defense / 3)
+                if attack < 0:
+                    attack = 0
+
                 self.__wild_pokemon.hp -= int(attack)
 
                 return self.__check_hp(self.__wild_pokemon)
@@ -163,7 +167,9 @@ class Battle(Ui):
                 print("Le pokémon a raté son attaque !")
                 return True
             else:
-                attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense / 3)
+                attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense * 30)
+                if attack < 0:
+                    attack = 0
                 self.__fighting_pokemon.hp -= int(attack)
 
                 pkm_alive = self.__check_hp(self.__fighting_pokemon)
@@ -203,7 +209,7 @@ class Battle(Ui):
         elif pokemon == self.__wild_pokemon:
             if self.__wild_pokemon.hp <= 0:
                     print("Le pokémon sauvage est mort !")
-                    self.__user.update_pokemon()
+                    self.__user.update_pokemon(self.__fighting_pokemon)
                     self.__fighting_pokemon.check_xp()
                     pokemon_to_capture = self.__compare_wild_pokemon_with_pokemon_in_pokedex()
                     self.__user.capture_pokemon(pokemon_to_capture)
@@ -213,13 +219,12 @@ class Battle(Ui):
                 return True
     
     def __compare_wild_pokemon_with_pokemon_in_pokedex(self):
-        datas = self.__data.read_pokedexs()
-        for data in datas:
-            if self.__wild_pokemon.get_name() == data["name"]["fr"]:
-                if self.__wild_pokemon.get_level() > data["stats"]["level"]:
+        for pokemon in self.__user.pokedex:
+            if self.__wild_pokemon.get_name() == pokemon["name"]["fr"]:
+                if self.__wild_pokemon.get_level() > pokemon["stats"]["level"]:
                     return self.__wild_pokemon.pokemon_to_json()
                 else: 
-                    return data
+                    return pokemon
             else:
                 return self.__wild_pokemon.pokemon_to_json()
                 
