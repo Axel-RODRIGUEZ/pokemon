@@ -14,7 +14,7 @@ class User:
             self.__name = name_input
             self.main = main
             self.__save_id = self.__create_user_save()
-            self.pokedex = self.__load_pokedex()
+            self.pokedex = []
         else:
             self.__id = id
             self.__name = None
@@ -77,13 +77,6 @@ class User:
 
     def get_save_id(self):
         return self.__save_id
-    
-    def __load_pokedex(self):
-        pokedex = self.__data.load_pokedexs()
-        if pokedex.keys() == self.__save_id:
-            return pokedex 
-        else: 
-            return []
         
     def __load_user(self):
         data = self.__data.load_pokedexs()
