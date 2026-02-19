@@ -18,8 +18,6 @@ class Display(ABC):
         pass
 
     def _draw_button(self, button: Button):
-        
-        
         if button.get_bg_image() != None and button.get_hover_bg_image() != None:
             surface = button.current_bg_image
         else:
@@ -30,3 +28,8 @@ class Display(ABC):
             text_surf = self._fonts[0].render(button.text, True, button.current_font_color)
             surface.blit(text_surf, text_surf.get_rect(center = surface.get_rect().center))
         self._screen.blit(surface, button.lefttop)
+
+    def _draw_multi_line_text(self, text: str, x: int, y: int, linegap: int, font_index: int = 0):
+        lines = text.splitlines()
+        for i, line in enumerate(lines):
+            self._screen.blit(self._fonts[font_index].render(line, 0, (255,255,255)), (x, y + linegap*i))
