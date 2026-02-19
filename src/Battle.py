@@ -253,7 +253,7 @@ class Battle(Ui):
         user_sprite = self.__fighting_pokemon.get_sprites()["back"]
         wild_sprite = self.__wild_pokemon.get_sprites()["front"]
 
-        battle_display = DisplayBattle(self._screen, self._fonts, user_sprite, wild_sprite, self.__user, self.__wild_pokemon)
+        battle_display = DisplayBattle(self._screen, self._fonts, user_sprite, wild_sprite, self.__fighting_pokemon, self.__wild_pokemon)
         while is_running:
             for current_event in event.get():
                 for button in self._buttons:
