@@ -1,13 +1,14 @@
 from src.Display import Display
-from pygame import Surface,font,image,display
+from pygame import Surface,font,image,display,transform
 from os import path,pardir
 
 class DisplayPokedexMenu(Display):
 
     def __init__(self, screen: Surface, fonts: tuple[font.Font, font.Font]):
         Display.__init__(self, screen, fonts)
-        UI_IMAGES_PATH = path.join(self._BASE_DIR, pardir, "assets", "images", "ui")
-        #self.__logo = image.load(path.join(UI_IMAGES_PATH, 'menu', 'logo.png'))
+        IMAGES_PATH = path.join(self._BASE_DIR, pardir, "assets", "images")
+        #self.__logo = image.load(path.join(IMAGES_PATH, 'ui', 'menu', 'logo.png'))
+        self.__SPRITES_PATH = path.join(IMAGES_PATH, "sprites", "fronts")
 
     def update(self, buttons: list = [], pokemon_details: dict = {}):
         self._screen.blit(self._background, (0, 0))
@@ -29,9 +30,18 @@ spe_atk: {pokemon_details["stats"]["spe_atk"]}
 spe_def: {pokemon_details["stats"]["spe_def"]}
 vit: {pokemon_details["stats"]["vit"]}
 """
-            self._draw_multi_line_text(text_to_draw, 500, 100, 40)
+            self._draw_multi_line_text(text_to_draw, 450, 200, 40)
+            self.__load_sprite(pokemon_details["pokedex_id"])
+            self.__blit_sprite()
             
         if len(buttons) > 0:
             for button in buttons:
                 self._draw_button(button)
         display.update()
+
+    def __load_sprite(self, pokedex_id):
+        sprite_path = path.join(self.__SPRITES_PATH, f'{pokedex_id}.png')
+        self.__sprite = transform.scale_by(image.load(sprite_path).convert_alpha(), 5)
+
+    def __blit_sprite(self):
+        self._screen.blit(self.__sprite,(950,50))
