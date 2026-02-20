@@ -49,7 +49,12 @@ class PokedexMenu(Ui):
                         elif current_event.button == 1 and self.__selection_mode:
                             for button in self._buttons:
                                 if button.rect.collidepoint(mouse.get_pos()):
-                                    return button.get_target_name()
+                                    for pokemon in self.__user.pokedex:
+                                        if button.get_target_name() == pokemon["name"]["fr"]:
+                                            if pokemon["ko"] == False:
+                                                return button.get_target_name()
+                                            else:
+                                                pass
                 elif current_event.type == MOUSEBUTTONDOWN:
                     for button in self._buttons:
                         if button.rect.collidepoint(mouse.get_pos()) and button.get_target_name() == "return":
