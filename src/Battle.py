@@ -243,7 +243,8 @@ class Battle(Ui):
     def run(self):
         is_running = True
         successful_run_away = False
-
+        check = True
+        
         user_sprite = self.__fighting_pokemon.get_sprites()["back"]
         wild_sprite = self.__wild_pokemon.get_sprites()["front"]
 
@@ -256,7 +257,7 @@ class Battle(Ui):
                             match button.get_target_name():
                                 case "attack":
                                     self.__check_turn()
-                                    is_running = self.__attack()
+                                    check = self.__attack()
                                 case "run_away":
                                     successful_run_away = self.__run_away()
                                 case "pokemons":
@@ -269,6 +270,9 @@ class Battle(Ui):
                     is_running = False
                     
             if successful_run_away:
+                break
+
+            if check != True:
                 break
 
             battle_display.update(self._buttons)
