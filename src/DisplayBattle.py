@@ -24,6 +24,9 @@ class DisplayBattle(Display):
 
         UI_IMAGES_PATH = path.join(self._BASE_DIR, pardir, "assets", "images", "ui")
 
+    def set_fighting_pokemon(self, new_pokemon: Pokemon):
+        self.__fighting_pokemon = new_pokemon
+
     def draw_text(self,text, color, center, window_surface):
         fonts = self._fonts[2]
         text_surface = fonts.render(text, True, color)

@@ -4,15 +4,21 @@ from os import path,pardir
 
 class DisplayPokedexMenu(Display):
 
-    def __init__(self, screen: Surface, fonts: tuple[font.Font, font.Font]):
+    def __init__(self, screen: Surface, fonts: tuple[font.Font, font.Font], selection_mode: bool):
         Display.__init__(self, screen, fonts)
         IMAGES_PATH = path.join(self._BASE_DIR, pardir, "assets", "images")
         #self.__logo = image.load(path.join(IMAGES_PATH, 'ui', 'menu', 'logo.png'))
         self.__SPRITES_PATH = path.join(IMAGES_PATH, "sprites", "fronts")
+        self.__selection_mode = selection_mode
 
     def update(self, buttons: list = [], pokemon_details: dict = {}):
         self._screen.blit(self._background, (0, 0))
         #self._screen.blit(self.__logo, (self.__logo.get_rect(center = self._background.get_rect().center)))
+        if self.__selection_mode:
+            text_to_draw = "Séléctionnez un Pokémon\nà envoyer au combat:"
+            self._draw_multi_line_text(text_to_draw, 400, 50, 50, 1)
+        else:
+            self._screen.blit(self._fonts[1].render("Pokédex", 0, (255,255,255)), (400, 50))
         if bool(pokemon_details): #Check if pokemon_details is empty
             poketypes = poketalents = ""
             for poketype in pokemon_details["types"]: 

@@ -7,6 +7,7 @@ if __name__ == "__main__":
     from DataManagement import DataManagement
     from Ui import Ui
     from Button import Button
+    from PokedexMenu import PokedexMenu
 else:
     from src.DisplayBattle import DisplayBattle
     from src.Pokemon import Pokemon
@@ -14,6 +15,7 @@ else:
     from src.DataManagement import DataManagement
     from src.Ui import Ui
     from src.Button import Button
+    from src.PokedexMenu import PokedexMenu
 from random import random
 
 
@@ -54,7 +56,6 @@ class Battle(Ui):
 
     def __change_pokemon(self, name):
         for pokemon in self.__user.pokedex:
-
             if pokemon["name"]["fr"] == name:
                 return Pokemon(
                             name=pokemon["name"]["fr"],
@@ -239,6 +240,16 @@ class Battle(Ui):
             print("You tried to run away but the wild pokemon stopped you !")
             return False
  
+    def __run_pokedex_mode(self):
+        buttons = []
+        for i,pokemon in enumerate(self.__user.pokedex):
+            buttons.append(Button(str(pokemon["name"]["fr"]), (50,100+90*i), text=pokemon["name"]["fr"]))
+        buttons.append(Button("return", (950,600), text="Retour"))
+
+        pokedex = PokedexMenu(self._screen, buttons, self.__user, self._fonts, self._clock, True)
+        return pokedex.run()
+        
+
     def run(self):
         is_running = True
         successful_run_away = False
@@ -260,7 +271,10 @@ class Battle(Ui):
                                 case "run_away":
                                     successful_run_away = self.__run_away()
                                 case "pokemons":
-                                    is_running = self.__run_pokedex_mode()
+                                    new_poke_name = self.__run_pokedex_mode()
+                                    if new_poke_name != None:
+                                        print(new_poke_name)
+                                        self.__fighting_pokemon = self.__change_pokemon(new_poke_name)
                         button.hovered()
                     else:
                         button.avoided()
