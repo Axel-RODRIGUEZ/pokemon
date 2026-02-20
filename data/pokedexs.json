@@ -48,18 +48,18 @@
         "name": "Toto",
         "pokedex": [
             {
-                "category": "Pok\u00e9mon Minitortue",
+                "category": "Pok\u00e9mon L\u00e9zard",
                 "evolution": {
                     "next": [
                         {
                             "condition": 16,
-                            "name": "Carabaffe",
-                            "pokedex_id": 8
+                            "name": "Reptincel",
+                            "pokedex_id": 5
                         },
                         {
                             "condition": 36,
-                            "name": "Tortank",
-                            "pokedex_id": 9
+                            "name": "Dracaufeu",
+                            "pokedex_id": 6
                         }
                     ],
                     "pre": null
@@ -67,52 +67,49 @@
                 "generation": 1,
                 "ko": true,
                 "name": {
-                    "en": "Squirtle",
-                    "fr": "Carapuce",
-                    "jp": "\u30bc\u30cb\u30ac\u30e1"
+                    "en": "Charmander",
+                    "fr": "Salam\u00e8che",
+                    "jp": "\u30d2\u30c8\u30ab\u30b2 "
                 },
-                "pokedex_id": 7,
+                "pokedex_id": 4,
                 "stats": {
-                    "atk": 48,
-                    "def": 65,
-                    "hp": 44,
-                    "spe_atk": 50,
-                    "spe_def": 64,
-                    "vit": 43
+                    "atk": 52,
+                    "def": 43,
+                    "hp": 39,
+                    "spe_atk": 60,
+                    "spe_def": 50,
+                    "vit": 65
                 },
                 "talents": [
                     {
-                        "name": "Torrent"
+                        "name": "Brasier"
                     },
                     {
-                        "name": "Cuvette"
+                        "name": "Force Soleil"
                     }
                 ],
                 "types": [
                     {
-                        "name": "Eau"
+                        "name": "Feu"
                     }
                 ]
             },
             {
-                "pokedex_id": 75,
+                "pokedex_id": 35,
                 "name": {
-                    "fr": "Gravalanch"
+                    "fr": "M\u00e9loFee"
                 },
-                "category": "Pok\u00e9mon Roche",
+                "category": "Pok\u00e9mon Fee",
                 "stats": {
-                    "hp": 58,
-                    "atk": 37.66666666666667,
-                    "spe_atk": 45,
-                    "spe_def": 45,
-                    "def": 121,
+                    "hp": 73,
+                    "atk": 21.0,
+                    "spe_atk": 60,
+                    "spe_def": 65,
+                    "def": 54,
                     "vit": 38,
                     "types": [
                         {
-                            "name": "Roche"
-                        },
-                        {
-                            "name": "Sol"
+                            "name": "Fee"
                         }
                     ],
                     "xp": 0,
@@ -121,21 +118,138 @@
                 "ko": true,
                 "types": [
                     {
-                        "name": "Roche"
-                    },
-                    {
-                        "name": "Sol"
+                        "name": "Fee"
                     }
                 ],
                 "talents": [
                     {
-                        "name": "T\u00eate de Roc"
+                        "name": "Joli Sourire"
                     },
                     {
-                        "name": "Fermet\u00e9"
+                        "name": "Garde Magik"
                     },
                     {
-                        "name": "Voile Sable"
+                        "name": "Garde-Ami"
+                    }
+                ]
+            },
+            {
+                "pokedex_id": 25,
+                "name": {
+                    "fr": "Pikachu"
+                },
+                "category": "Pok\u00e9mon Souris",
+                "stats": {
+                    "hp": 48,
+                    "atk": 32.66666666666667,
+                    "spe_atk": 75,
+                    "spe_def": 60,
+                    "def": 56,
+                    "vit": 123,
+                    "types": [
+                        {
+                            "name": "\u00c9lectrik"
+                        }
+                    ],
+                    "xp": 0,
+                    "level": 3
+                },
+                "ko": true,
+                "types": [
+                    {
+                        "name": "\u00c9lectrik"
+                    }
+                ],
+                "talents": [
+                    {
+                        "name": "Statik"
+                    },
+                    {
+                        "name": "Paratonnerre"
+                    }
+                ]
+            },
+            {
+                "pokedex_id": 2,
+                "name": {
+                    "fr": "Herbizarre"
+                },
+                "category": "Pok\u00e9mon Graine",
+                "stats": {
+                    "hp": 61,
+                    "atk": 22.666666666666668,
+                    "spe_atk": 80,
+                    "spe_def": 80,
+                    "def": 65,
+                    "vit": 61,
+                    "types": [
+                        {
+                            "name": "Plante"
+                        },
+                        {
+                            "name": "Poison"
+                        }
+                    ],
+                    "xp": 0,
+                    "level": 1
+                },
+                "ko": true,
+                "types": [
+                    {
+                        "name": "Plante"
+                    },
+                    {
+                        "name": "Poison"
+                    }
+                ],
+                "talents": [
+                    {
+                        "name": "Engrais"
+                    },
+                    {
+                        "name": "Chlorophylle"
+                    }
+                ]
+            },
+            {
+                "pokedex_id": 21,
+                "name": {
+                    "fr": "Piafabec"
+                },
+                "category": "Pok\u00e9mon Minoiseau",
+                "stats": {
+                    "hp": 44,
+                    "atk": 28.0,
+                    "spe_atk": 31,
+                    "spe_def": 31,
+                    "def": 38,
+                    "vit": 74,
+                    "types": [
+                        {
+                            "name": "Normal"
+                        },
+                        {
+                            "name": "Vol"
+                        }
+                    ],
+                    "xp": 0,
+                    "level": 4
+                },
+                "ko": true,
+                "types": [
+                    {
+                        "name": "Normal"
+                    },
+                    {
+                        "name": "Vol"
+                    }
+                ],
+                "talents": [
+                    {
+                        "name": "Regard Vif"
+                    },
+                    {
+                        "name": "Sniper"
                     }
                 ]
             }

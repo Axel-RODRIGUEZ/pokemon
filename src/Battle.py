@@ -28,6 +28,7 @@ class Battle(Ui):
         self.__user = user
         self.__fighting_pokemon = self.__change_pokemon(user.main)
         self.__wild_pokemon = self.__choose_random_pokemon()
+        self.__wild_attack_timer = None
         self.__weakness_ratios = self.get_weakness_ratios()
         self.__battle_display = DisplayBattle(self._screen, self._fonts, self.__fighting_pokemon, self.__wild_pokemon, self.__turn)
             
@@ -166,21 +167,27 @@ class Battle(Ui):
         if self.__turn == self.__fighting_pokemon:
             if prob_user:
                 print("Le pokémon a raté son attaque !")
+                return True
             else: 
+                print("Le pokémon a réussi son attaque !")
                 attack = (self.__fighting_pokemon.attack * attack_multi) - (self.__wild_pokemon.defense / 3)
                 if attack < 0:
                     attack = 0
 
                 self.__wild_pokemon.hp -= int(attack)
+                return False
         else:
 
             if prob_wild:
-                print("Le pokémon a raté son attaque !")
+                print("Le pokémon ennemi a raté son attaque !")
+                return True
             else:
+                print("Le pokémon ennemi a réussi son attaque !")
                 attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense)
                 if attack < 0:
                     attack = 0
                 self.__fighting_pokemon.hp -= int(attack)
+                return False
         
     def __check_pokemon_remaining(self):
         pokemon_alive_remaining = True
@@ -263,7 +270,10 @@ class Battle(Ui):
         is_running = True
         successful_run_away = False
         check = True
+        animation_state = None 
+        missed = None
         self.__check_turn()
+
         while is_running:
             
             if self.__turn == self.__fighting_pokemon:
@@ -274,8 +284,9 @@ class Battle(Ui):
                             if current_event.type == MOUSEBUTTONDOWN:
                                 match button.get_target_name():
                                     case "attack":
-                                        self.__attack()
+                                        missed = self.__attack()
                                         check = self.__check_hp(self.__wild_pokemon)
+                                        animation_state = (self.__wild_pokemon, missed)
                                         self.__check_turn()
                                     case "run_away":
                                         successful_run_away = self.__run_away()
@@ -289,9 +300,16 @@ class Battle(Ui):
                     if current_event.type == QUIT:
                         is_running = False
             else:
-                self.__attack()
-                check = self.__check_hp(self.__fighting_pokemon)
-                self.__check_turn()
+                if self.__wild_attack_timer is None:
+                    self.__wild_attack_timer = time.get_ticks()
+
+                elapsed = time.get_ticks() - self.__wild_attack_timer
+                if elapsed >= 2000:  
+                    missed = self.__attack()
+                    check = self.__check_hp(self.__fighting_pokemon)
+                    animation_state = (self.__fighting_pokemon, missed)
+                    self.__check_turn()
+                    self.__wild_attack_timer = None
                     
             if successful_run_away:
                 break
@@ -299,7 +317,15 @@ class Battle(Ui):
             if check != True:
                 break
 
-                
-            self.__battle_display.update(self._buttons)
+            if animation_state is not None:
+                pokemon, missed = animation_state
+                if missed:
+                    done = self.__battle_display.pokemon_dodge_animation(pokemon)
+                else:
+                    done = self.__battle_display.pokemon_damage_animation(pokemon)
+                if done:
+                    animation_state = None
+
+            self.__battle_display.update(missed, self._buttons)
             self._clock.tick(60)
         return is_running

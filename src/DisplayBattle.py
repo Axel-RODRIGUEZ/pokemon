@@ -1,7 +1,7 @@
 from src.Display import Display
 from src.User import User
 from src.Pokemon import Pokemon
-from pygame import Surface,font,image,display,transform, draw
+from pygame import Surface,font,image,display,transform, draw, time
 from os import path,pardir
 
 class DisplayBattle(Display):
@@ -15,6 +15,9 @@ class DisplayBattle(Display):
         self.__infos_background_border = Surface((310, 110))
         self.__infos_background = Surface((300, 100))
         self.turn = turn
+        self.__pokemon_damage_time = None
+        self.__wild_sprite_xy = self.__wild_x, self.__wild_y = 850, 0
+        self.__user_sprite_xy = self.__user_x, self.__user_y = 50, 500
         # self.__user_max_hp_bar = 
         # self.__wild_max_hp_bar =
         # self.__user_xp_bar = 
@@ -34,10 +37,10 @@ class DisplayBattle(Display):
         text_rect = text_surface.get_rect(center = center)
         window_surface.blit(text_surface, text_rect)
 
-    def update(self,buttons: list = []):
+    def update(self, missed, buttons: list = []):
         self._screen.blit(self._background, (0, 0))
-        self._screen.blit(self.__user_sprite, (50, 500))
-        self._screen.blit(self.__wild_sprite, (850, 0))
+        self._screen.blit(self.__user_sprite, self.__user_sprite_xy)
+        self._screen.blit(self.__wild_sprite, self.__wild_sprite_xy)
         
         # INFO BOX
         if self.turn == 0:
@@ -45,7 +48,14 @@ class DisplayBattle(Display):
         else:
             self.draw_text(f"Tour actuel : {self.turn.get_name()}", (0,0,0), (300,300) ,self._screen)
 
-        # USER 
+        if missed:
+            self.draw_text(f" a raté son attaque !", (0,0,0), (310,310) ,self._screen) 
+        elif missed != True:
+            self.draw_text(f" a réussi son attaque !", (0,0,0), (310,310) ,self._screen) 
+        else: 
+            pass
+        ###    AJOUTER LE POKEMON DANS LE TEXTE ###
+        # USER
         ratio_user = self.__fighting_pokemon.hp / self.__fighting_pokemon.get_max_hp()
 
         self.__infos_background_border.fill((0, 0, 0))
@@ -77,3 +87,50 @@ class DisplayBattle(Display):
             for button in buttons:
                 self._draw_button(button)
         display.update()
+    def pokemon_damage_animation(self, pokemon):
+        INTERVAL = 100
+        DURATION = 1000
+        OFFSET = 15
+
+        if self.__pokemon_damage_time is None:
+                    self.__pokemon_damage_time = time.get_ticks()
+        elapsed = time.get_ticks() - self.__pokemon_damage_time
+
+        if elapsed < DURATION:
+            if (elapsed // INTERVAL) % 2 == 0:
+                offset = OFFSET
+            else:
+                offset = -OFFSET
+
+            if pokemon == self.__wild_pokemon:
+                self.__wild_sprite_xy = (850 + offset, 0)
+            else:
+                self.__user_sprite_xy = (50 + offset, 500)
+        else:
+            self.__wild_sprite_xy = (850, 0)
+            self.__user_sprite_xy = (50, 500)
+            self.__pokemon_damage_time = None
+            return True
+        
+    def pokemon_dodge_animation(self, pokemon):
+        DURATION = 1000
+
+        if self.__pokemon_damage_time is None:
+                    self.__pokemon_damage_time = time.get_ticks()
+        elapsed = time.get_ticks() - self.__pokemon_damage_time
+
+        if elapsed < DURATION:
+            if elapsed < DURATION // 2:
+                offset = int((elapsed / (DURATION // 2)) * 50)   # 0 → +50px
+            else:
+                offset = int(((DURATION - elapsed) / (DURATION // 2)) * 50)
+
+            if pokemon == self.__wild_pokemon:
+                self.__wild_sprite_xy = (850 + offset, 0)
+            else:
+                self.__user_sprite_xy = (50 + offset, 500)
+        else:
+            self.__wild_sprite_xy = (850, 0)
+            self.__user_sprite_xy = (50, 500)
+            self.__pokemon_damage_time = None
+            return True
