@@ -1,4 +1,4 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
 
 from src.Ui import Ui
 from src.DisplayMainMenu import DisplayMainMenu
@@ -14,8 +14,9 @@ class MainMenu(Ui):
                  screen: Surface, 
                  buttons: list[Button], 
                  user: User, 
-                 fonts: list[font.Font, font.Font]):
-        Ui.__init__(self, screen, buttons, fonts)
+                 fonts: list[font.Font, font.Font],
+                 clock: time.Clock):
+        Ui.__init__(self, screen, buttons, fonts, clock)
         self.__user = user
 
     def run(self):
@@ -49,7 +50,8 @@ class MainMenu(Ui):
                          Button("pokemons", (700, 650), text="Pokemons")
                          ], 
                          self._fonts, 
-                         self.__user)
+                         self.__user,
+                         self._clock)
         is_running = battle.run()
         return is_running
 
@@ -62,6 +64,6 @@ class MainMenu(Ui):
             buttons.append(Button(str(pokemon["pokedex_id"]), (50,100+90*i), text=pokemon["name"]["fr"]))
         buttons.append(Button("return", (950,600), text="Retour"))
 
-        pokedex = PokedexMenu(self._screen, buttons, self.__user, self._fonts)
+        pokedex = PokedexMenu(self._screen, buttons, self.__user, self._fonts, self._clock)
         is_running = pokedex.run()
         return is_running

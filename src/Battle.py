@@ -1,6 +1,5 @@
-from os import path, pardir
 from random import randint
-from pygame import image, Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
 if __name__ == "__main__":
     from DisplayBattle import DisplayBattle
     from Pokemon import Pokemon
@@ -20,8 +19,8 @@ from random import random
 
 
 class Battle(Ui):
-    def __init__(self, screen: Surface, buttons: Button, fonts: tuple[font.Font,font.Font], user:User):
-        Ui.__init__(self, screen, buttons, fonts)
+    def __init__(self, screen: Surface, buttons: Button, fonts: tuple[font.Font,font.Font], user:User, clock: time.Clock):
+        Ui.__init__(self, screen, buttons, fonts, clock)
         self.__turn = 0
         self.__data = DataManagement()
         self.__user = user

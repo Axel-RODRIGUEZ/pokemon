@@ -1,4 +1,4 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
 
 from src.Ui import Ui
 from src.StarterMenu import StarterMenu
@@ -12,8 +12,9 @@ class UserMenu(Ui):
     def __init__(self, 
                  screen: Surface, 
                  buttons: list[Button],   
-                 fonts: list[font.Font, font.Font]):
-        Ui.__init__(self, screen, buttons, fonts)
+                 fonts: list[font.Font, font.Font],
+                 clock: time.Clock):
+        Ui.__init__(self, screen, buttons, fonts, clock)
 
     def __run_StarterMenu(self):
         WHITE = (255,255,255)
@@ -26,7 +27,8 @@ class UserMenu(Ui):
                                     Button("Pokemon 2",(500,215),(300,300), text = "Pokemon 2",color = BLACK),
                                     Button("Pokemon 3",(850,215),(300,300),text = "Pokemon 3",color = PURPLE)],
                                     user,
-                                    self._fonts
+                                    self._fonts,
+                                    self._clock
                                     )
         starter_menu.run()
 

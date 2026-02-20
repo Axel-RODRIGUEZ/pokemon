@@ -1,4 +1,4 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,image
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,image, time
 from os import path,pardir
 
 from src.Ui import Ui
@@ -15,8 +15,9 @@ class StarterMenu(Ui):
                  screen: Surface, 
                  buttons: list[Button], 
                  user: User, 
-                 fonts: list[font.Font, font.Font]):
-        Ui.__init__(self, screen, buttons, fonts)
+                 fonts: list[font.Font, font.Font],
+                 clock: time.Clock):
+        Ui.__init__(self, screen, buttons, fonts, clock)
         self.__user = user
         self.__data_manager = DataManagement()
         self.__pokemons_data = self.__data_manager.load_pokemons()
@@ -75,7 +76,8 @@ class StarterMenu(Ui):
                     bg_image=image.load(path.join(UI_IMAGES_PATH, "button.png")), 
                     hover_bg_image=image.load(path.join(UI_IMAGES_PATH, "hover_button.png")))], 
             self.__user, 
-            self._fonts)
+            self._fonts,
+            self._clock)
         is_running = menu.run()
         return is_running
 

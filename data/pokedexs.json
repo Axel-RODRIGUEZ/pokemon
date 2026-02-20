@@ -3,5 +3,94 @@
         "name": "Toto",
         "pokedex": [],
         "main": null
+    },
+    "2": {
+        "name": "Toto",
+        "pokedex": [
+            {
+                "category": "Pok\u00e9mon L\u00e9zard",
+                "evolution": {
+                    "next": [
+                        {
+                            "condition": 16,
+                            "name": "Reptincel",
+                            "pokedex_id": 5
+                        },
+                        {
+                            "condition": 36,
+                            "name": "Dracaufeu",
+                            "pokedex_id": 6
+                        }
+                    ],
+                    "pre": null
+                },
+                "generation": 1,
+                "ko": "False",
+                "name": {
+                    "en": "Charmander",
+                    "fr": "Salam\u00e8che",
+                    "jp": "\u30d2\u30c8\u30ab\u30b2 "
+                },
+                "pokedex_id": 4,
+                "stats": {
+                    "atk": 52,
+                    "def": 43,
+                    "hp": 39,
+                    "spe_atk": 60,
+                    "spe_def": 50,
+                    "vit": 65
+                },
+                "talents": [
+                    {
+                        "name": "Brasier"
+                    },
+                    {
+                        "name": "Force Soleil"
+                    }
+                ],
+                "types": [
+                    {
+                        "name": "Feu"
+                    }
+                ]
+            },
+            {
+                "pokedex_id": 129,
+                "name": {
+                    "fr": "Magicarpe"
+                },
+                "category": "Pok\u00e9mon Poisson",
+                "stats": {
+                    "hp": 24,
+                    "atk": 11.333333333333334,
+                    "spe_atk": 15,
+                    "spe_def": 20,
+                    "def": 63,
+                    "vit": 84,
+                    "types": [
+                        {
+                            "name": "Eau"
+                        }
+                    ],
+                    "xp": 0,
+                    "level": 4
+                },
+                "ko": true,
+                "types": [
+                    {
+                        "name": "Eau"
+                    }
+                ],
+                "talents": [
+                    {
+                        "name": "Glissade"
+                    },
+                    {
+                        "name": "Phobique"
+                    }
+                ]
+            }
+        ],
+        "main": null
     }
 }

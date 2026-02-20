@@ -1,4 +1,4 @@
-from pygame import Surface,Rect,font,event,mouse,MOUSEBUTTONDOWN,QUIT
+from pygame import Surface,Rect,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
 
 from src.Ui import Ui
 from src.DisplayPokedexMenu import DisplayPokedexMenu
@@ -12,8 +12,9 @@ class PokedexMenu(Ui):
                  screen: Surface, 
                  buttons: list[Button], 
                  user: User, 
-                 fonts: list[font.Font, font.Font]):
-        Ui.__init__(self, screen, buttons, fonts)
+                 fonts: list[font.Font, font.Font],
+                 clock: time.Clock):
+        Ui.__init__(self, screen, buttons, fonts, clock)
         self.__user = user
         self.__poke_list_area = Rect((0,0),(400,731))
 

@@ -43,7 +43,8 @@ def main():
                                        text = "Quitter",
                                        bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
                                        hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png")))], #décalage 30 pixels
-                                fonts
+                                fonts,
+                                clock
                                 )
     user_menu.run()
 
