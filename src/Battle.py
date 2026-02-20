@@ -79,7 +79,7 @@ class Battle(Ui):
             level = 1
         wild_pkm = Pokemon(
             name=pkm["name"]["fr"],
-            max_hp=pkm["stats"]["hp"]+level,
+            max_hp=pkm["stats"]["max_hp"]+level,
             attack=pkm["stats"]["atk"]/3+(level*2),
             defense=pkm["stats"]["def"]+(level*2),
             speed=pkm["stats"]["vit"]+level,

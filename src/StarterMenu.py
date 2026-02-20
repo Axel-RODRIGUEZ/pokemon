@@ -28,10 +28,9 @@ class StarterMenu(Ui):
         starters.append(self.__pokemons_data[0])
         starters.append(self.__pokemons_data[3])
         starters.append(self.__pokemons_data[6])
+        for starter in starters:
+            starter["stats"]["hp"] = starter["stats"]["max_hp"]
         return starters
-
-    def starter_save(self):
-        self.__data_manager.write_pokedexs()
 
     def run(self):
         starter_display = DisplayStarterMenu(self._screen,self._fonts)
@@ -43,13 +42,13 @@ class StarterMenu(Ui):
                         if current_even.type == MOUSEBUTTONDOWN:
                             match button.get_target_name():
                                 case "Pokemon 1":
-                                    print(self.__user.pokedex)
                                     self.__user.pokedex.append(self.__starters[0])
                                 case "Pokemon 2":
                                     self.__user.pokedex.append(self.__starters[1])
                                 case "Pokemon 3":
                                     self.__user.pokedex.append(self.__starters[2])
                             self.__user.main = self.__user.pokedex[0]["name"]["fr"]
+                            self.__user.save_pokedex()
                             is_running = self.__run_MainMenu()
                 if current_even.type == QUIT:
                     is_running = False

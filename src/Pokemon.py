@@ -170,8 +170,8 @@ class Pokemon:
                 # Change all stats and the name for the new poke
                 
                 self.__name = self.__data['name']['fr']
-                self.hp = self.__max_stats['hp']
-                self.__max_hp = self.__max_stats['hp']
+                self.hp = self.__max_stats['max_hp']
+                self.__max_hp = self.__max_stats['max_hp']
                 self.attack = self.__max_stats['atk']
                 self.defense = self.__max_stats['def']
                 self.speed = self.__max_stats['vit']
@@ -188,7 +188,7 @@ class Pokemon:
                 if  isinstance(self.__evolution, list): 
                     self.__max_stats = self.__data_all[evo_id]['stats']
                 else:
-                    self.__max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
+                    self.__max_stats = {"max_hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
     
     # ------ END EVOLVE ------ #
 
@@ -200,7 +200,8 @@ class Pokemon:
             "name": {"fr": self.__name},
             "category": self.__category,
             "stats":{
-                "hp": self.__max_hp,
+                "max_hp": self.__max_hp,
+                "hp": self.hp,
                 "atk": self.attack,
                 "spe_atk": self.special_attack,
                 "spe_def": self.special_defense,
@@ -227,7 +228,7 @@ if __name__ == "__main__":
                         [{'name': 'Plante'},{'name': 'Poison'}],
                         [{"pokedex_id": 2,"name": "Herbizarre","condition": 16  },{"pokedex_id": 3,"name": "Florizarre","condition": 32}],
                         3380,
-                        {"hp": 60,"atk": 62,"def": 63,"spe_atk": 80,"spe_def": 80,"vit": 60},
+                        {"max_hp": 60,"atk": 62,"def": 63,"spe_atk": 80,"spe_def": 80,"vit": 60},
                         15
                         )
     print(poke_test.id)
@@ -250,7 +251,7 @@ if __name__ == "__main__":
     #                    [{'name': 'Plante'},{'name': 'Poison'}],
     #                    [{"pokedex_id": 3,"name": "Florizarre","condition": 32}],
     #                    30000,
-    #                    {"hp": 80,"atk": 82,"def": 83,"spe_atk": 1000,"spe_def": 100,"vit": 20},
+    #                    {"max_hp": 80,"atk": 82,"def": 83,"spe_atk": 1000,"spe_def": 100,"vit": 20},
     #                    31
     #                    )
     #poke_test_2.check_xp()
@@ -264,7 +265,7 @@ if __name__ == "__main__":
     #                    [{'name': 'Plante'},{'name': 'Poison'}],
     #                    None,
     #                    30000,
-    #                    {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000},
+    #                    {"max_hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000},
     #                    32
     #                    )
     #poke_test_3.check_xp()
