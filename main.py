@@ -8,46 +8,54 @@ from src.Button import Button
 
 def main():
 
-    BASE_DIR = path.dirname(path.abspath(__file__))
-    FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
-    UI_IMAGES_PATH = path.join(BASE_DIR, "assets", "images", "ui", "menu")
+       BASE_DIR = path.dirname(path.abspath(__file__))
+       FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
+       UI_IMAGES_PATH = path.join(BASE_DIR, "assets", "images", "ui", "menu")
+       POKEDEXS_PATH = path.join(BASE_DIR, "data", "pokedexs.json")
 
-    pygame.init()
-    pygame.mixer.init()
-    pygame.display.set_caption('Pokemon')
+       if not path.exists(POKEDEXS_PATH):
+              with open(POKEDEXS_PATH, "w") as file:
+                     file.write("{}")
+              print("New Pokedexs.json created.")
+       else:
+              print("Pokedexs.json data found.")
 
-    screen = pygame.display.set_mode((1300, 731))
-    clock = pygame.time.Clock()
-    fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50), pygame.font.Font(FONT_PATH, 20)
+       pygame.init()
+       pygame.mixer.init()
+       pygame.display.set_caption('Pokemon')
 
-    WHITE = (255,255,255)
-    BLACK = (0,0,0)
-    PURPLE = (200, 50, 50)
+       screen = pygame.display.set_mode((1300, 731))
+       clock = pygame.time.Clock()
+       fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50), pygame.font.Font(FONT_PATH, 20)
 
-    user_menu = UserMenu(screen,
-                               [Button("New Player",
-                                       (500,444),
-                                       (300,60), 
-                                       text = "Nouvel Utilisateur",
-                                       bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
-                                       hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png"))), #décalage  20 pixels
-                                Button("Load save",
-                                       (500,524),
-                                       (300,60), 
-                                       text = "Charger Partie",
-                                       bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
-                                       hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png"))),
-                                Button("Quit",
-                                       (500,604),
-                                       (300,60),
-                                       text = "Quitter",
-                                       bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
-                                       hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png")))], #décalage 30 pixels
-                                fonts,
-                                clock
-                                )
-    user_menu.run()
+       WHITE = (255,255,255)
+       BLACK = (0,0,0)
+       PURPLE = (200, 50, 50)
+
+       user_menu = UserMenu(screen,
+                                   [Button("New Player",
+                                          (500,444),
+                                          (300,60), 
+                                          text = "Nouvel Utilisateur",
+                                          bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
+                                          hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png"))), #décalage  20 pixels
+                                   Button("Load save",
+                                          (500,524),
+                                          (300,60), 
+                                          text = "Charger Partie",
+                                          bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
+                                          hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png"))),
+                                   Button("Quit",
+                                          (500,604),
+                                          (300,60),
+                                          text = "Quitter",
+                                          bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "button.png")), 
+                                          hover_bg_image=pygame.image.load(path.join(UI_IMAGES_PATH, "hover_button.png")))], #décalage 30 pixels
+                                   fonts,
+                                   clock
+                                   )
+       user_menu.run()
 
 if __name__ == "__main__":
 
-    main()
+       main()
