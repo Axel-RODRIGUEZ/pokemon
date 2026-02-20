@@ -10,7 +10,7 @@ class DisplayBattle(Display):
         Display.__init__(self, screen, fonts)
         self.__fighting_pokemon = fighting_pokemon
         self.__wild_pokemon = wild_pokemon
-        self.__user_sprite = transform.scale_by(self.__fighting_pokemon.get_sprites()["front"],5)
+        self.__user_sprite = transform.scale_by(self.__fighting_pokemon.get_sprites()["back"],5)
         self.__wild_sprite = transform.scale_by(self.__wild_pokemon.get_sprites()["front"],5)
         self.__infos_background_border = Surface((310, 110))
         self.__infos_background = Surface((300, 100))
@@ -24,6 +24,9 @@ class DisplayBattle(Display):
 
     def set_fighting_pokemon(self, new_pokemon: Pokemon):
         self.__fighting_pokemon = new_pokemon
+
+    def update_fighting_pokemon_sprite(self):
+        self.__user_sprite = transform.scale_by(self.__fighting_pokemon.get_sprites()["back"],5)
 
     def draw_text(self,text, color, center, window_surface):
         fonts = self._fonts[2]

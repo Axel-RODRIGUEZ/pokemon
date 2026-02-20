@@ -48,244 +48,94 @@
         "name": "Toto",
         "pokedex": [
             {
-                "category": "Pok\u00e9mon L\u00e9zard",
+                "category": "Pok\u00e9mon Minitortue",
                 "evolution": {
                     "next": [
                         {
                             "condition": 16,
-                            "name": "Reptincel",
-                            "pokedex_id": 5
+                            "name": "Carabaffe",
+                            "pokedex_id": 8
                         },
                         {
                             "condition": 36,
-                            "name": "Dracaufeu",
-                            "pokedex_id": 6
+                            "name": "Tortank",
+                            "pokedex_id": 9
                         }
                     ],
                     "pre": null
                 },
                 "generation": 1,
-                "ko": "False",
+                "ko": true,
                 "name": {
-                    "en": "Charmander",
-                    "fr": "Salam\u00e8che",
-                    "jp": "\u30d2\u30c8\u30ab\u30b2 "
+                    "en": "Squirtle",
+                    "fr": "Carapuce",
+                    "jp": "\u30bc\u30cb\u30ac\u30e1"
                 },
-                "pokedex_id": 4,
+                "pokedex_id": 7,
                 "stats": {
-                    "atk": 52,
-                    "def": 43,
-                    "hp": 39,
-                    "spe_atk": 60,
-                    "spe_def": 50,
-                    "vit": 65
+                    "atk": 48,
+                    "def": 65,
+                    "hp": 44,
+                    "spe_atk": 50,
+                    "spe_def": 64,
+                    "vit": 43
                 },
                 "talents": [
                     {
-                        "name": "Brasier"
+                        "name": "Torrent"
                     },
                     {
-                        "name": "Force Soleil"
+                        "name": "Cuvette"
                     }
                 ],
-                "types": [
-                    {
-                        "name": "Feu"
-                    }
-                ]
-            },
-            {
-                "pokedex_id": 129,
-                "name": {
-                    "fr": "Magicarpe"
-                },
-                "category": "Pok\u00e9mon Poisson",
-                "stats": {
-                    "hp": 21,
-                    "atk": 5.333333333333334,
-                    "spe_atk": 15,
-                    "spe_def": 20,
-                    "def": 57,
-                    "vit": 81,
-                    "types": [
-                        {
-                            "name": "Eau"
-                        }
-                    ],
-                    "xp": 0,
-                    "level": 1
-                },
-                "ko": true,
                 "types": [
                     {
                         "name": "Eau"
                     }
-                ],
-                "talents": [
-                    {
-                        "name": "Glissade"
-                    },
-                    {
-                        "name": "Phobique"
-                    }
                 ]
             },
             {
-                "pokedex_id": 133,
+                "pokedex_id": 75,
                 "name": {
-                    "fr": "\u00c9voli"
+                    "fr": "Gravalanch"
                 },
-                "category": "Pok\u00e9mon \u00c9volutif",
+                "category": "Pok\u00e9mon Roche",
                 "stats": {
-                    "hp": 66,
-                    "atk": 27.0,
-                    "spe_atk": 65,
-                    "spe_def": 85,
-                    "def": 72,
-                    "vit": 76,
+                    "hp": 58,
+                    "atk": 37.66666666666667,
+                    "spe_atk": 45,
+                    "spe_def": 45,
+                    "def": 121,
+                    "vit": 38,
                     "types": [
                         {
-                            "name": "Normal"
-                        }
-                    ],
-                    "xp": 0,
-                    "level": 1
-                },
-                "ko": true,
-                "types": [
-                    {
-                        "name": "Normal"
-                    }
-                ],
-                "talents": [
-                    {
-                        "name": "Fuite"
-                    },
-                    {
-                        "name": "Adaptabilit\u00e9"
-                    },
-                    {
-                        "name": "Anticipation"
-                    }
-                ]
-            },
-            {
-                "pokedex_id": 25,
-                "name": {
-                    "fr": "Pikachu"
-                },
-                "category": "Pok\u00e9mon Souris",
-                "stats": {
-                    "hp": 46,
-                    "atk": 28.666666666666668,
-                    "spe_atk": 75,
-                    "spe_def": 60,
-                    "def": 52,
-                    "vit": 121,
-                    "types": [
-                        {
-                            "name": "\u00c9lectrik"
-                        }
-                    ],
-                    "xp": 0,
-                    "level": 1
-                },
-                "ko": true,
-                "types": [
-                    {
-                        "name": "\u00c9lectrik"
-                    }
-                ],
-                "talents": [
-                    {
-                        "name": "Statik"
-                    },
-                    {
-                        "name": "Paratonnerre"
-                    }
-                ]
-            },
-            {
-                "pokedex_id": 115,
-                "name": {
-                    "fr": "Kangourex"
-                },
-                "category": "Pok\u00e9mon Maternel",
-                "stats": {
-                    "hp": 111,
-                    "atk": 43.66666666666667,
-                    "spe_atk": 40,
-                    "spe_def": 80,
-                    "def": 92,
-                    "vit": 96,
-                    "types": [
-                        {
-                            "name": "Normal"
-                        }
-                    ],
-                    "xp": 0,
-                    "level": 6
-                },
-                "ko": true,
-                "types": [
-                    {
-                        "name": "Normal"
-                    }
-                ],
-                "talents": [
-                    {
-                        "name": "Matinal"
-                    },
-                    {
-                        "name": "Querelleur"
-                    },
-                    {
-                        "name": "Attention"
-                    }
-                ]
-            },
-            {
-                "pokedex_id": 48,
-                "name": {
-                    "fr": "Mimitoss"
-                },
-                "category": "Pok\u00e9mon Vermine",
-                "stats": {
-                    "hp": 64,
-                    "atk": 26.333333333333332,
-                    "spe_atk": 40,
-                    "spe_def": 55,
-                    "def": 58,
-                    "vit": 49,
-                    "types": [
-                        {
-                            "name": "Insecte"
+                            "name": "Roche"
                         },
                         {
-                            "name": "Poison"
+                            "name": "Sol"
                         }
                     ],
                     "xp": 0,
-                    "level": 4
+                    "level": 3
                 },
                 "ko": true,
                 "types": [
                     {
-                        "name": "Insecte"
+                        "name": "Roche"
                     },
                     {
-                        "name": "Poison"
+                        "name": "Sol"
                     }
                 ],
                 "talents": [
                     {
-                        "name": "\u0152il Compos\u00e9"
+                        "name": "T\u00eate de Roc"
                     },
                     {
-                        "name": "Lentiteint\u00e9e"
+                        "name": "Fermet\u00e9"
                     },
                     {
-                        "name": "Fuite"
+                        "name": "Voile Sable"
                     }
                 ]
             }

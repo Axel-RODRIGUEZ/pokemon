@@ -166,61 +166,52 @@ class Battle(Ui):
         if self.__turn == self.__fighting_pokemon:
             if prob_user:
                 print("Le pokémon a raté son attaque !")
-                return True
             else: 
                 attack = (self.__fighting_pokemon.attack * attack_multi) - (self.__wild_pokemon.defense / 3)
                 if attack < 0:
                     attack = 0
 
                 self.__wild_pokemon.hp -= int(attack)
-
-                return self.__check_hp(self.__wild_pokemon)
         else:
 
             if prob_wild:
                 print("Le pokémon a raté son attaque !")
-                return True
             else:
                 attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense)
                 if attack < 0:
                     attack = 0
                 self.__fighting_pokemon.hp -= int(attack)
-
-                pkm_alive = self.__check_hp(self.__fighting_pokemon)
-                if pkm_alive == False:
-                    print("Le joueur a perdu !")
-                    return False
-                else:
-                    return True
-
-    def __check_pokedex(self):
-        check = True
+        
+    def __check_pokemon_remaining(self):
+        pokemon_alive_remaining = True
 
         for pokemon_in_pokedex in self.__user.pokedex:
             if pokemon_in_pokedex["ko"] == True:
-                check = False
-
+                pokemon_alive_remaining = False
             else:
-                check = True
-                self.__change_pokemon(None) # need function that let the user choose a pokemon in his pokedex and return his name
-                break
+                pokemon_alive_remaining = True
+                self.__run_pokedex_mode() 
+                return pokemon_alive_remaining
 
-        return check
+        print("Le joueur a perdu !")
+        return pokemon_alive_remaining
     
-    def __check_hp(self, pokemon:Pokemon):
-        if pokemon.hp <= 0:
-            pokemon.ko = True
-
+    def __check_hp(self, pokemon_to_check:Pokemon):
+        if pokemon_to_check.hp <= 0:
+            pokemon_to_check.ko = True
         else:
             return True
         
-        if pokemon == self.__fighting_pokemon and pokemon.ko:
-            print(f"Le pokémon {pokemon.get_name()} est ko")
+        if pokemon_to_check == self.__fighting_pokemon and pokemon_to_check.ko:
+            for pokemon in self.__user.pokedex:
+                if pokemon_to_check.get_name() == pokemon["name"]["fr"]:
+                    pokemon["ko"] = True
+                    print(f"Le pokémon {pokemon_to_check.get_name()} est ko")
 
-            check = self.__check_pokedex()
-            return check
+            team_ko = self.__check_pokemon_remaining()
+            return team_ko
         
-        elif pokemon == self.__wild_pokemon:
+        elif pokemon_to_check == self.__wild_pokemon:
             if self.__wild_pokemon.hp <= 0:
                     print("Le pokémon sauvage est mort !")
                     self.__user.update_pokemon(self.__fighting_pokemon)
@@ -255,13 +246,17 @@ class Battle(Ui):
             return False
  
     def __run_pokedex_mode(self):
+
         buttons = []
         for i,pokemon in enumerate(self.__user.pokedex):
             buttons.append(Button(str(pokemon["name"]["fr"]), (50,100+90*i), text=pokemon["name"]["fr"]))
         buttons.append(Button("return", (950,600), text="Retour"))
-
         pokedex = PokedexMenu(self._screen, buttons, self.__user, self._fonts, self._clock, True)
-        return pokedex.run()
+        new_poke_name = pokedex.run()
+        if new_poke_name != None:
+            self.__fighting_pokemon = self.__change_pokemon(new_poke_name)
+            self.__battle_display.set_fighting_pokemon(self.__fighting_pokemon)
+            self.__battle_display.update_fighting_pokemon_sprite()
         
 
     def run(self):
@@ -279,15 +274,14 @@ class Battle(Ui):
                             if current_event.type == MOUSEBUTTONDOWN:
                                 match button.get_target_name():
                                     case "attack":
-                                        check = self.__attack()
+                                        self.__attack()
+                                        check = self.__check_hp(self.__wild_pokemon)
                                         self.__check_turn()
                                     case "run_away":
                                         successful_run_away = self.__run_away()
                                     case "pokemons":
-                                        new_poke_name = self.__run_pokedex_mode()
-                                        if new_poke_name != None:
-                                            print(new_poke_name)
-                                            self.__fighting_pokemon = self.__change_pokemon(new_poke_name)
+                                        self.__run_pokedex_mode()
+                                        
                             button.hovered()
                         else:
                             button.avoided()
@@ -295,7 +289,8 @@ class Battle(Ui):
                     if current_event.type == QUIT:
                         is_running = False
             else:
-                check = self.__attack()
+                self.__attack()
+                check = self.__check_hp(self.__fighting_pokemon)
                 self.__check_turn()
                     
             if successful_run_away:
