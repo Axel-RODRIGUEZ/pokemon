@@ -18,12 +18,16 @@ class Pokemon:
         self.__data = None
         self.__name = name
         self.__id = self.get_id_per_name()
+        self.__category = self.__load_category()
         self.__max_hp = max_hp
         self.hp = max_hp
         self.attack = attack
         self.defense = defense
+        self.special_attack = self.__load_special_attack()
+        self.special_defense = self.__load_special_defense()
         self.speed = speed
         self.__types = types
+        self.__talents = self.__load_talents()
         self.__evolution = self.__load_evolution()
         self.__sprites = self.__load_sprites()
         self.__max_stats = self.__load_max_stats()
@@ -121,7 +125,26 @@ class Pokemon:
             max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
             return max_stats
     
+    def __load_talents(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["talents"]
+    
+    def __load_category(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["category"]
         
+    def __load_special_attack(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["stats"]["spe_atk"]
+            
+    def __load_special_defense(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["stats"]["spe_def"]
+            
     # ------ END GET SOMETHING ------ #            
     # ------ EVOLVE ------ # 
     def __evolve(self):
@@ -153,7 +176,7 @@ class Pokemon:
                 # change id to reload sprite
                 self.__id = self.get_id_per_name()
                 # change sprite 
-                self.__sprites = self.load_sprites()
+                self.__sprites = self.__load_sprites()
 
                 # Check if poke had a next.....
                 self.__evolution = self.__data['evolution']['next']
@@ -171,15 +194,22 @@ class Pokemon:
     def pokemon_to_json(self):
         json_pokemon = {
             "pokedex_id": self.__id,
-            "name": self.__name,
-            "hp": self.__max_hp,
-            "atk": self.attack,
-            "def": self.defense,
-            "vit": self.speed,
-            "types" : self.__types,
-            "xp": self.__xp, 
-            "level": self.__level,
-            "ko": self.ko
+            "name": {"fr": self.__name},
+            "category": self.__category,
+            "stats":{
+                "hp": self.__max_hp,
+                "atk": self.attack,
+                "spe_atk": self.special_attack,
+                "spe_def": self.special_defense,
+                "def": self.defense,
+                "vit": self.speed,
+                "types" : self.__types,
+                "xp": self.__xp, 
+                "level": self.__level,
+                },
+            "ko": self.ko,
+            "types": self.__types,
+            "talents": self.__talents
         }
         return json_pokemon
 
