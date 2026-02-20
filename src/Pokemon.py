@@ -92,6 +92,9 @@ class Pokemon:
     def get_id(self):
         return self.__id
     
+    def set_xp(self, xp):
+        self.__xp += xp
+    
     def get_types(self):
         return self.__types
     

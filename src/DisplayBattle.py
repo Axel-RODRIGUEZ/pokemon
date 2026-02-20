@@ -6,19 +6,17 @@ from os import path,pardir
 
 class DisplayBattle(Display):
 
-    def __init__(self, screen: Surface, fonts: tuple[font.Font, font.Font], user_sprite: Surface, wild_sprite: Surface, fighting_pokemon: Pokemon, wild_pokemon: Pokemon):
+    def __init__(self, screen: Surface, fonts: tuple[font.Font, font.Font], fighting_pokemon: Pokemon, wild_pokemon: Pokemon, turn):
         Display.__init__(self, screen, fonts)
         self.__fighting_pokemon = fighting_pokemon
         self.__wild_pokemon = wild_pokemon
-        self.__user_sprite = transform.scale_by(user_sprite,5)
-        self.__wild_sprite = transform.scale_by(wild_sprite,5)
+        self.__user_sprite = transform.scale_by(self.__fighting_pokemon.get_sprites()["front"],5)
+        self.__wild_sprite = transform.scale_by(self.__wild_pokemon.get_sprites()["front"],5)
         self.__infos_background_border = Surface((310, 110))
         self.__infos_background = Surface((300, 100))
-        # self.__user_level_bar = 
+        self.turn = turn
         # self.__user_max_hp_bar = 
         # self.__wild_max_hp_bar =
-        # self.__user_hp_bar = 
-        # self.__wild_hp_bar = 
         # self.__user_xp_bar = 
         
 
@@ -33,10 +31,16 @@ class DisplayBattle(Display):
         text_rect = text_surface.get_rect(center = center)
         window_surface.blit(text_surface, text_rect)
 
-    def update(self, buttons: list = []):
+    def update(self,buttons: list = []):
         self._screen.blit(self._background, (0, 0))
         self._screen.blit(self.__user_sprite, (50, 500))
         self._screen.blit(self.__wild_sprite, (850, 0))
+        
+        # INFO BOX
+        if self.turn == 0:
+            self.draw_text(f"Calcul du tour . . .", (0,0,0), (300,300) ,self._screen)
+        else:
+            self.draw_text(f"Tour actuel : {self.turn.get_name()}", (0,0,0), (300,300) ,self._screen)
 
         # USER 
         ratio_user = self.__fighting_pokemon.hp / self.__fighting_pokemon.get_max_hp()
@@ -46,7 +50,7 @@ class DisplayBattle(Display):
         self.__infos_background.fill((255, 255, 255))
         self._screen.blit(self.__infos_background, (350, 600))
 
-        self.draw_text(f"Niveau {self.__fighting_pokemon.get_level()}", (0,0,0), (400,620) ,self._screen) #Changer niveau
+        self.draw_text(f"Niveau {self.__fighting_pokemon.get_level()}", (0,0,0), (400,620) ,self._screen)
         self.draw_text(self.__fighting_pokemon.get_name(), (0,0,0), (420,640), self._screen)
 
         draw.rect(self._screen, "black", (370, 660, 210, 30))

@@ -29,6 +29,7 @@ class Battle(Ui):
         self.__fighting_pokemon = self.__change_pokemon(user.main)
         self.__wild_pokemon = self.__choose_random_pokemon()
         self.__weakness_ratios = self.get_weakness_ratios()
+        self.__battle_display = DisplayBattle(self._screen, self._fonts, self.__fighting_pokemon, self.__wild_pokemon, self.__turn)
             
     def get_weakness_ratios(self):
         self.__weakness_ratios = []
@@ -92,12 +93,24 @@ class Battle(Ui):
         if self.__turn == 0:
             if self.__fighting_pokemon.speed > self.__wild_pokemon.speed:
                 self.__turn = self.__fighting_pokemon
+                self.__battle_display.turn = self.__fighting_pokemon
             elif self.__fighting_pokemon.speed < self.__wild_pokemon.speed:
                 self.__turn = self.__wild_pokemon
+                self.__battle_display.turn = self.__wild_pokemon
             else:
-                self.__turn = self.__fighting_pokemon if randint(1, 2) == 1 else self.__wild_pokemon
+                if randint(1, 2) == 1:
+                    self.__battle_display.turn = self.__fighting_pokemon
+                    self.__turn = self.__fighting_pokemon
+                else:
+                    self.__turn = self.__wild_pokemon
+                    self.__battle_display.turn = self.__wild_pokemon
         else:
-            self.__turn = self.__wild_pokemon if self.__turn == self.__fighting_pokemon else self.__fighting_pokemon
+            if self.__turn == self.__fighting_pokemon:
+                self.__turn = self.__wild_pokemon
+                self.__battle_display.turn = self.__wild_pokemon
+            else:
+                self.__turn = self.__fighting_pokemon
+                self.__battle_display.turn = self.__fighting_pokemon
 
 
     def __assign_attack_multi(self):
@@ -145,6 +158,7 @@ class Battle(Ui):
             return False
 
     def __attack(self):
+        
         attack_multi = self.__assign_attack_multi()
         prob_user = self.__miss_prob(self.__fighting_pokemon, self.__wild_pokemon)
         prob_wild = self.__miss_prob(self.__wild_pokemon, self.__fighting_pokemon)
@@ -167,7 +181,7 @@ class Battle(Ui):
                 print("Le pokémon a raté son attaque !")
                 return True
             else:
-                attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense * 30)
+                attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense)
                 if attack < 0:
                     attack = 0
                 self.__fighting_pokemon.hp -= int(attack)
@@ -254,33 +268,35 @@ class Battle(Ui):
         is_running = True
         successful_run_away = False
         check = True
-        
-        user_sprite = self.__fighting_pokemon.get_sprites()["back"]
-        wild_sprite = self.__wild_pokemon.get_sprites()["front"]
-
-        battle_display = DisplayBattle(self._screen, self._fonts, user_sprite, wild_sprite, self.__fighting_pokemon, self.__wild_pokemon)
+        self.__check_turn()
         while is_running:
-            for current_event in event.get():
-                for button in self._buttons:
-                    if button.rect.collidepoint(mouse.get_pos()):
-                        if current_event.type == MOUSEBUTTONDOWN:
-                            match button.get_target_name():
-                                case "attack":
-                                    self.__check_turn()
-                                    check = self.__attack()
-                                case "run_away":
-                                    successful_run_away = self.__run_away()
-                                case "pokemons":
-                                    new_poke_name = self.__run_pokedex_mode()
-                                    if new_poke_name != None:
-                                        print(new_poke_name)
-                                        self.__fighting_pokemon = self.__change_pokemon(new_poke_name)
-                        button.hovered()
-                    else:
-                        button.avoided()
             
-                if current_event.type == QUIT:
-                    is_running = False
+            if self.__turn == self.__fighting_pokemon:
+
+                for current_event in event.get():
+                    for button in self._buttons:
+                        if button.rect.collidepoint(mouse.get_pos()):
+                            if current_event.type == MOUSEBUTTONDOWN:
+                                match button.get_target_name():
+                                    case "attack":
+                                        check = self.__attack()
+                                        self.__check_turn()
+                                    case "run_away":
+                                        successful_run_away = self.__run_away()
+                                    case "pokemons":
+                                        new_poke_name = self.__run_pokedex_mode()
+                                        if new_poke_name != None:
+                                            print(new_poke_name)
+                                            self.__fighting_pokemon = self.__change_pokemon(new_poke_name)
+                            button.hovered()
+                        else:
+                            button.avoided()
+
+                    if current_event.type == QUIT:
+                        is_running = False
+            else:
+                check = self.__attack()
+                self.__check_turn()
                     
             if successful_run_away:
                 break
@@ -288,5 +304,7 @@ class Battle(Ui):
             if check != True:
                 break
 
-            battle_display.update(self._buttons)
+                
+            self.__battle_display.update(self._buttons)
+            self._clock.tick(60)
         return is_running
