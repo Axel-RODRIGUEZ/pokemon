@@ -1,4 +1,4 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,time,mixer
 
 from src.Ui import Ui
 from src.StarterMenu import StarterMenu
@@ -37,6 +37,7 @@ class UserMenu(Ui):
 
 
     def run(self):
+        mixer.music.play()
         UserMenu_display = DisplayUserMenu(self._screen,self._fonts)
         is_running = True
         while is_running:

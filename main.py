@@ -12,6 +12,8 @@ def main():
        FONT_PATH = path.join(BASE_DIR, "assets", "fonts", "LiberationSans-Regular.ttf")
        UI_IMAGES_PATH = path.join(BASE_DIR, "assets", "images", "ui", "menu")
        POKEDEXS_PATH = path.join(BASE_DIR, "data", "pokedexs.json")
+       SOUNDS_PATH = path.join(BASE_DIR, "assets", "sounds")
+       MENU_MUSIC_PATH = path.join(SOUNDS_PATH, "ui", "crosscode-autumns-fall.mp3")
 
        if not path.exists(POKEDEXS_PATH):
               with open(POKEDEXS_PATH, "w") as file:
@@ -22,6 +24,7 @@ def main():
 
        pygame.init()
        pygame.mixer.init()
+       pygame.mixer.music.load(MENU_MUSIC_PATH)
        pygame.display.set_caption('Pokemon')
 
        screen = pygame.display.set_mode((1300, 731))
