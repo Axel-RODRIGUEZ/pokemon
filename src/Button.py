@@ -66,8 +66,14 @@ class Button:
     def get_color(self):
         return self.__color
     
+    def set_color(self, new_color: tuple[int,int,int]):
+        self.__color = new_color
+    
     def get_hover_color(self):
         return self.__hover_color
+    
+    def set_hovered_color(self, new_color: tuple[int,int,int]):
+        self.__hover_color = new_color
     
     def get_font_color(self):
         return self.__font_color

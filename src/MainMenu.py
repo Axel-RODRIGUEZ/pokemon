@@ -6,7 +6,9 @@ from src.DisplayMainMenu import DisplayMainMenu
 from src.Button import Button
 from src.User import User
 from src.Battle import Battle
+from src.PokemonSelectMenu import PokemonSelectMenu
 from src.PokedexMenu import PokedexMenu
+from src.DataManagement import DataManagement
 
 class MainMenu(Ui):
     
@@ -56,7 +58,15 @@ class MainMenu(Ui):
         return is_running
 
     def __run_add_pokemon_mode(self):
-        print("Run add pokemon mode")
+        buttons = []
+        pokemons = DataManagement().read_pokemons_json()
+        for i,pokemon in enumerate(pokemons):
+            buttons.append(Button(str(pokemon["name"]["fr"]), (50,100+90*i), text=pokemon["name"]["fr"]))
+        buttons.append(Button("return", (950,600), text="Retour"))
+
+        pokemon_select_menu = PokemonSelectMenu(self._screen, buttons, self.__user, self._fonts, self._clock)
+        is_running = pokemon_select_menu.run()
+        return is_running
 
     def __run_pokedex_mode(self):
         buttons = []

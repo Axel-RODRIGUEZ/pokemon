@@ -107,33 +107,28 @@ class User:
         pokemons = self.__data.read_pokemons_json()
 
         for i,pokemon in enumerate(pokemons):
-            #print(len(self.pokedex))
+
             if i < 9 and len(self.pokedex) < 50:
                 continue
 
             elif i < (len(self.pokedex)*3+9):
                 if not pokemon["evolution"]:
                     pokemon["active"] = True
-                    print(f"{pokemon["name"]["fr"]}")
 
                 elif not pokemon["evolution"]["pre"]:
                     pokemon["active"] = True
-                    print(f"{pokemon["name"]["fr"]}")
 
                 else:
                     if not pokemon["evolution"]:
                         pokemon["active"] = True
-                        print(f"{pokemon["name"]["fr"]}")
 
                     elif not pokemon["evolution"]["pre"]:
                         pokemon["active"] = True
-                        print(f"{pokemon["name"]["fr"]}")
 
                     else:
                         for owned_pokemon in self.pokedex:
                             if owned_pokemon["name"] == pokemon["name"]:
                                 pokemon["active"] = True
-                                print(f"{pokemon["name"]["fr"]}")
 
             elif i < 9 and len(self.pokedex) > 50:
                 if not pokemon["evolution"]["pre"]:

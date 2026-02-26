@@ -18,7 +18,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Bulbasaur",
             "fr": "Bulbizarre",
@@ -70,7 +70,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Ivysaur",
             "fr": "Herbizarre",
@@ -121,7 +121,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Venusaur",
             "fr": "Florizarre",
@@ -172,7 +172,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Charmander",
             "fr": "Salam\u00e8che",
@@ -221,7 +221,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Charmeleon",
             "fr": "Reptincel",
@@ -269,7 +269,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Charizard",
             "fr": "Dracaufeu",
@@ -320,7 +320,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Squirtle",
             "fr": "Carapuce",
@@ -369,7 +369,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Wartortle",
             "fr": "Carabaffe",
@@ -417,7 +417,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Blastoise",
             "fr": "Tortank",
@@ -447,7 +447,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Ver",
         "evolution": {
             "next": [
@@ -465,7 +465,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Caterpie",
             "fr": "Chenipan",
@@ -514,7 +514,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Metapod",
             "fr": "Chrysacier",
@@ -559,7 +559,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Butterfree",
             "fr": "Papilusion",
@@ -592,7 +592,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Insectopic",
         "evolution": {
             "next": [
@@ -610,7 +610,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Weedle",
             "fr": "Aspicot",
@@ -662,7 +662,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Kakuna",
             "fr": "Coconfort",
@@ -710,7 +710,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Beedrill",
             "fr": "Dardargnan",
@@ -743,7 +743,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Minoiseau",
         "evolution": {
             "next": [
@@ -761,7 +761,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Pidgey",
             "fr": "Roucool",
@@ -816,7 +816,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Pidgeotto",
             "fr": "Roucoups",
@@ -870,7 +870,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Pidgeot",
             "fr": "Roucarnage",
@@ -906,7 +906,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": [
@@ -919,7 +919,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Rattata",
             "fr": "Rattata",
@@ -965,7 +965,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Raticate",
             "fr": "Rattatac",
@@ -998,7 +998,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Minoiseau",
         "evolution": {
             "next": [
@@ -1011,7 +1011,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Spearow",
             "fr": "Piafabec",
@@ -1057,7 +1057,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Fearow",
             "fr": "Rapasdepic",
@@ -1090,7 +1090,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Serpent",
         "evolution": {
             "next": [
@@ -1103,7 +1103,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Ekans",
             "fr": "Abo",
@@ -1149,7 +1149,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Arbok",
             "fr": "Arbok",
@@ -1201,7 +1201,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Pikachu",
             "fr": "Pikachu",
@@ -1249,7 +1249,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Raichu",
             "fr": "Raichu",
@@ -1279,7 +1279,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": [
@@ -1292,7 +1292,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Sandshrew",
             "fr": "Sabelette",
@@ -1335,7 +1335,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Sandslash",
             "fr": "Sablaireau",
@@ -1365,7 +1365,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon V\u00e9n\u00e9pic",
         "evolution": {
             "next": [
@@ -1383,7 +1383,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Nidoran\u2640",
             "fr": "Nidoran\u2640",
@@ -1435,7 +1435,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Nidorina",
             "fr": "Nidorina",
@@ -1486,7 +1486,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Nidoqueen",
             "fr": "Nidoqueen",
@@ -1522,7 +1522,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon V\u00e9n\u00e9pic",
         "evolution": {
             "next": [
@@ -1540,7 +1540,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Nidoran\u2642",
             "fr": "Nidoran\u2642",
@@ -1592,7 +1592,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Nidorino",
             "fr": "Nidorino",
@@ -1643,7 +1643,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Nidoking",
             "fr": "Nidoking",
@@ -1698,7 +1698,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Clefairy",
             "fr": "M\u00e9loFee",
@@ -1749,7 +1749,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Clefable",
             "fr": "M\u00e9lodelfe",
@@ -1795,7 +1795,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Vulpix",
             "fr": "Goupix",
@@ -1838,7 +1838,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Ninetales",
             "fr": "Feunard",
@@ -1887,7 +1887,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Jigglypuff",
             "fr": "Rondoudou",
@@ -1941,7 +1941,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Wigglytuff",
             "fr": "Grodoudou",
@@ -1995,7 +1995,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Zubat",
             "fr": "Nosferapti",
@@ -2047,7 +2047,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Golbat",
             "fr": "Nosferalto",
@@ -2103,7 +2103,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Oddish",
             "fr": "Mystherbe",
@@ -2160,7 +2160,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Gloom",
             "fr": "Ortide",
@@ -2211,7 +2211,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Vileplume",
             "fr": "Rafflesia",
@@ -2257,7 +2257,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Paras",
             "fr": "Paras",
@@ -2306,7 +2306,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Parasect",
             "fr": "Parasect",
@@ -2355,7 +2355,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Venonat",
             "fr": "Mimitoss",
@@ -2404,7 +2404,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Venomoth",
             "fr": "A\u00e9romite",
@@ -2453,7 +2453,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Diglett",
             "fr": "Taupiqueur",
@@ -2499,7 +2499,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Dugtrio",
             "fr": "Triopikeur",
@@ -2545,7 +2545,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Meowth",
             "fr": "Miaouss",
@@ -2591,7 +2591,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Persian",
             "fr": "Persian",
@@ -2637,7 +2637,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Psyduck",
             "fr": "Psykokwak",
@@ -2683,7 +2683,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Golduck",
             "fr": "Akwakwak",
@@ -2734,7 +2734,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Mankey",
             "fr": "F\u00e9rosinge",
@@ -2786,7 +2786,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Primeape",
             "fr": "Colossinge",
@@ -2832,7 +2832,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Growlithe",
             "fr": "Caninos",
@@ -2878,7 +2878,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Arcanine",
             "fr": "Arcanin",
@@ -2934,7 +2934,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Poliwag",
             "fr": "Ptitard",
@@ -2991,7 +2991,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Poliwhirl",
             "fr": "T\u00eatarte",
@@ -3042,7 +3042,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Poliwrath",
             "fr": "Tartard",
@@ -3096,7 +3096,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Abra",
             "fr": "Abra",
@@ -3148,7 +3148,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Kadabra",
             "fr": "Kadabra",
@@ -3199,7 +3199,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Alakazam",
             "fr": "Alakazam",
@@ -3250,7 +3250,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Machop",
             "fr": "Machoc",
@@ -3302,7 +3302,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Machoke",
             "fr": "Machopeur",
@@ -3353,7 +3353,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Machamp",
             "fr": "Mackogneur",
@@ -3404,7 +3404,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Bellsprout",
             "fr": "Ch\u00e9tiflor",
@@ -3456,7 +3456,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Weepinbell",
             "fr": "Boustiflor",
@@ -3507,7 +3507,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Victreebel",
             "fr": "Empiflor",
@@ -3553,7 +3553,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Tentacool",
             "fr": "Tentacool",
@@ -3602,7 +3602,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Tentacruel",
             "fr": "Tentacruel",
@@ -3656,7 +3656,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Geodude",
             "fr": "Racaillou",
@@ -3711,7 +3711,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Graveler",
             "fr": "Gravalanch",
@@ -3765,7 +3765,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Golem",
             "fr": "Grolem",
@@ -3814,7 +3814,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Ponyta",
             "fr": "Ponyta",
@@ -3860,7 +3860,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Rapidash",
             "fr": "Galopa",
@@ -3911,7 +3911,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Slowpoke",
             "fr": "Ramoloss",
@@ -3960,7 +3960,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Slowbro",
             "fr": "Flagadoss",
@@ -4014,7 +4014,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Magnemite",
             "fr": "Magn\u00e9ti",
@@ -4069,7 +4069,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Magneton",
             "fr": "Magn\u00e9ton",
@@ -4109,7 +4109,7 @@
         "category": "Pok\u00e9mon Canard Fou",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Farfetch'd",
             "fr": "Canarticho",
@@ -4158,7 +4158,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Doduo",
             "fr": "Doduo",
@@ -4207,7 +4207,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Dodrio",
             "fr": "Dodrio",
@@ -4256,7 +4256,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Seel",
             "fr": "Otaria",
@@ -4302,7 +4302,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Dewgong",
             "fr": "Lamantine",
@@ -4351,7 +4351,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Grimer",
             "fr": "Tadmorv",
@@ -4397,7 +4397,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Muk",
             "fr": "Grotadmorv",
@@ -4443,7 +4443,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Shellder",
             "fr": "Kokiyas",
@@ -4489,7 +4489,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Cloyster",
             "fr": "Crustabri",
@@ -4543,7 +4543,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Gastly",
             "fr": "Fantominus",
@@ -4592,7 +4592,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Haunter",
             "fr": "Spectrum",
@@ -4640,7 +4640,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Gengar",
             "fr": "Ectoplasma",
@@ -4686,7 +4686,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Onix",
             "fr": "Onix",
@@ -4735,7 +4735,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Drowzee",
             "fr": "Soporifik",
@@ -4781,7 +4781,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Hypno",
             "fr": "Hypnomade",
@@ -4827,7 +4827,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Krabby",
             "fr": "Krabby",
@@ -4873,7 +4873,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Kingler",
             "fr": "Krabboss",
@@ -4919,7 +4919,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Voltorb",
             "fr": "Voltorbe",
@@ -4965,7 +4965,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Electrode",
             "fr": "\u00c9lectrode",
@@ -5011,7 +5011,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Exeggcute",
             "fr": "Noeunoeuf",
@@ -5057,7 +5057,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Exeggutor",
             "fr": "Noadkoko",
@@ -5103,7 +5103,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Cubone",
             "fr": "Osselait",
@@ -5149,7 +5149,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Marowak",
             "fr": "Ossatueur",
@@ -5195,7 +5195,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Hitmonlee",
             "fr": "Kicklee",
@@ -5241,7 +5241,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Hitmonchan",
             "fr": "Tygnon",
@@ -5287,7 +5287,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Lickitung",
             "fr": "Excelangue",
@@ -5333,7 +5333,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Koffing",
             "fr": "Smogo",
@@ -5379,7 +5379,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Weezing",
             "fr": "Smogogo",
@@ -5430,7 +5430,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Rhyhorn",
             "fr": "Rhinocorne",
@@ -5485,7 +5485,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Rhydon",
             "fr": "Rhinof\u00e9ros",
@@ -5540,7 +5540,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Chansey",
             "fr": "Leveinard",
@@ -5586,7 +5586,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Tangela",
             "fr": "Saquedeneu",
@@ -5626,7 +5626,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Kangaskhan",
             "fr": "Kangourex",
@@ -5677,7 +5677,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Horsea",
             "fr": "Hypotrempe",
@@ -5729,7 +5729,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Seadra",
             "fr": "Hypoc\u00e9an",
@@ -5775,7 +5775,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Goldeen",
             "fr": "Poissir\u00e8ne",
@@ -5821,7 +5821,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Seaking",
             "fr": "Poissoroy",
@@ -5867,7 +5867,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Staryu",
             "fr": "Stari",
@@ -5913,7 +5913,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Starmie",
             "fr": "Staross",
@@ -5962,7 +5962,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Mr. Mime",
             "fr": "M. Mime",
@@ -6016,7 +6016,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Scyther",
             "fr": "Ins\u00e9cateur",
@@ -6065,7 +6065,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Jynx",
             "fr": "Lippoutou",
@@ -6120,7 +6120,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Electabuzz",
             "fr": "\u00c9lektek",
@@ -6169,7 +6169,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Magmar",
             "fr": "Magmar",
@@ -6206,7 +6206,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Pinsir",
             "fr": "Scarabrute",
@@ -6243,7 +6243,7 @@
         "category": "Pok\u00e9mon Buffle",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Tauros",
             "fr": "Tauros",
@@ -6289,7 +6289,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Magikarp",
             "fr": "Magicarpe",
@@ -6332,7 +6332,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Gyarados",
             "fr": "L\u00e9viator",
@@ -6369,7 +6369,7 @@
         "category": "Pok\u00e9mon Transport",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Lapras",
             "fr": "Lokhlass",
@@ -6409,7 +6409,7 @@
         "category": "Pok\u00e9mon Morphing",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Ditto",
             "fr": "M\u00e9tamorph",
@@ -6487,7 +6487,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Eevee",
             "fr": "\u00c9voli",
@@ -6533,7 +6533,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Vaporeon",
             "fr": "Aquali",
@@ -6576,7 +6576,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Jolteon",
             "fr": "Voltali",
@@ -6619,7 +6619,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Flareon",
             "fr": "Pyroli",
@@ -6649,7 +6649,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Virtuel",
         "evolution": {
             "next": [
@@ -6667,7 +6667,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Porygon",
             "fr": "Porygon",
@@ -6713,7 +6713,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Omanyte",
             "fr": "Amonita",
@@ -6762,7 +6762,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Omastar",
             "fr": "Amonistar",
@@ -6811,7 +6811,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Kabuto",
             "fr": "Kabuto",
@@ -6860,7 +6860,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Kabutops",
             "fr": "Kabutops",
@@ -6903,7 +6903,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Aerodactyl",
             "fr": "Pt\u00e9ra",
@@ -6952,7 +6952,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Snorlax",
             "fr": "Ronflex",
@@ -6989,7 +6989,7 @@
         "category": "Pok\u00e9mon Glaciaire",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Articuno",
             "fr": "Artikodin",
@@ -7026,7 +7026,7 @@
         "category": "Pok\u00e9mon \u00c9lectrique",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Zapdos",
             "fr": "\u00c9lecthor",
@@ -7063,7 +7063,7 @@
         "category": "Pok\u00e9mon Flamme",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Moltres",
             "fr": "Sulfura",
@@ -7114,7 +7114,7 @@
             "pre": null
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Dratini",
             "fr": "Minidraco",
@@ -7163,7 +7163,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Dragonair",
             "fr": "Draco",
@@ -7211,7 +7211,7 @@
             ]
         },
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Dragonite",
             "fr": "Dracolosse",
@@ -7248,7 +7248,7 @@
         "category": "Pok\u00e9mon G\u00e9n\u00e9tique",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Mewtwo",
             "fr": "Mewtwo",
@@ -7282,7 +7282,7 @@
         "category": "Pok\u00e9mon Nouveau",
         "evolution": null,
         "generation": 1,
-        "ko": "False",
+        "ko": false,
         "name": {
             "en": "Mew",
             "fr": "Mew",
