@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
 if __name__ == "__main__":
     from DisplayBattle import DisplayBattle
@@ -69,25 +69,30 @@ class Battle(Ui):
                         )
 
     def __choose_random_pokemon(self):
-        random = randint(0, 150)
         
-        data = self.__data.read_pokemons_json()
+        pokemons = self.__data.read_pokemons_json()
+        active_pokemons = []
+
+        for pokemon in pokemons:
+            if pokemon["active"] == True:
+                active_pokemons.append(pokemon)
+
+        random_pokemon = choice(active_pokemons) 
         
-        pkm = data[random] 
         level = randint((self.__fighting_pokemon.get_level() - 5), (self.__fighting_pokemon.get_level() + 5))
         if level <= 0:
             level = 1
-        wild_pkm = Pokemon(
-            name=pkm["name"]["fr"],
-            max_hp=pkm["stats"]["max_hp"]+level,
-            attack=pkm["stats"]["atk"]/3+(level*2),
-            defense=pkm["stats"]["def"]+(level*2),
-            speed=pkm["stats"]["vit"]+level,
-            types=pkm["types"],
+        wild_pokemon = Pokemon(
+            name=random_pokemon["name"]["fr"],
+            max_hp=random_pokemon["stats"]["max_hp"]+level,
+            attack=random_pokemon["stats"]["atk"]/3+(level*2),
+            defense=random_pokemon["stats"]["def"]+(level*2),
+            speed=random_pokemon["stats"]["vit"]+level,
+            types=random_pokemon["types"],
             level=level
         )
         
-        return wild_pkm
+        return wild_pokemon
 
 
     def __check_turn(self):
@@ -226,6 +231,7 @@ class Battle(Ui):
                     pokemon_to_capture = self.__compare_wild_pokemon_with_pokemon_in_pokedex()
                     self.__user.capture_pokemon(pokemon_to_capture)
                     self.__user.save_pokedex()
+                    self.__user.update_available_pokemons()
                     return False
             else: 
                 return True
