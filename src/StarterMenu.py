@@ -20,7 +20,7 @@ class StarterMenu(Ui):
         Ui.__init__(self, screen, buttons, fonts, clock)
         self.__user = user
         self.__data_manager = DataManagement()
-        self.__pokemons_data = self.__data_manager.load_pokemons()
+        self.__pokemons_data = self.__data_manager.read_pokemons_json()
         self.__starters = self.starter_load()
 
     def starter_load(self):

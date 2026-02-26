@@ -14,7 +14,7 @@ class Pokemon:
                  ):
         self.__data_management = DataManagement()
         self.__BASE_DIR = path.dirname(path.abspath(__file__))
-        self.__data_all = self.__data_management.load_pokemons()
+        self.__data_all = self.__data_management.read_pokemons_json()
         self.__data = None
         self.__name = name
         self.__id = self.get_id_per_name()

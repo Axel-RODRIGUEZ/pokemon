@@ -34,7 +34,7 @@ class Battle(Ui):
             
     def get_weakness_ratios(self):
         self.__weakness_ratios = []
-        type_data = self.__data.load_weakness_ratios()
+        type_data = self.__data.read_weakness_ratios_json()
 
         types_dict = {k.lower(): v for k, v in type_data.items()}
 
@@ -71,7 +71,7 @@ class Battle(Ui):
     def __choose_random_pokemon(self):
         random = randint(0, 150)
         
-        data = self.__data.load_pokemons()
+        data = self.__data.read_pokemons_json()
         
         pkm = data[random] 
         level = randint((self.__fighting_pokemon.get_level() - 5), (self.__fighting_pokemon.get_level() + 5))

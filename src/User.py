@@ -30,11 +30,11 @@ class User:
         
         if path.exists(self.__data.get_pokedex_path()):
             try:
-                data = self.__data.read_pokedexs()
+                data = self.__data.read_pokedexs_json()
             except JSONDecodeError:
                 data = {}
         else:
-            self.__data.write_pokedexs("")
+            self.__data.write_pokedexs_json("")
 
         existing_ids = []
         for key in data.keys():
@@ -56,20 +56,20 @@ class User:
             "main": self.main,
         }
 
-        self.__data.write_pokedexs(data)
+        self.__data.write_pokedexs_json(data)
 
     def delete_user(self):
         if not path.exists(self.__data.get_pokedex_path()):
-            self.__data.write_pokedexs("")
+            self.__data.write_pokedexs_json("")
             print("File cannot be deleted : Fresh file.")
 
-        data = self.__data.read_pokedexs()
+        data = self.__data.read_pokedexs_json()
 
         user_key = f"{self.__id}"
         
         if user_key in data:
             del data[user_key]
-            self.__data.write_pokedexs(data)
+            self.__data.write_pokedexs_json(data)
             
             self.__id = None
             self.pokedex = {}
@@ -80,7 +80,7 @@ class User:
         return self.__id
         
     def __load_user(self):
-        data = self.__data.read_pokedexs()
+        data = self.__data.read_pokedexs_json()
         save_id = f"{self.__id}"
 
         if save_id in data:
@@ -107,6 +107,6 @@ class User:
             self.pokedex.append(pokemon_to_capture)
 
     def save_pokedex(self):
-        all_datas = self.__data.read_pokedexs()
+        all_datas = self.__data.read_pokedexs_json()
         all_datas[f"{self.__id}"]["pokedex"] = self.pokedex
-        self.__data.write_pokedexs(all_datas)
+        self.__data.write_pokedexs_json(all_datas)
