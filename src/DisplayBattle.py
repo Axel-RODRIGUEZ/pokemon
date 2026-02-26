@@ -22,8 +22,8 @@ class DisplayBattle(Display):
         # self.__wild_max_hp_bar =
         # self.__user_xp_bar = 
         
-
         UI_IMAGES_PATH = path.join(self._BASE_DIR, pardir, "assets", "images", "ui")
+        self._background = transform.scale(image.load(path.join(UI_IMAGES_PATH, "battle_background.png")),(self._screen.get_width(),self._screen.get_height()))
 
     def set_fighting_pokemon(self, new_pokemon: Pokemon):
         self.__fighting_pokemon = new_pokemon

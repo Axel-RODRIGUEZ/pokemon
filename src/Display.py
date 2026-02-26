@@ -29,7 +29,7 @@ class Display(ABC):
             surface.blit(text_surf, text_surf.get_rect(center = surface.get_rect().center))
         self._screen.blit(surface, button.lefttop)
 
-    def _draw_multi_line_text(self, text: str, x: int, y: int, linegap: int, font_index: int = 0):
+    def _draw_multi_line_text(self, text: str, x: int, y: int, linegap: int, font_index: int = 0, color: tuple[int,int,int] = (255,255,255)):
         lines = text.splitlines()
         for i, line in enumerate(lines):
-            self._screen.blit(self._fonts[font_index].render(line, 0, (255,255,255)), (x, y + linegap*i))
+            self._screen.blit(self._fonts[font_index].render(line, 0, color), (x, y + linegap*i))

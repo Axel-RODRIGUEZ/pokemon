@@ -1782,7 +1782,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Renard",
         "evolution": {
             "next": [
@@ -1977,7 +1977,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Chovsouris",
         "evolution": {
             "next": [
@@ -2080,7 +2080,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Racine",
         "evolution": {
             "next": [
@@ -6649,7 +6649,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Virtuel",
         "evolution": {
             "next": [

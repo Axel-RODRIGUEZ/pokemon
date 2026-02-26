@@ -10,7 +10,7 @@ class DisplayUserMenu(Display):
         self.__logo = image.load(path.join(UI_IMAGES_PATH, 'menu', 'logo.png'))
         #self.__dialog_box = image.load(path.join(UI_IMAGES_PATH, "dialog_box.png"))
         #self.__dialog_box = transform.scale(self.__dialog_box,(800,170))
-        start_background = image.load(path.join(UI_IMAGES_PATH, "background-plaine.png"))
+        start_background = image.load(path.join(UI_IMAGES_PATH, "main_background.png"))
         self._background = transform.scale(start_background,(self._screen.get_width(),self._screen.get_height()))
 
 

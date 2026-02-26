@@ -263,7 +263,7 @@ class Battle(Ui):
         buttons = []
         for i,pokemon in enumerate(self.__user.pokedex):
             buttons.append(Button(str(pokemon["name"]["fr"]), (50,100+90*i), text=pokemon["name"]["fr"]))
-        buttons.append(Button("return", (950,600), text="Retour"))
+        buttons.append(Button("return", (957,607), text="Retour"))
         pokedex = PokedexMenu(self._screen, buttons, self.__user, self._fonts, self._clock, True)
         new_poke_name = pokedex.run()
         if new_poke_name != None:

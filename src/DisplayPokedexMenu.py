@@ -7,7 +7,9 @@ class DisplayPokedexMenu(Display):
     def __init__(self, screen: Surface, fonts: tuple[font.Font, font.Font], selection_mode: bool):
         Display.__init__(self, screen, fonts)
         IMAGES_PATH = path.join(self._BASE_DIR, pardir, "assets", "images")
-        #self.__logo = image.load(path.join(IMAGES_PATH, 'ui', 'menu', 'logo.png'))
+        UI_IMAGES_PATH = path.join(IMAGES_PATH, "ui")
+        self._background = transform.scale(image.load(path.join(UI_IMAGES_PATH, "pokedex_background.png")),(self._screen.get_width(),self._screen.get_height()))
+        self._hoverground = transform.scale(image.load(path.join(UI_IMAGES_PATH, "pokedex_hoverground.png")),(self._screen.get_width(),self._screen.get_height()))
         self.__SPRITES_PATH = path.join(IMAGES_PATH, "sprites")
         self.__selection_mode = selection_mode
 
@@ -48,6 +50,8 @@ vit: {pokemon_details["stats"]["vit"]}
         if len(buttons) > 0:
             for button in buttons:
                 self._draw_button(button)
+
+        self._screen.blit(self._hoverground, (0, 0))
         display.update()
 
     def __load_sprite(self, pokedex_id, ko):
