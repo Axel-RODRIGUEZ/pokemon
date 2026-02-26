@@ -37,7 +37,7 @@ class UserMenu(Ui):
 
 
     def run(self):
-        mixer.music.play()
+        mixer.music.play(-1)
         UserMenu_display = DisplayUserMenu(self._screen,self._fonts)
         is_running = True
         while is_running:
