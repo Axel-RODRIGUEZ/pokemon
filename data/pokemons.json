@@ -1,5 +1,6 @@
 [
     {
+        "active": false,
         "category": "Pok\u00e9mon Graine",
         "evolution": {
             "next": [
@@ -50,6 +51,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Graine",
         "evolution": {
             "next": [
@@ -101,6 +103,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Graine",
         "evolution": {
             "next": null,
@@ -151,6 +154,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon L\u00e9zard",
         "evolution": {
             "next": [
@@ -198,6 +202,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Flamme",
         "evolution": {
             "next": [
@@ -246,6 +251,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Flamme",
         "evolution": {
             "next": null,
@@ -296,6 +302,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Minitortue",
         "evolution": {
             "next": [
@@ -343,6 +350,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Tortue",
         "evolution": {
             "next": [
@@ -391,6 +399,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Carapace",
         "evolution": {
             "next": null,
@@ -438,6 +447,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Ver",
         "evolution": {
             "next": [
@@ -485,6 +495,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Cocon",
         "evolution": {
             "next": [
@@ -530,6 +541,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Papillon",
         "evolution": {
             "next": null,
@@ -580,6 +592,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Insectopic",
         "evolution": {
             "next": [
@@ -630,6 +643,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Cocon",
         "evolution": {
             "next": [
@@ -678,6 +692,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Gu\u00eapoison",
         "evolution": {
             "next": null,
@@ -728,6 +743,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Minoiseau",
         "evolution": {
             "next": [
@@ -781,6 +797,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Oiseau",
         "evolution": {
             "next": [
@@ -835,6 +852,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Oiseau",
         "evolution": {
             "next": null,
@@ -888,6 +906,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": [
@@ -933,6 +952,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": null,
@@ -978,6 +998,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Minoiseau",
         "evolution": {
             "next": [
@@ -1023,6 +1044,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Bec-Oiseau",
         "evolution": {
             "next": null,
@@ -1068,6 +1090,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Serpent",
         "evolution": {
             "next": [
@@ -1113,6 +1136,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Cobra",
         "evolution": {
             "next": null,
@@ -1158,6 +1182,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": [
@@ -1206,6 +1231,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": null,
@@ -1253,6 +1279,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": [
@@ -1295,6 +1322,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": null,
@@ -1337,6 +1365,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon V\u00e9n\u00e9pic",
         "evolution": {
             "next": [
@@ -1387,6 +1416,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon V\u00e9n\u00e9pic",
         "evolution": {
             "next": [
@@ -1438,6 +1468,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Perceur",
         "evolution": {
             "next": null,
@@ -1491,6 +1522,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon V\u00e9n\u00e9pic",
         "evolution": {
             "next": [
@@ -1541,6 +1573,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon V\u00e9n\u00e9pic",
         "evolution": {
             "next": [
@@ -1592,6 +1625,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Perceur",
         "evolution": {
             "next": null,
@@ -1645,6 +1679,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Fee",
         "evolution": {
             "next": [
@@ -1696,6 +1731,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Fee",
         "evolution": {
             "next": null,
@@ -1746,6 +1782,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Renard",
         "evolution": {
             "next": [
@@ -1788,6 +1825,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Renard",
         "evolution": {
             "next": null,
@@ -1830,6 +1868,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Bouboule",
         "evolution": {
             "next": [
@@ -1884,6 +1923,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Bouboule",
         "evolution": {
             "next": null,
@@ -1937,6 +1977,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Chovsouris",
         "evolution": {
             "next": [
@@ -1987,6 +2028,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Chovsouris",
         "evolution": {
             "next": [
@@ -2038,6 +2080,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Racine",
         "evolution": {
             "next": [
@@ -2093,6 +2136,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Racine",
         "evolution": {
             "next": [
@@ -2149,6 +2193,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Fleur",
         "evolution": {
             "next": null,
@@ -2199,6 +2244,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Champignon",
         "evolution": {
             "next": [
@@ -2247,6 +2293,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Champignon",
         "evolution": {
             "next": null,
@@ -2295,6 +2342,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Vermine",
         "evolution": {
             "next": [
@@ -2343,6 +2391,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Papipoison",
         "evolution": {
             "next": null,
@@ -2391,6 +2440,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Taupe",
         "evolution": {
             "next": [
@@ -2436,6 +2486,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Taupe",
         "evolution": {
             "next": null,
@@ -2481,6 +2532,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Chad\u00e9gout",
         "evolution": {
             "next": [
@@ -2526,6 +2578,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Chadeville",
         "evolution": {
             "next": null,
@@ -2571,6 +2624,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Canard",
         "evolution": {
             "next": [
@@ -2616,6 +2670,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Canard",
         "evolution": {
             "next": null,
@@ -2661,6 +2716,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Porsinge",
         "evolution": {
             "next": [
@@ -2711,6 +2767,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Porsinge",
         "evolution": {
             "next": [
@@ -2762,6 +2819,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Chiot",
         "evolution": {
             "next": [
@@ -2807,6 +2865,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon L\u00e9gendaire",
         "evolution": {
             "next": null,
@@ -2852,6 +2911,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon T\u00eatard",
         "evolution": {
             "next": [
@@ -2907,6 +2967,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon T\u00eatard",
         "evolution": {
             "next": [
@@ -2963,6 +3024,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon T\u00eatard",
         "evolution": {
             "next": null,
@@ -3016,6 +3078,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Psy",
         "evolution": {
             "next": [
@@ -3066,6 +3129,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Psy",
         "evolution": {
             "next": [
@@ -3117,6 +3181,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Psy",
         "evolution": {
             "next": null,
@@ -3167,6 +3232,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Colosse",
         "evolution": {
             "next": [
@@ -3217,6 +3283,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Colosse",
         "evolution": {
             "next": [
@@ -3268,6 +3335,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Colosse",
         "evolution": {
             "next": null,
@@ -3318,6 +3386,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Fleur",
         "evolution": {
             "next": [
@@ -3368,6 +3437,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Carnivore",
         "evolution": {
             "next": [
@@ -3419,6 +3489,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Carnivore",
         "evolution": {
             "next": null,
@@ -3469,6 +3540,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Mollusque",
         "evolution": {
             "next": [
@@ -3517,6 +3589,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Mollusque",
         "evolution": {
             "next": null,
@@ -3565,6 +3638,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Roche",
         "evolution": {
             "next": [
@@ -3618,6 +3692,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Roche",
         "evolution": {
             "next": [
@@ -3672,6 +3747,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Titanesque",
         "evolution": {
             "next": null,
@@ -3725,6 +3801,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Cheval Feu",
         "evolution": {
             "next": [
@@ -3770,6 +3847,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Cheval Feu",
         "evolution": {
             "next": null,
@@ -3815,6 +3893,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Cr\u00e9tin",
         "evolution": {
             "next": [
@@ -3868,6 +3947,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Symbiose",
         "evolution": {
             "next": null,
@@ -3916,6 +3996,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Magn\u00e9tique",
         "evolution": {
             "next": [
@@ -3969,6 +4050,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Magn\u00e9tique",
         "evolution": {
             "next": [
@@ -4023,6 +4105,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Canard Fou",
         "evolution": null,
         "generation": 1,
@@ -4062,6 +4145,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Duoiseau",
         "evolution": {
             "next": [
@@ -4110,6 +4194,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Trioiseau",
         "evolution": {
             "next": null,
@@ -4158,6 +4243,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Otarie",
         "evolution": {
             "next": [
@@ -4203,6 +4289,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Otarie",
         "evolution": {
             "next": null,
@@ -4251,6 +4338,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon D\u00e9gueu",
         "evolution": {
             "next": [
@@ -4296,6 +4384,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon D\u00e9gueu",
         "evolution": {
             "next": null,
@@ -4341,6 +4430,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Bivalve",
         "evolution": {
             "next": [
@@ -4386,6 +4476,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Bivalve",
         "evolution": {
             "next": null,
@@ -4434,6 +4525,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Gaz",
         "evolution": {
             "next": [
@@ -4481,6 +4573,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Gaz",
         "evolution": {
             "next": [
@@ -4529,6 +4622,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Ombre",
         "evolution": {
             "next": null,
@@ -4579,6 +4673,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Serpenroc",
         "evolution": {
             "next": [
@@ -4627,6 +4722,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Hypnose",
         "evolution": {
             "next": [
@@ -4672,6 +4768,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Hypnose",
         "evolution": {
             "next": null,
@@ -4717,6 +4814,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Doux Crabe",
         "evolution": {
             "next": [
@@ -4762,6 +4860,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Pince",
         "evolution": {
             "next": null,
@@ -4807,6 +4906,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Balle",
         "evolution": {
             "next": [
@@ -4852,6 +4952,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Balle",
         "evolution": {
             "next": null,
@@ -4897,6 +4998,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon \u0152uf",
         "evolution": {
             "next": [
@@ -4942,6 +5044,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Fruitpalme",
         "evolution": {
             "next": null,
@@ -4987,6 +5090,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Solitaire",
         "evolution": {
             "next": [
@@ -5032,6 +5136,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Gard'Os",
         "evolution": {
             "next": null,
@@ -5077,6 +5182,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Latteur",
         "evolution": {
             "next": null,
@@ -5122,6 +5228,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Puncheur",
         "evolution": {
             "next": null,
@@ -5167,6 +5274,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon L\u00e9cheur",
         "evolution": {
             "next": [
@@ -5212,6 +5320,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Gaz Mortel",
         "evolution": {
             "next": [
@@ -5257,6 +5366,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Gaz Mortel",
         "evolution": {
             "next": null,
@@ -5302,6 +5412,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Piquant",
         "evolution": {
             "next": [
@@ -5355,6 +5466,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Perceur",
         "evolution": {
             "next": [
@@ -5409,6 +5521,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon \u0152uf",
         "evolution": {
             "next": [
@@ -5460,6 +5573,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Vigne",
         "evolution": {
             "next": [
@@ -5505,6 +5619,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Maternel",
         "evolution": {
             "next": null,
@@ -5544,6 +5659,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Dragon",
         "evolution": {
             "next": [
@@ -5594,6 +5710,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Dragon",
         "evolution": {
             "next": [
@@ -5645,6 +5762,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Poisson",
         "evolution": {
             "next": [
@@ -5690,6 +5808,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Poisson",
         "evolution": {
             "next": null,
@@ -5735,6 +5854,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon \u00c9toile",
         "evolution": {
             "next": [
@@ -5780,6 +5900,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Myst\u00e9rieux",
         "evolution": {
             "next": null,
@@ -5828,6 +5949,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Bloqueur",
         "evolution": {
             "next": null,
@@ -5876,6 +5998,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Mante",
         "evolution": {
             "next": [
@@ -5929,6 +6052,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Humano\u00efde",
         "evolution": {
             "next": null,
@@ -5977,6 +6101,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon \u00c9lectrique",
         "evolution": {
             "next": [
@@ -6025,6 +6150,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Crache-feu",
         "evolution": {
             "next": [
@@ -6073,6 +6199,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Scarab\u00e9e",
         "evolution": {
             "next": null,
@@ -6112,6 +6239,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Buffle",
         "evolution": null,
         "generation": 1,
@@ -6148,6 +6276,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Poisson",
         "evolution": {
             "next": [
@@ -6190,6 +6319,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Terrifiant",
         "evolution": {
             "next": null,
@@ -6235,6 +6365,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Transport",
         "evolution": null,
         "generation": 1,
@@ -6274,6 +6405,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Morphing",
         "evolution": null,
         "generation": 1,
@@ -6307,6 +6439,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon \u00c9volutif",
         "evolution": {
             "next": [
@@ -6387,6 +6520,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Bulleur",
         "evolution": {
             "next": null,
@@ -6429,6 +6563,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Orage",
         "evolution": {
             "next": null,
@@ -6471,6 +6606,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Flamme",
         "evolution": {
             "next": null,
@@ -6513,6 +6649,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Virtuel",
         "evolution": {
             "next": [
@@ -6563,6 +6700,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Spirale",
         "evolution": {
             "next": [
@@ -6611,6 +6749,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Spirale",
         "evolution": {
             "next": null,
@@ -6659,6 +6798,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Carapace",
         "evolution": {
             "next": [
@@ -6707,6 +6847,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Carapace",
         "evolution": {
             "next": null,
@@ -6755,6 +6896,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Fossile",
         "evolution": {
             "next": null,
@@ -6797,6 +6939,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Pionceur",
         "evolution": {
             "next": null,
@@ -6842,6 +6985,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Glaciaire",
         "evolution": null,
         "generation": 1,
@@ -6878,6 +7022,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon \u00c9lectrique",
         "evolution": null,
         "generation": 1,
@@ -6914,6 +7059,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Flamme",
         "evolution": null,
         "generation": 1,
@@ -6950,6 +7096,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Dragon",
         "evolution": {
             "next": [
@@ -6997,6 +7144,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Dragon",
         "evolution": {
             "next": [
@@ -7045,6 +7193,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Dragon",
         "evolution": {
             "next": null,
@@ -7095,6 +7244,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon G\u00e9n\u00e9tique",
         "evolution": null,
         "generation": 1,
@@ -7128,6 +7278,7 @@
         ]
     },
     {
+        "active": false,
         "category": "Pok\u00e9mon Nouveau",
         "evolution": null,
         "generation": 1,
