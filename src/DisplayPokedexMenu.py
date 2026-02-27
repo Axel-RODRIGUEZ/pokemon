@@ -5,32 +5,57 @@ from os import path,pardir
 class DisplayPokedexMenu(Display):
 
     def __init__(self, screen: Surface, fonts: tuple[font.Font, font.Font], selection_mode: bool):
+
         Display.__init__(self, screen, fonts)
         IMAGES_PATH = path.join(self._BASE_DIR, pardir, "assets", "images")
         UI_IMAGES_PATH = path.join(IMAGES_PATH, "ui")
         self._background = transform.scale(image.load(path.join(UI_IMAGES_PATH, "pokedex_background.png")),(self._screen.get_width(),self._screen.get_height()))
-        self._hoverground = transform.scale(image.load(path.join(UI_IMAGES_PATH, "pokedex_hoverground.png")),(self._screen.get_width(),self._screen.get_height()))
+        self.__hoverground = transform.scale(image.load(path.join(UI_IMAGES_PATH, "pokedex_hoverground.png")),(self._screen.get_width(),self._screen.get_height()))
         self.__SPRITES_PATH = path.join(IMAGES_PATH, "sprites")
         self.__selection_mode = selection_mode
 
+
+    def __load_sprite(self, pokedex_id: str, ko: bool):
+
+        if ko == True:
+            sprite_path = path.join(self.__SPRITES_PATH, 'backs', f'{pokedex_id}.png')
+
+        else:
+            sprite_path = path.join(self.__SPRITES_PATH, 'fronts', f'{pokedex_id}.png')
+            
+        self.__sprite = transform.scale_by(image.load(sprite_path).convert_alpha(), 5)
+
+
+    def __blit_sprite(self):
+
+        self._screen.blit(self.__sprite,(950,50))
+
+
     def update(self, buttons: list = [], pokemon_details: dict = {}):
+
         self._screen.blit(self._background, (0, 0))
         #self._screen.blit(self.__logo, (self.__logo.get_rect(center = self._background.get_rect().center)))
         if self.__selection_mode:
             text_to_draw = "Séléctionnez un Pokémon\nà envoyer au combat:"
             self._draw_multi_line_text(text_to_draw, 400, 50, 50, 1)
+
         else:
             self._screen.blit(self._fonts[1].render("Pokédex", 0, (255,255,255)), (400, 50))
+
         if bool(pokemon_details): #Check if pokemon_details is empty
             if pokemon_details["ko"] == True:
                 ko_text = "KO"
+
             else:
                 ko_text = ""
+
             poketypes = poketalents = ""
             for poketype in pokemon_details["types"]: 
                 poketypes += f"{poketype["name"]} / "
+
             for poketalent in pokemon_details["talents"]:
                 poketalents += f"{poketalent["name"]} / "
+                
             text_to_draw = f"""{pokemon_details["name"]["fr"]} {ko_text}
 Catégorie: {pokemon_details["category"]}
 Types: {poketypes[:-3]}
@@ -51,15 +76,5 @@ vit: {pokemon_details["stats"]["vit"]}
             for button in buttons:
                 self._draw_button(button)
 
-        self._screen.blit(self._hoverground, (0, 0))
+        self._screen.blit(self.__hoverground, (0, 0))
         display.update()
-
-    def __load_sprite(self, pokedex_id, ko):
-        if ko == True:
-            sprite_path = path.join(self.__SPRITES_PATH, 'backs', f'{pokedex_id}.png')
-        else:
-            sprite_path = path.join(self.__SPRITES_PATH, 'fronts', f'{pokedex_id}.png')
-        self.__sprite = transform.scale_by(image.load(sprite_path).convert_alpha(), 5)
-
-    def __blit_sprite(self):
-        self._screen.blit(self.__sprite,(950,50))
