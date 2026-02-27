@@ -1,27 +1,26 @@
 from pygame import Surface,Rect,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
-
 from src.Ui import Ui
 from src.DisplayPokemonSelectMenu import DisplayPokemonSelectMenu
-
 from src.Button import Button
 from src.User import User
 from src.DataManagement import DataManagement
+
 
 class PokemonSelectMenu(Ui):
     
     def __init__(self, 
                  screen: Surface, 
                  buttons: list[Button], 
-                 user: User, 
                  fonts: list[font.Font, font.Font],
                  clock: time.Clock):
+        
         Ui.__init__(self, screen, buttons, fonts, clock)
         self.__pokemon_select_menu_display = DisplayPokemonSelectMenu(self._screen, self._fonts)
-        self.__user = user
         self.__poke_list_area = Rect((0,0),(400,731))
 
 
     def run(self):
+
         data_management = DataManagement()
         pokemons = data_management.read_pokemons_json()
         pokemon_details = {}
@@ -44,6 +43,7 @@ class PokemonSelectMenu(Ui):
                                 if pokemon["active"] == True:
                                     button.set_color((50,150,50))
                                     button.set_hovered_color((50,100,50))
+
                                 else:
                                     button.set_color((150,50,50))
                                     button.set_hovered_color((100,50,50))
