@@ -186,9 +186,10 @@ class User:
         pokemon_to_capture["ko"] = False
         pokemon_to_capture["stats"]["hp"] = pokemon_to_capture["stats"]["max_hp"]
 
-        for pokemon in self.pokedex:
+        for i,pokemon in enumerate(self.pokedex):
             if pokemon_to_capture["name"]["fr"] == pokemon["name"]["fr"]:
-                pokemon = pokemon_to_capture
+                if pokemon_to_capture["stats"]["level"] > pokemon["stats"]["level"]: 
+                    self.pokedex[i] = pokemon_to_capture
                 return
 
         else:
