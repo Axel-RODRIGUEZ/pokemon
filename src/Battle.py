@@ -184,7 +184,7 @@ class Battle(Ui):
                 return True
             else:
                 print("Le pokémon ennemi a réussi son attaque !")
-                attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense)
+                attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense / 3)
                 if attack < 0:
                     attack = 0
                 self.__fighting_pokemon.hp -= int(attack)
