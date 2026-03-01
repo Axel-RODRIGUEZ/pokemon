@@ -4,7 +4,8 @@ from pygame import image
 class Pokemon:
     def __init__(self, 
                  name : str, 
-                 max_hp: int, 
+                 max_hp: int,
+                 hp: int,
                  attack: int, 
                  defense: int,
                  speed: int,
@@ -20,7 +21,7 @@ class Pokemon:
         self.__id = self.get_id_per_name()
         self.__category = self.__load_category()
         self.__max_hp = max_hp
-        self.hp = max_hp
+        self.hp = hp
         self.attack = attack
         self.defense = defense
         self.special_attack = self.__load_special_attack()
