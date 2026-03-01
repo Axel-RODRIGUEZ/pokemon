@@ -57,6 +57,7 @@ class DisplayPokedexMenu(Display):
                 poketalents += f"{poketalent["name"]} / "
                 
             text_to_draw = f"""{pokemon_details["name"]["fr"]} {ko_text}
+Niveau: {pokemon_details["stats"]["level"]}
 Catégorie: {pokemon_details["category"]}
 Types: {poketypes[:-3]}
 Talents: {poketalents[:-3]}
@@ -68,7 +69,7 @@ spe_atk: {pokemon_details["stats"]["spe_atk"]}
 spe_def: {pokemon_details["stats"]["spe_def"]}
 vit: {pokemon_details["stats"]["vit"]}
 """
-            self._draw_multi_line_text(text_to_draw, 450, 200, 40)
+            self._draw_multi_line_text(text_to_draw, 450, 165, 40)
             self.__load_sprite(pokemon_details["pokedex_id"], pokemon_details["ko"])
             self.__blit_sprite()
             
