@@ -30,6 +30,8 @@ class StarterMenu(Ui):
         starters.append(self.__pokemons_data[6])
         for starter in starters:
             starter["stats"]["hp"] = starter["stats"]["max_hp"]
+            starter["stats"]["xp"] = 0
+            starter["stats"]["level"] = 1
         return starters
 
     def run(self):
