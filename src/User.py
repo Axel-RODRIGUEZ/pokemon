@@ -175,10 +175,15 @@ class User:
         
 
     def update_pokemon(self, pokemon_to_update: Pokemon):
-
+        evolutions = pokemon_to_update.get_evolution()
+        pokemon_name = pokemon_to_update.get_name()
         for i,pokemon in enumerate(self.pokedex):
-            if pokemon_to_update.get_name() == pokemon["name"]["fr"]:
+            if pokemon_name == pokemon["name"]["fr"]:
                 self.pokedex[i] = pokemon_to_update.pokemon_to_json()
+            elif isinstance(evolutions, dict) and isinstance(evolutions["pre"], list):
+                if pokemon["name"]["fr"] == evolutions["pre"][-1]["name"]:
+                    self.pokedex[i] = pokemon_to_update.pokemon_to_json()
+                    self.main = pokemon_name
 
 
     def capture_pokemon(self, pokemon_to_capture: dict):
