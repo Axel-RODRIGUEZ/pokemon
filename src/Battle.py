@@ -211,7 +211,7 @@ class Battle(Ui):
         elif pokemon_to_check == self.__wild_pokemon:
             if self.__wild_pokemon.hp <= 0:
                     print("Le pokémon sauvage est mort !")
-                    self.__fighting_pokemon.increase_xp(int((((self.__wild_pokemon.get_level()*2+1)-self.__fighting_pokemon.get_level()) ** 3)/3))
+                    self.__fighting_pokemon.increase_xp(int((self.__wild_pokemon.get_level() ** 3)/3+4))
                     self.__fighting_pokemon.check_xp()
                     self.__user.update_pokemon(self.__fighting_pokemon)
                     pokemon_to_capture = self.__best_stats_between_wild_and_user_pokemon()

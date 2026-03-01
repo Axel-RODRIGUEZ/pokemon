@@ -176,9 +176,9 @@ class User:
 
     def update_pokemon(self, pokemon_to_update: Pokemon):
 
-        for pokemon in self.pokedex:
+        for i,pokemon in enumerate(self.pokedex):
             if pokemon_to_update.get_name() == pokemon["name"]["fr"]:
-                pokemon = pokemon_to_update.pokemon_to_json()
+                self.pokedex[i] = pokemon_to_update.pokemon_to_json()
 
 
     def capture_pokemon(self, pokemon_to_capture: dict):

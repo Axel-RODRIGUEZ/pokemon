@@ -85,6 +85,9 @@ class Pokemon:
     
     def get_level(self):
         return self.__level
+    
+    def get_xp(self):
+        return self.__xp
 
     def get_name(self):
         return self.__name
@@ -123,7 +126,6 @@ class Pokemon:
             if evolution != None:
                 evo_id = evolution[0]["pokedex_id"]
                 if isinstance(self.__evolution, dict): 
-                    print(self.__data_all[evo_id]['stats'])
                     return self.__data_all[evo_id]['stats']
         else:
             max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
