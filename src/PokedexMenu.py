@@ -28,10 +28,10 @@ class PokedexMenu(Ui):
         pokemon_details = {}
         is_running = True
         if self.__selection_mode:
-            number_of_button_to_ignore = 2
+            number_of_button_to_ignore = 1
 
         else:
-            number_of_button_to_ignore = 1
+            number_of_button_to_ignore = 2
 
         while is_running:
             for current_event in event.get():
