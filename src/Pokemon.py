@@ -58,7 +58,7 @@ class Pokemon:
 
     # ------ INCREASE ------ #
     def __increase_hp(self):
-        if self.hp + 1 < self.__max_stats['hp']:
+        if (self.hp + 1) < self.__max_stats['max_hp']:
             self.hp += 1
             self.__max_hp += 1
         return None
@@ -92,7 +92,7 @@ class Pokemon:
     def get_id(self):
         return self.__id
     
-    def set_xp(self, xp):
+    def increase_xp(self, xp):
         self.__xp += xp
     
     def get_types(self):
@@ -122,7 +122,8 @@ class Pokemon:
             evolution = self.__evolution["next"]
             if evolution != None:
                 evo_id = evolution[0]["pokedex_id"]
-                if isinstance(self.__evolution, list): 
+                if isinstance(self.__evolution, dict): 
+                    print(self.__data_all[evo_id]['stats'])
                     return self.__data_all[evo_id]['stats']
         else:
             max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
