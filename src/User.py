@@ -183,9 +183,13 @@ class User:
 
     def capture_pokemon(self, pokemon_to_capture: dict):
 
+        pokemon_to_capture["ko"] = False
+        pokemon_to_capture["stats"]["hp"] = pokemon_to_capture["stats"]["max_hp"]
+
         for pokemon in self.pokedex:
-            if pokemon_to_capture["name"] == pokemon["name"]:
+            if pokemon_to_capture["name"]["fr"] == pokemon["name"]["fr"]:
                 pokemon = pokemon_to_capture
+                return
 
         else:
             self.pokedex.append(pokemon_to_capture)
