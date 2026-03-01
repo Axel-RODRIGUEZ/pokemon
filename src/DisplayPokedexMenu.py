@@ -37,10 +37,10 @@ class DisplayPokedexMenu(Display):
         #self._screen.blit(self.__logo, (self.__logo.get_rect(center = self._background.get_rect().center)))
         if self.__selection_mode:
             text_to_draw = "Séléctionnez un Pokémon\nà envoyer au combat:"
-            self._draw_multi_line_text(text_to_draw, 400, 50, 50, 1)
+            self._draw_multi_line_text(text_to_draw, 400, 30, 40, 0)
 
         else:
-            self._screen.blit(self._fonts[1].render("Pokédex", 0, (255,255,255)), (400, 50))
+            self._screen.blit(self._fonts[1].render("Pokédex", 0, (255,255,255)), (400, 40))
 
         if bool(pokemon_details): #Check if pokemon_details is empty
             if pokemon_details["ko"] == True:
