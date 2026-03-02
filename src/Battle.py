@@ -246,19 +246,31 @@ class Battle(Ui):
 
     def __instantiate_pokemon_from_pokedex(self, name: str):
 
+        main_available = False
         for pokemon in self.__user.pokedex:
-            if pokemon["name"]["fr"] == name:
-                return Pokemon(
-                            name=pokemon["name"]["fr"],
-                            max_hp=pokemon["stats"]["max_hp"],
-                            hp=pokemon["stats"]["hp"],
-                            attack=pokemon["stats"]["atk"],
-                            defense=pokemon["stats"]["def"],
-                            speed=pokemon["stats"]["vit"],
-                            types=pokemon["types"],
-                            level=pokemon["stats"]["level"],
-                            xp=pokemon["stats"]["xp"] 
-                        )
+            if pokemon["name"]["fr"] == name and pokemon["ko"] == False:
+                pokemon_to_instantiate = pokemon
+                main_available = True
+        
+        if not main_available:
+            for pokemon in self.__user.pokedex:
+                if pokemon["ko"] == False:
+                    pokemon_to_instantiate = pokemon
+                    break
+
+        return Pokemon(
+                        name=pokemon_to_instantiate["name"]["fr"],
+                        max_hp=pokemon_to_instantiate["stats"]["max_hp"],
+                        hp=pokemon_to_instantiate["stats"]["hp"],
+                        attack=pokemon_to_instantiate["stats"]["atk"],
+                        defense=pokemon_to_instantiate["stats"]["def"],
+                        speed=pokemon_to_instantiate["stats"]["vit"],
+                        types=pokemon_to_instantiate["types"],
+                        level=pokemon_to_instantiate["stats"]["level"],
+                        xp=pokemon_to_instantiate["stats"]["xp"] 
+                    )
+
+
 
 
     def __change_fighting_pokemon(self):
