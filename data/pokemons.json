@@ -447,7 +447,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Ver",
         "evolution": {
             "next": [
@@ -592,7 +592,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Insectopic",
         "evolution": {
             "next": [
@@ -743,7 +743,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Minoiseau",
         "evolution": {
             "next": [
@@ -906,7 +906,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": [
@@ -998,7 +998,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Minoiseau",
         "evolution": {
             "next": [
@@ -1090,7 +1090,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Serpent",
         "evolution": {
             "next": [
@@ -1279,7 +1279,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Souris",
         "evolution": {
             "next": [
@@ -1365,7 +1365,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon V\u00e9n\u00e9pic",
         "evolution": {
             "next": [
@@ -1522,7 +1522,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon V\u00e9n\u00e9pic",
         "evolution": {
             "next": [
@@ -1782,7 +1782,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Renard",
         "evolution": {
             "next": [
@@ -1977,7 +1977,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Chovsouris",
         "evolution": {
             "next": [
@@ -2080,7 +2080,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon Racine",
         "evolution": {
             "next": [
@@ -7244,7 +7244,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon G\u00e9n\u00e9tique",
         "evolution": null,
         "generation": 1,

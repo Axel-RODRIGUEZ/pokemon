@@ -52,11 +52,11 @@ class Battle(Ui):
             level = 1
         wild_pokemon = Pokemon(
             name=random_pokemon["name"]["fr"],
-            max_hp=random_pokemon["stats"]["max_hp"]+level,
-            hp=random_pokemon["stats"]["max_hp"]+level,
-            attack=random_pokemon["stats"]["atk"]/3+(level*2),
-            defense=random_pokemon["stats"]["def"]+(level*2),
-            speed=random_pokemon["stats"]["vit"]+level,
+            max_hp=int(random_pokemon["stats"]["max_hp"]+level),
+            hp=int(random_pokemon["stats"]["max_hp"]+level),
+            attack=int(random_pokemon["stats"]["atk"]/3+(level*2)),
+            defense=int(random_pokemon["stats"]["def"]+(level*2)),
+            speed=int(random_pokemon["stats"]["vit"]+level),
             types=random_pokemon["types"],
             level=level
         )
