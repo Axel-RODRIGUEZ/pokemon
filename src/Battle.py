@@ -324,7 +324,6 @@ class Battle(Ui):
         successful_run_away = False
         check = True
         animation_state = None 
-        missed = None
         self.__check_turn()
 
         while is_running:
@@ -343,6 +342,7 @@ class Battle(Ui):
                                         self.__check_turn()
                                     case "run_away":
                                         successful_run_away = self.__run_away()
+                                        self.__check_turn()
                                     case "pokemons":
                                         self.__change_fighting_pokemon()
                              
@@ -372,6 +372,9 @@ class Battle(Ui):
             if check != True:
                 break
 
+            self._clock.tick(60)
+            self.__battle_display.update(self._buttons)
+
             if animation_state is not None:
                 pokemon, missed = animation_state
                 if missed:
@@ -380,7 +383,5 @@ class Battle(Ui):
                     done = self.__battle_display.pokemon_damage_animation(pokemon)
                 if done:
                     animation_state = None
-
-            self.__battle_display.update(missed, self._buttons)
-            self._clock.tick(60)
+            
         return is_running

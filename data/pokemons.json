@@ -447,7 +447,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Ver",
         "evolution": {
             "next": [
@@ -7244,7 +7244,7 @@
         ]
     },
     {
-        "active": true,
+        "active": false,
         "category": "Pok\u00e9mon G\u00e9n\u00e9tique",
         "evolution": null,
         "generation": 1,

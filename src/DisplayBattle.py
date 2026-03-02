@@ -20,6 +20,8 @@ class DisplayBattle(Display):
         self.__wild_pokemon_sprite = transform.scale_by(self.__wild_pokemon.get_sprites()["front"],5)
         self.__infos_background_border = Surface((310, 110))
         self.__infos_background = Surface((300, 100))
+        self.__turn_background_border = Surface((260, 60))
+        self.__turn_background = Surface((250, 50))
         self.__pokemon_damage_time = None
         self.__wild_pokemon_sprite_xy = 850, 0
         self.__fighting_pokemon_sprite_xy = 50, 500
@@ -96,30 +98,23 @@ class DisplayBattle(Display):
             self.__fighting_pokemon_sprite_xy = (50, 500)
             self.__pokemon_damage_time = None
             return True
-
-
-    def update(self, missed, buttons: list = []):
-
+            
+    def update(self, buttons: list = []):
         self._screen.blit(self._background, (0, 0))
         self._screen.blit(self.__fighting_pokemon_sprite, self.__fighting_pokemon_sprite_xy)
         self._screen.blit(self.__wild_pokemon_sprite, self.__wild_pokemon_sprite_xy)
-        
+
+        self.__turn_background_border.fill((0, 0, 0))
+        self._screen.blit(self.__turn_background_border, (20, 322))
+        self.__turn_background.fill((255, 255, 255))
+        self._screen.blit(self.__turn_background, (25, 327))
+
         # INFO BOX
         if self.turn == 0:
-            self.__draw_text(f"Calcul du tour . . .", (0,0,0), (300,300) ,self._screen)
-
-        else:
-            self.__draw_text(f"Tour actuel : {self.turn.get_name()}", (0,0,0), (300,300) ,self._screen)
-
-        if missed:
-            self.__draw_text(f" a raté son attaque !", (0,0,0), (310,310) ,self._screen)
-
-        elif missed != True:
-            self.__draw_text(f" a réussi son attaque !", (0,0,0), (310,310) ,self._screen) 
-
-        else: 
             pass
-        ###    ADD POKEMON IN THE TEXT ###
+        else:
+            self.__draw_text(f"Tour actuel : {self.turn.get_name()}", (0, 0, 0), (150, 350) ,self._screen)
+
         # USER
         ratio_user = self.__fighting_pokemon.hp / self.__fighting_pokemon.get_max_hp()
 
@@ -146,7 +141,7 @@ class DisplayBattle(Display):
 
         draw.rect(self._screen, "black", (620, 160, 210, 30))
         draw.rect(self._screen, "green", (625, 165, 200 * ratio_wild, 20))
-           
+        
         if len(buttons) > 0:
             for button in buttons:
                 self._draw_button(button)
