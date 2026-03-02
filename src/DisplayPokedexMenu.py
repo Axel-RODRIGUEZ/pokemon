@@ -37,10 +37,10 @@ class DisplayPokedexMenu(Display):
         #self._screen.blit(self.__logo, (self.__logo.get_rect(center = self._background.get_rect().center)))
         if self.__selection_mode:
             text_to_draw = "Séléctionnez un Pokémon\nà envoyer au combat:"
-            self._draw_multi_line_text(text_to_draw, 400, 50, 50, 1)
+            self._draw_multi_line_text(text_to_draw, 400, 30, 40, 0)
 
         else:
-            self._screen.blit(self._fonts[1].render("Pokédex", 0, (255,255,255)), (400, 50))
+            self._screen.blit(self._fonts[1].render("Pokédex", 0, (255,255,255)), (400, 40))
 
         if bool(pokemon_details): #Check if pokemon_details is empty
             if pokemon_details["ko"] == True:
@@ -57,6 +57,7 @@ class DisplayPokedexMenu(Display):
                 poketalents += f"{poketalent["name"]} / "
                 
             text_to_draw = f"""{pokemon_details["name"]["fr"]} {ko_text}
+Niveau: {pokemon_details["stats"]["level"]}
 Catégorie: {pokemon_details["category"]}
 Types: {poketypes[:-3]}
 Talents: {poketalents[:-3]}
@@ -68,7 +69,7 @@ spe_atk: {pokemon_details["stats"]["spe_atk"]}
 spe_def: {pokemon_details["stats"]["spe_def"]}
 vit: {pokemon_details["stats"]["vit"]}
 """
-            self._draw_multi_line_text(text_to_draw, 450, 200, 40)
+            self._draw_multi_line_text(text_to_draw, 450, 165, 40)
             self.__load_sprite(pokemon_details["pokedex_id"], pokemon_details["ko"])
             self.__blit_sprite()
             

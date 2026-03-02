@@ -53,6 +53,7 @@ class Battle(Ui):
         wild_pokemon = Pokemon(
             name=random_pokemon["name"]["fr"],
             max_hp=random_pokemon["stats"]["max_hp"]+level,
+            hp=random_pokemon["stats"]["max_hp"]+level,
             attack=random_pokemon["stats"]["atk"]/3+(level*2),
             defense=random_pokemon["stats"]["def"]+(level*2),
             speed=random_pokemon["stats"]["vit"]+level,
@@ -199,11 +200,14 @@ class Battle(Ui):
         else:
             return True
         
-        if pokemon_to_check == self.__fighting_pokemon and pokemon_to_check.ko:
+        if pokemon_to_check == self.__fighting_pokemon:
             for pokemon in self.__user.pokedex:
                 if pokemon_to_check.get_name() == pokemon["name"]["fr"]:
-                    pokemon["ko"] = True
-                    print(f"Le pokémon {pokemon_to_check.get_name()} est ko")
+                    pokemon["stats"]["hp"] = pokemon_to_check.hp
+                    if pokemon_to_check.ko:
+                        pokemon["ko"] = True
+                        pokemon["stats"]["hp"] = 0
+                        print(f"Le pokémon {pokemon_to_check.get_name()} est ko")
 
             team_ko = self.__check_pokemon_remaining()
             return team_ko
@@ -211,8 +215,10 @@ class Battle(Ui):
         elif pokemon_to_check == self.__wild_pokemon:
             if self.__wild_pokemon.hp <= 0:
                     print("Le pokémon sauvage est mort !")
-                    self.__user.update_pokemon(self.__fighting_pokemon)
+                    self.__fighting_pokemon.increase_xp(int((self.__wild_pokemon.get_level() ** 3)/3+4096))
+                    print(self.__fighting_pokemon.get_xp())
                     self.__fighting_pokemon.check_xp()
+                    self.__user.update_pokemon(self.__fighting_pokemon)
                     pokemon_to_capture = self.__best_stats_between_wild_and_user_pokemon()
                     self.__user.capture_pokemon(pokemon_to_capture)
                     self.__user.save_pokedex()
@@ -244,11 +250,14 @@ class Battle(Ui):
             if pokemon["name"]["fr"] == name:
                 return Pokemon(
                             name=pokemon["name"]["fr"],
-                            max_hp=pokemon["stats"]["hp"],
+                            max_hp=pokemon["stats"]["max_hp"],
+                            hp=pokemon["stats"]["hp"],
                             attack=pokemon["stats"]["atk"],
                             defense=pokemon["stats"]["def"],
                             speed=pokemon["stats"]["vit"],
                             types=pokemon["types"],
+                            level=pokemon["stats"]["level"],
+                            xp=pokemon["stats"]["xp"] 
                         )
 
 

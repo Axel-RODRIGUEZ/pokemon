@@ -175,10 +175,15 @@ class User:
         
 
     def update_pokemon(self, pokemon_to_update: Pokemon):
-
-        for pokemon in self.pokedex:
-            if pokemon_to_update.get_name() == pokemon["name"]["fr"]:
-                pokemon = pokemon_to_update.pokemon_to_json()
+        evolutions = pokemon_to_update.get_evolution()
+        pokemon_name = pokemon_to_update.get_name()
+        for i,pokemon in enumerate(self.pokedex):
+            if pokemon_name == pokemon["name"]["fr"]:
+                self.pokedex[i] = pokemon_to_update.pokemon_to_json()
+            elif isinstance(evolutions, dict) and isinstance(evolutions["pre"], list):
+                if pokemon["name"]["fr"] == evolutions["pre"][-1]["name"]:
+                    self.pokedex[i] = pokemon_to_update.pokemon_to_json()
+                    self.main = pokemon_name
 
 
     def capture_pokemon(self, pokemon_to_capture: dict):
@@ -186,9 +191,10 @@ class User:
         pokemon_to_capture["ko"] = False
         pokemon_to_capture["stats"]["hp"] = pokemon_to_capture["stats"]["max_hp"]
 
-        for pokemon in self.pokedex:
+        for i,pokemon in enumerate(self.pokedex):
             if pokemon_to_capture["name"]["fr"] == pokemon["name"]["fr"]:
-                pokemon = pokemon_to_capture
+                if pokemon_to_capture["stats"]["level"] > pokemon["stats"]["level"]: 
+                    self.pokedex[i] = pokemon_to_capture
                 return
 
         else:

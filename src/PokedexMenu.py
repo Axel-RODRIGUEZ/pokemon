@@ -27,6 +27,12 @@ class PokedexMenu(Ui):
         
         pokemon_details = {}
         is_running = True
+        if self.__selection_mode:
+            number_of_button_to_ignore = 1
+
+        else:
+            number_of_button_to_ignore = 2
+
         while is_running:
             for current_event in event.get():
                 for button in self._buttons:
@@ -42,12 +48,12 @@ class PokedexMenu(Ui):
                 if self.__poke_list_area.collidepoint(mouse.get_pos()):
                     if current_event.type == MOUSEBUTTONDOWN:
                         if current_event.button == 4: # Scroll
-                            for button in self._buttons[:-1]: #Ignore last element
+                            for button in self._buttons[:-number_of_button_to_ignore]: #Ignore last two elements
                                 button.lefttop = button.lefttop[0], button.lefttop[1]+50
                                 button.rect.move_ip(0,50)
 
                         elif current_event.button == 5:
-                            for button in self._buttons[:-1]: #Ignore last element
+                            for button in self._buttons[:-number_of_button_to_ignore]: #Ignore last two elements
                                 button.lefttop = button.lefttop[0], button.lefttop[1]-50
                                 button.rect.move_ip(0,-50)
 
@@ -70,7 +76,11 @@ class PokedexMenu(Ui):
                             
                             else:
                                 return is_running
-                
+                        elif button.rect.collidepoint(mouse.get_pos()) and button.get_target_name() == "heal":
+                            for pokemon in self.__user.pokedex:
+                                pokemon["stats"]["hp"] = pokemon["stats"]["max_hp"]
+                                pokemon["ko"] = False
+                            self.__user.save_pokedex()
                 elif current_event.type == QUIT:
                     is_running = False
 

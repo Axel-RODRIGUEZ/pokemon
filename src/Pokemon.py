@@ -4,7 +4,8 @@ from pygame import image
 class Pokemon:
     def __init__(self, 
                  name : str, 
-                 max_hp: int, 
+                 max_hp: int,
+                 hp: int,
                  attack: int, 
                  defense: int,
                  speed: int,
@@ -15,12 +16,11 @@ class Pokemon:
         self.__data_management = DataManagement()
         self.__BASE_DIR = path.dirname(path.abspath(__file__))
         self.__data_all = self.__data_management.read_pokemons_json()
-        self.__data = None
         self.__name = name
         self.__id = self.get_id_per_name()
         self.__category = self.__load_category()
         self.__max_hp = max_hp
-        self.hp = max_hp
+        self.hp = hp
         self.attack = attack
         self.defense = defense
         self.special_attack = self.__load_special_attack()
@@ -44,7 +44,7 @@ class Pokemon:
         for n in range(self.__level, 100):
             if self.__xp > self.__xp_levels_cub[n]:
                 self.__level_up()
-        self.pokemon_to_json()
+
 
     def __level_up(self): 
         self.__level += 1
@@ -58,7 +58,7 @@ class Pokemon:
 
     # ------ INCREASE ------ #
     def __increase_hp(self):
-        if self.hp + 1 < self.__max_stats['hp']:
+        if (self.hp + 1) < self.__max_stats['max_hp']:
             self.hp += 1
             self.__max_hp += 1
         return None
@@ -85,6 +85,9 @@ class Pokemon:
     
     def get_level(self):
         return self.__level
+    
+    def get_xp(self):
+        return self.__xp
 
     def get_name(self):
         return self.__name
@@ -92,7 +95,10 @@ class Pokemon:
     def get_id(self):
         return self.__id
     
-    def set_xp(self, xp):
+    def get_evolution(self):
+        return self.__evolution
+    
+    def increase_xp(self, xp):
         self.__xp += xp
     
     def get_types(self):
@@ -118,14 +124,12 @@ class Pokemon:
                 return data["evolution"]
             
     def __load_max_stats(self):
-        if self.__evolution != None:
+        if isinstance(self.__evolution, dict) and isinstance(self.__evolution["next"], list):
             evolution = self.__evolution["next"]
-            if evolution != None:
-                evo_id = evolution[0]["pokedex_id"]
-                if isinstance(self.__evolution, list): 
-                    return self.__data_all[evo_id]['stats']
+            evo_id = evolution[0]["pokedex_id"]
+            return self.__data_all[evo_id]['stats']
         else:
-            max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
+            max_stats = {"max_hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
             return max_stats
     
     def __load_talents(self):
@@ -154,39 +158,38 @@ class Pokemon:
         if not self.__evolution:
             return None
          
-        if isinstance(self.__evolution, list):
+        if isinstance(self.__evolution, dict) and isinstance(self.__evolution["next"], list):
 
-            evo_level = self.__evolution[0]["condition"]
-            evo_id = self.__evolution[0]["pokedex_id"]
+            evo_level = self.__evolution["next"][0]["condition"]
+            evo_id = self.__evolution["next"][0]["pokedex_id"]
 
             if evo_level and evo_id and self.__level >= evo_level:
                 
                 # Looking for the data of poke evo
-                self.__data = self.__data_all[evo_id -1 ]
-
-                # Change max stats to init stats of the evo
-                self.__max_stats = self.__data['stats']
+                evolution_data = self.__data_all[evo_id-1]
             
                 # Change all stats and the name for the new poke
                 
-                self.__name = self.__data['name']['fr']
-                self.hp = self.__max_stats['max_hp']
-                self.__max_hp = self.__max_stats['max_hp']
-                self.attack = self.__max_stats['atk']
-                self.defense = self.__max_stats['def']
-                self.speed = self.__max_stats['vit']
-                self.__types = self.__data['types'] # getter ?
+                self.__name = evolution_data['name']['fr']
+                self.hp = evolution_data['stats']['max_hp']
+                self.__max_hp = evolution_data['stats']['max_hp']
+                self.attack = evolution_data['stats']['atk']
+                self.defense = evolution_data['stats']['def']
+                self.special_attack = evolution_data['stats']['spe_atk']
+                self.special_defense = evolution_data['stats']['spe_def']
+                self.speed = evolution_data['stats']['vit']
+                self.__types = evolution_data['types'] # getter ?
+                self.__evolution = evolution_data['evolution']
                 # change id to reload sprite
-                self.__id = self.get_id_per_name()
+                self.__id = evo_id
                 # change sprite 
                 self.__sprites = self.__load_sprites()
-
-                # Check if poke had a next.....
-                self.__evolution = self.__data['evolution']['next']
+                
             
                 # if next exist need to change evolution (below) / and max_stats(if exist or not)
-                if  isinstance(self.__evolution, list): 
-                    self.__max_stats = self.__data_all[evo_id]['stats']
+                if isinstance(self.__evolution, dict) and isinstance(self.__evolution["next"], list):
+                    evo_id = self.__evolution["next"][0]["pokedex_id"]
+                    self.__max_stats = self.__data_all[evo_id-1]['stats']
                 else:
                     self.__max_stats = {"max_hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
     
