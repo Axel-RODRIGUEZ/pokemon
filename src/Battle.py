@@ -1,35 +1,76 @@
-from os import path, pardir
-from random import randint
-from pygame import image, Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT
+from random import randint, choice
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
 if __name__ == "__main__":
+    from DisplayBattle import DisplayBattle
     from Pokemon import Pokemon
     from User import User
     from DataManagement import DataManagement
+    from Ui import Ui
+    from Button import Button
+    from PokedexMenu import PokedexMenu
 else:
+    from src.DisplayBattle import DisplayBattle
     from src.Pokemon import Pokemon
     from src.User import User
     from src.DataManagement import DataManagement
     from src.Ui import Ui
+    from src.Button import Button
+    from src.PokedexMenu import PokedexMenu
 from random import random
 
 
 
 class Battle(Ui):
-    def __init__(self, user:User):
+
+
+    def __init__(self, screen: Surface, buttons: Button, fonts: tuple[font.Font,font.Font], user:User, clock: time.Clock):
+        
+        Ui.__init__(self, screen, buttons, fonts, clock)
         self.__turn = 0
         self.__data = DataManagement()
         self.__user = user
+        self.__fighting_pokemon = self.__instantiate_pokemon_from_pokedex(user.main)
         self.__wild_pokemon = self.__choose_random_pokemon()
-        self.__weakness_ratios = self.get_weakness_ratios()
-            
-    def get_weakness_ratios(self):
+        self.__wild_attack_timer = None
+        self.__weakness_ratios = self.__get_weakness_ratios()
+        self.__battle_display = DisplayBattle(self._screen, self._fonts, self.__fighting_pokemon, self.__wild_pokemon, self.__turn)
+
+
+    def __choose_random_pokemon(self):
+        
+        pokemons = self.__data.read_pokemons_json()
+        active_pokemons = []
+
+        for pokemon in pokemons:
+            if pokemon["active"] == True:
+                active_pokemons.append(pokemon)
+
+        random_pokemon = choice(active_pokemons) 
+        
+        level = randint((self.__fighting_pokemon.get_level() - 5), (self.__fighting_pokemon.get_level() + 5))
+        if level <= 0:
+            level = 1
+        wild_pokemon = Pokemon(
+            name=random_pokemon["name"]["fr"],
+            max_hp=random_pokemon["stats"]["max_hp"]+level,
+            attack=random_pokemon["stats"]["atk"]/3+(level*2),
+            defense=random_pokemon["stats"]["def"]+(level*2),
+            speed=random_pokemon["stats"]["vit"]+level,
+            types=random_pokemon["types"],
+            level=level
+        )
+        
+        return wild_pokemon    
+
+
+    def __get_weakness_ratios(self):
         self.__weakness_ratios = []
-        type_data = self.__data.load_weakness_ratio()
+        type_data = self.__data.read_weakness_ratios_json()
 
         types_dict = {k.lower(): v for k, v in type_data.items()}
 
         user_ratios = {}
-        for t in self.__user.main.types:
+        for t in self.__fighting_pokemon.get_types():
             original_name = t["name"]           
             search_name = original_name.lower() 
             
@@ -37,7 +78,7 @@ class Battle(Ui):
             user_ratios[original_name] = data
         
         wild_ratios = {}
-        for t in self.__wild_pokemon.types:
+        for t in self.__wild_pokemon.get_types():
                 original_name = t["name"]
                 search_name = original_name.lower()
                 
@@ -45,47 +86,6 @@ class Battle(Ui):
                 wild_ratios[original_name] = data
 
         return user_ratios, wild_ratios
-
-
-    def __choose_random_pokemon(self):
-        random = randint(0, 150)
-        
-        data = self.__data.load_pokemons()
-        
-        pkm = data[random] 
-        
-        try:
-            script_dir = path.dirname(path.abspath(__file__))
-            sprites_path = path.join(script_dir, pardir, "assets", "images", "sprites", "fronts", f"{random + 1}.png")
-
-            img = image.load(sprites_path).convert_alpha()
-        except:
-            img = None
-
-        wild_pkm = Pokemon(
-            name=pkm["name"]["fr"],
-            max_hp=pkm["stats"]["hp"],
-            attack=pkm["stats"]["atk"],
-            defense=pkm["stats"]["def"],
-            speed=pkm["stats"]["vit"],
-            types=pkm["types"], 
-            sprite=img,
-            evolution=pkm["evolution"]["next"]
-        )
-        
-        return wild_pkm
-
-
-    def __check_turn(self):
-        if self.__turn == 0:
-            if self.__user.main.speed > self.__wild_pokemon.speed:
-                self.__turn = self.__user.main
-            elif self.__user.main.speed < self.__wild_pokemon.speed:
-                self.__turn = self.__wild_pokemon
-            else:
-                self.__turn = self.__user.main if randint(1, 2) == 1 else self.__wild_pokemon
-        else:
-            self.__turn = self.__wild_pokemon if self.__turn == self.__user.main else self.__user.main
 
 
     def __assign_attack_multi(self):
@@ -96,8 +96,8 @@ class Battle(Ui):
         if isinstance(ratios_wild, list):
             ratios_wild = ratios_wild[0]
 
-        if self.__turn == self.__user.main:
-            attacker = self.__user.main
+        if self.__turn == self.__fighting_pokemon:
+            attacker = self.__fighting_pokemon
             defender_list = ratios_wild 
         else:
             attacker = self.__wild_pokemon
@@ -105,146 +105,260 @@ class Battle(Ui):
 
         total_bonus = 0
 
-        for t in attacker.types:
+        for t in attacker.get_types():
             atk_type_name = t["name"].lower() 
             
             current_type_score = 1
             
             for def_name, def_data in defender_list.items():
-                coeff = def_data.get(atk_type_name, 1)
-                current_type_score *= coeff
+                if def_data != None:
+                    coeff = def_data.get(atk_type_name, 1)
+                    current_type_score *= coeff
         
             total_bonus += current_type_score
 
         return total_bonus
-    
-    def __attack(self):
-        self.__check_turn()
-        attack_multi = self.__assign_attack_multi()
+
+
+    def __check_turn(self):
+        if self.__turn == 0:
+            if self.__fighting_pokemon.speed > self.__wild_pokemon.speed:
+                self.__turn = self.__fighting_pokemon
+                self.__battle_display.turn = self.__fighting_pokemon
+            elif self.__fighting_pokemon.speed < self.__wild_pokemon.speed:
+                self.__turn = self.__wild_pokemon
+                self.__battle_display.turn = self.__wild_pokemon
+            else:
+                if randint(1, 2) == 1:
+                    self.__battle_display.turn = self.__fighting_pokemon
+                    self.__turn = self.__fighting_pokemon
+                else:
+                    self.__turn = self.__wild_pokemon
+                    self.__battle_display.turn = self.__wild_pokemon
+        else:
+            if self.__turn == self.__fighting_pokemon:
+                self.__turn = self.__wild_pokemon
+                self.__battle_display.turn = self.__wild_pokemon
+            else:
+                self.__turn = self.__fighting_pokemon
+                self.__battle_display.turn = self.__fighting_pokemon
+
+
+    def __is_attack_successfull(self, attacker: Pokemon, defender: Pokemon):
+
         prob = random()
+        miss_prob_base = 0.15 - (attacker.get_level() / 1000)
 
-        if self.__turn == self.__user.main:
-            miss_prob_base = 0.15 - (self.__user.main.get_level() / 1000)
+        speed_ratio = attacker.speed / defender.speed
+        miss_prob = miss_prob_base / speed_ratio
+        miss_prob = min(miss_prob, 0.4)
 
-            speed_ratio_user = self.__user.main.speed / self.__wild_pokemon.speed
-            miss_prob = miss_prob_base / speed_ratio_user
-            miss_prob = min(miss_prob, 0.4)
+        if miss_prob > prob:
+            return True
+        else: 
+            return False
 
-            if miss_prob > prob:
+
+    def __attack(self):
+        
+        attack_multi = self.__assign_attack_multi()
+        user_attack_success = self.__is_attack_successfull(self.__fighting_pokemon, self.__wild_pokemon)
+        wild_attack_success = self.__is_attack_successfull(self.__wild_pokemon, self.__fighting_pokemon)
+
+        if self.__turn == self.__fighting_pokemon:
+            if user_attack_success:
                 print("Le pokémon a raté son attaque !")
                 return True
             else: 
-                attack = self.__user.main.attack * attack_multi
+                print("Le pokémon a réussi son attaque !")
+                attack = (self.__fighting_pokemon.attack * attack_multi) - (self.__wild_pokemon.defense / 3)
+                if attack < 0:
+                    attack = 0
+
                 self.__wild_pokemon.hp -= int(attack)
+                return False
+        else:
 
-                self.__check_hp(self.__wild_pokemon)
-                if self.__wild_pokemon.ko:
+            if wild_attack_success:
+                print("Le pokémon ennemi a raté son attaque !")
+                return True
+            else:
+                print("Le pokémon ennemi a réussi son attaque !")
+                attack = (self.__wild_pokemon.attack * attack_multi) - (self.__fighting_pokemon.defense / 3)
+                if attack < 0:
+                    attack = 0
+                self.__fighting_pokemon.hp -= int(attack)
+                return False
+
+
+    def __check_hp(self, pokemon_to_check:Pokemon):
+
+        if pokemon_to_check.hp <= 0:
+            pokemon_to_check.ko = True
+
+        else:
+            return True
+        
+        if pokemon_to_check == self.__fighting_pokemon and pokemon_to_check.ko:
+            for pokemon in self.__user.pokedex:
+                if pokemon_to_check.get_name() == pokemon["name"]["fr"]:
+                    pokemon["ko"] = True
+                    print(f"Le pokémon {pokemon_to_check.get_name()} est ko")
+
+            team_ko = self.__check_pokemon_remaining()
+            return team_ko
+        
+        elif pokemon_to_check == self.__wild_pokemon:
+            if self.__wild_pokemon.hp <= 0:
                     print("Le pokémon sauvage est mort !")
-                    self.__user.main.check_xp()
-                    self.__write_pokedex()
+                    self.__user.update_pokemon(self.__fighting_pokemon)
+                    self.__fighting_pokemon.check_xp()
+                    pokemon_to_capture = self.__best_stats_between_wild_and_user_pokemon()
+                    self.__user.capture_pokemon(pokemon_to_capture)
+                    self.__user.save_pokedex()
+                    self.__user.update_available_pokemons()
                     return False
-                else: 
-                    return True
-        else:
-            miss_prob_base = 0.15 - (self.__wild_pokemon.get_level() / 1000)
-            speed_ratio_wild = self.__wild_pokemon.speed / self.__user.main.speed
-            miss_prob = miss_prob_base / speed_ratio_wild
-            miss_prob = min(miss_prob, 0.4)
-
-            if miss_prob > prob:
-                print("Le pokémon a raté son attaque !")
+            
+            else: 
                 return True
+
+
+    def __check_pokemon_remaining(self):
+        pokemon_alive_remaining = True
+
+        for pokemon_in_pokedex in self.__user.pokedex:
+            if pokemon_in_pokedex["ko"] == True:
+                pokemon_alive_remaining = False
             else:
-                attack = self.__wild_pokemon.attack * attack_multi
-                self.__user.main.hp -= int(attack)
+                pokemon_alive_remaining = True
+                self.__change_fighting_pokemon() 
+                return pokemon_alive_remaining
 
-                pkm_alive = self.__check_hp(self.__user.main)
-                if pkm_alive == False:
-                    print("Le joueur a perdu !")
-                    return False
-                else:
-                    return True
+        print("Le joueur a perdu !")
+        return pokemon_alive_remaining
 
-    def __change_pokemon(self, name):
+
+    def __instantiate_pokemon_from_pokedex(self, name: str):
+
         for pokemon in self.__user.pokedex:
-            if pokemon.name == name:
-                self.__user.main = pokemon
+            if pokemon["name"]["fr"] == name:
+                return Pokemon(
+                            name=pokemon["name"]["fr"],
+                            max_hp=pokemon["stats"]["hp"],
+                            attack=pokemon["stats"]["atk"],
+                            defense=pokemon["stats"]["def"],
+                            speed=pokemon["stats"]["vit"],
+                            types=pokemon["types"],
+                        )
 
-    def __check_hp(self, pokemon:Pokemon):
-        if pokemon == self.__user.main:
-            if pokemon.hp <= 0:
-                print(f"Le pokémon {pokemon.name} est ko")
-                pokemon.ko = True
 
-                check = True
+    def __change_fighting_pokemon(self):
 
-                for pkm in self.__user.pokedex:
-                    if pkm.ko:
-                        check = False
+        buttons = []
+        for i,pokemon in enumerate(self.__user.pokedex):
+            buttons.append(Button(str(pokemon["name"]["fr"]), (50,100+90*i), text=pokemon["name"]["fr"]))
 
-                    else:
-                        check = True
-                        self.__change_pokemon(None) # need function that let the user choose a pokemon in his pokedex and return his name
-                        break
+        buttons.append(Button("return", (957,607), text="Retour"))
+        pokedex = PokedexMenu(self._screen, buttons, self.__user, self._fonts, self._clock, True)
+        new_poke_name = pokedex.run()
 
-                return check
-
-            else:
-                return True
-        else:
-            if pokemon.hp <= 0:
-                pokemon.ko = True
+        if new_poke_name != None:
+            self.__fighting_pokemon = self.__instantiate_pokemon_from_pokedex(new_poke_name)
+            self.__battle_display.set_fighting_pokemon(self.__fighting_pokemon)
+            self.__battle_display.update_fighting_pokemon_sprite()
     
-    def __check_pokedex(self):
-        datas = self.__data.load_pokedexs()
-        for data in datas:
-            if self.__wild_pokemon.name == data.name:
-                if self.__wild_pokemon.get_level() > data.get_level():
-                    return self.__wild_pokemon
-                else: 
-                    return data
 
-    def __write_pokedex(self):
-        datas = self.__data.load_pokedexs()
-        pokemon = self.__check_pokedex
-        for data in datas:
-            if pokemon.get_name() == data["name"] and pokemon.get_level() == data["level"]:
-                return
-            elif pokemon.get_name() == data["name"]:
-                    
-                    datas[self.__user.get_save_id()["pokedex"]].remove(data)
-                    datas[self.__user.get_save_id()]["pokedex"].append(pokemon)
-                    self.__data.save_pokedex(datas)
+    def __best_stats_between_wild_and_user_pokemon(self):
+
+        for pokemon in self.__user.pokedex:
+            if self.__wild_pokemon.get_name() == pokemon["name"]["fr"]:
+                if self.__wild_pokemon.get_level() > pokemon["stats"]["level"]:
+                    return self.__wild_pokemon.pokemon_to_json()
+                
+                else: 
+                    return pokemon
+                
+            else:
+                return self.__wild_pokemon.pokemon_to_json()
                 
         
     def __run_away(self):
-        run_prob = self.__user.main.get_level() / (self.__user.main.get_level() + self.__wild_pokemon.get_level())
+
+        run_prob = self.__fighting_pokemon.get_level() / (self.__fighting_pokemon.get_level() + self.__wild_pokemon.get_level())
         prob = random()
 
         if run_prob >= prob:
             print("You have sucessfully run away !")
-            return False
+            return True
+        
         else:
             print("You tried to run away but the wild pokemon stopped you !")
-            return True
+            return False
  
+
     def run(self):
+
         is_running = True
+        successful_run_away = False
+        check = True
+        animation_state = None 
+        missed = None
+        self.__check_turn()
+
         while is_running:
-            for current_event in event.get():
-                for button in self._buttons:
-                    if button.rect.collidepoint(mouse.get_pos()):
-                        if current_event.type == MOUSEBUTTONDOWN:
-                            match button.get_target_name():
-                                case "attack":
-                                    is_running = self.__attack()
-                                case "run_away":
-                                    is_running = self.__run_away()
-                                case "pokedex":
-                                    is_running = self.__run_pokedex_mode()
-                        button.hovered()
-                    else:
-                        button.avoided()
-                        
-                if current_event.type == QUIT:
-                    is_running = False
+            
+            if self.__turn == self.__fighting_pokemon:
+
+                for current_event in event.get():
+                    for button in self._buttons:
+                        if button.rect.collidepoint(mouse.get_pos()):
+                            if current_event.type == MOUSEBUTTONDOWN:
+                                match button.get_target_name():
+                                    case "attack":
+                                        missed = self.__attack()
+                                        check = self.__check_hp(self.__wild_pokemon)
+                                        animation_state = (self.__wild_pokemon, missed)
+                                        self.__check_turn()
+                                    case "run_away":
+                                        successful_run_away = self.__run_away()
+                                    case "pokemons":
+                                        self.__change_fighting_pokemon()
+                             
+                            button.hovered()
+
+                        else:
+                            button.avoided()
+
+                    if current_event.type == QUIT:
+                        is_running = False
+
+            else:
+                if self.__wild_attack_timer is None:
+                    self.__wild_attack_timer = time.get_ticks()
+
+                elapsed = time.get_ticks() - self.__wild_attack_timer
+                if elapsed >= 2000:  
+                    missed = self.__attack()
+                    check = self.__check_hp(self.__fighting_pokemon)
+                    animation_state = (self.__fighting_pokemon, missed)
+                    self.__check_turn()
+                    self.__wild_attack_timer = None
+                    
+            if successful_run_away:
+                break
+
+            if check != True:
+                break
+
+            if animation_state is not None:
+                pokemon, missed = animation_state
+                if missed:
+                    done = self.__battle_display.pokemon_dodge_animation(pokemon)
+                else:
+                    done = self.__battle_display.pokemon_damage_animation(pokemon)
+                if done:
+                    animation_state = None
+
+            self.__battle_display.update(missed, self._buttons)
+            self._clock.tick(60)
+        return is_running

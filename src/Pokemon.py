@@ -9,32 +9,32 @@ class Pokemon:
                  defense: int,
                  speed: int,
                  types : dict,
-                 evolution: dict,
                  xp = 0, 
-                 max_stats = None,
                  level = 1,
-                 is_main = False,
                  ):
         self.__data_management = DataManagement()
         self.__BASE_DIR = path.dirname(path.abspath(__file__))
-        self.__data_all = self.__data_management.load_pokemons()
+        self.__data_all = self.__data_management.read_pokemons_json()
         self.__data = None
         self.__name = name
         self.__id = self.get_id_per_name()
+        self.__category = self.__load_category()
         self.__max_hp = max_hp
         self.hp = max_hp
         self.attack = attack
         self.defense = defense
+        self.special_attack = self.__load_special_attack()
+        self.special_defense = self.__load_special_defense()
         self.speed = speed
         self.__types = types
-        self.__evolution = evolution
-        self.__sprites = self.get_sprite
-        self.__max_stats = max_stats
+        self.__talents = self.__load_talents()
+        self.__evolution = self.__load_evolution()
+        self.__sprites = self.__load_sprites()
+        self.__max_stats = self.__load_max_stats()
         self.__xp = xp
         self.__level = level
         self.ko = False
-        self.is_main = is_main
-        self.json_pokemon = self.pokemon_to_json
+        self.json_pokemon = self.pokemon_to_json()
         self.__xp_levels_cub = [0]
         for n in range(1, 100):
             self.__xp_levels_cub.append(int(n ** 3))
@@ -44,7 +44,7 @@ class Pokemon:
         for n in range(self.__level, 100):
             if self.__xp > self.__xp_levels_cub[n]:
                 self.__level_up()
-        self.pokemon_to_json
+        self.pokemon_to_json()
 
     def __level_up(self): 
         self.__level += 1
@@ -92,17 +92,62 @@ class Pokemon:
     def get_id(self):
         return self.__id
     
+    def set_xp(self, xp):
+        self.__xp += xp
+    
+    def get_types(self):
+        return self.__types
+    
     def get_id_per_name(self):
         for entry in self.__data_all:
             if entry['name']['fr'] == self.__name:
                 return entry['pokedex_id']
+            
+    def get_sprites(self):
+        return self.__sprites
     
-    def get_sprite(self):
+    def __load_sprites(self):
         sprite_front = path.join(self.__BASE_DIR, pardir, "assets", "images", "sprites", "fronts", f'{self.__id}.png')
         sprite_back = path.join(self.__BASE_DIR, pardir, "assets", "images", "sprites", "backs", f'{self.__id}.png')
         sprites = {"front": image.load(sprite_front).convert_alpha(),"back": image.load(sprite_back).convert_alpha()}
         return sprites
+    
+    def __load_evolution(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["evolution"]
+            
+    def __load_max_stats(self):
+        if self.__evolution != None:
+            evolution = self.__evolution["next"]
+            if evolution != None:
+                evo_id = evolution[0]["pokedex_id"]
+                if isinstance(self.__evolution, list): 
+                    return self.__data_all[evo_id]['stats']
+        else:
+            max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
+            return max_stats
+    
+    def __load_talents(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["talents"]
+    
+    def __load_category(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["category"]
         
+    def __load_special_attack(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["stats"]["spe_atk"]
+            
+    def __load_special_defense(self):
+        for data in self.__data_all:
+            if data["pokedex_id"] == self.__id:
+                return data["stats"]["spe_def"]
+            
     # ------ END GET SOMETHING ------ #            
     # ------ EVOLVE ------ # 
     def __evolve(self):
@@ -125,8 +170,8 @@ class Pokemon:
                 # Change all stats and the name for the new poke
                 
                 self.__name = self.__data['name']['fr']
-                self.hp = self.__max_stats['hp']
-                self.__max_hp = self.__max_stats['hp']
+                self.hp = self.__max_stats['max_hp']
+                self.__max_hp = self.__max_stats['max_hp']
                 self.attack = self.__max_stats['atk']
                 self.defense = self.__max_stats['def']
                 self.speed = self.__max_stats['vit']
@@ -134,7 +179,7 @@ class Pokemon:
                 # change id to reload sprite
                 self.__id = self.get_id_per_name()
                 # change sprite 
-                self.__sprites = self.get_sprite()
+                self.__sprites = self.__load_sprites()
 
                 # Check if poke had a next.....
                 self.__evolution = self.__data['evolution']['next']
@@ -143,7 +188,7 @@ class Pokemon:
                 if  isinstance(self.__evolution, list): 
                     self.__max_stats = self.__data_all[evo_id]['stats']
                 else:
-                    self.__max_stats = {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
+                    self.__max_stats = {"max_hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000} 
     
     # ------ END EVOLVE ------ #
 
@@ -152,18 +197,23 @@ class Pokemon:
     def pokemon_to_json(self):
         json_pokemon = {
             "pokedex_id": self.__id,
-            "name": self.__name,
-            "hp": self.__max_hp,
-            "atk": self.attack,
-            "def": self.defense,
-            "vit": self.speed,
-            "types" : self.__types,
-            "evolution": self.__evolution,
-            "sprites": self.__sprites,
-            "xp": self.__xp, 
-            "max_stats" :self.__max_stats,
-            "level": self.__level,
-            "main": self.is_main
+            "name": {"fr": self.__name},
+            "category": self.__category,
+            "stats":{
+                "max_hp": self.__max_hp,
+                "hp": self.hp,
+                "atk": self.attack,
+                "spe_atk": self.special_attack,
+                "spe_def": self.special_defense,
+                "def": self.defense,
+                "vit": self.speed,
+                "types" : self.__types,
+                "xp": self.__xp, 
+                "level": self.__level,
+                },
+            "ko": self.ko,
+            "types": self.__types,
+            "talents": self.__talents
         }
         return json_pokemon
 
@@ -178,7 +228,7 @@ if __name__ == "__main__":
                         [{'name': 'Plante'},{'name': 'Poison'}],
                         [{"pokedex_id": 2,"name": "Herbizarre","condition": 16  },{"pokedex_id": 3,"name": "Florizarre","condition": 32}],
                         3380,
-                        {"hp": 60,"atk": 62,"def": 63,"spe_atk": 80,"spe_def": 80,"vit": 60},
+                        {"max_hp": 60,"atk": 62,"def": 63,"spe_atk": 80,"spe_def": 80,"vit": 60},
                         15
                         )
     print(poke_test.id)
@@ -201,7 +251,7 @@ if __name__ == "__main__":
     #                    [{'name': 'Plante'},{'name': 'Poison'}],
     #                    [{"pokedex_id": 3,"name": "Florizarre","condition": 32}],
     #                    30000,
-    #                    {"hp": 80,"atk": 82,"def": 83,"spe_atk": 1000,"spe_def": 100,"vit": 20},
+    #                    {"max_hp": 80,"atk": 82,"def": 83,"spe_atk": 1000,"spe_def": 100,"vit": 20},
     #                    31
     #                    )
     #poke_test_2.check_xp()
@@ -215,7 +265,7 @@ if __name__ == "__main__":
     #                    [{'name': 'Plante'},{'name': 'Poison'}],
     #                    None,
     #                    30000,
-    #                    {"hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000},
+    #                    {"max_hp": 1000,"atk": 1000,"def": 1000,"spe_atk": 1000,"spe_def": 1000,"vit": 1000},
     #                    32
     #                    )
     #poke_test_3.check_xp()
