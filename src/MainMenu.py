@@ -64,7 +64,7 @@ class MainMenu(Ui):
             buttons.append(Button(str(pokemon["name"]["fr"]), (50,100+90*i), text=pokemon["name"]["fr"]))
         buttons.append(Button("return", (950,600), text="Retour"))
 
-        pokemon_select_menu = PokemonSelectMenu(self._screen, buttons, self.__user, self._fonts, self._clock)
+        pokemon_select_menu = PokemonSelectMenu(self._screen, buttons, self._fonts, self._clock)
         is_running = pokemon_select_menu.run()
         return is_running
 
