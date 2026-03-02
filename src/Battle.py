@@ -256,6 +256,7 @@ class Battle(Ui):
             for pokemon in self.__user.pokedex:
                 if pokemon["ko"] == False:
                     pokemon_to_instantiate = pokemon
+                    self.__user.main = pokemon["name"]["fr"]
                     break
 
         return Pokemon(
