@@ -7,7 +7,6 @@ class DisplayStarterMenu(Display):
     def __init__(self, screen: Surface, fonts: tuple[font.Font, font.Font]):
         Display.__init__(self, screen, fonts)
         UI_IMAGES_PATH = path.join(self._BASE_DIR, pardir, "assets", "images", "ui")
-        #self.__logo = image.load(path.join(UI_IMAGES_PATH, 'menu', 'logo.png'))
         self.__dialog_box = image.load(path.join(UI_IMAGES_PATH, "dialog_box.png"))
         self.__dialog_box = transform.scale(self.__dialog_box,(800,170))
         start_background = image.load(path.join(UI_IMAGES_PATH, "starter_background.png"))
