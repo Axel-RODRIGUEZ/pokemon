@@ -31,12 +31,12 @@ class UserSelectMenu(Ui):
                 if current_event.type == MOUSEBUTTONDOWN:
                     if self.__pokedex_list_area.collidepoint(mouse.get_pos()):
                             if current_event.button == 4: # Scroll
-                                for button in self._buttons:
+                                for button in self._buttons[:-1]:
                                     button.lefttop = button.lefttop[0], button.lefttop[1]+50
                                     button.rect.move_ip(0,50)
 
                             elif current_event.button == 5:
-                                for button in self._buttons: 
+                                for button in self._buttons[:-1]: 
                                     button.lefttop = button.lefttop[0], button.lefttop[1]-50
                                     button.rect.move_ip(0,-50)
                     if current_event.button == 1:

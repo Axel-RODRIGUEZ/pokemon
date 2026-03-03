@@ -2,7 +2,6 @@ from pygame import Surface,Rect,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
 from src.Ui import Ui
 from src.DisplayPokemonSelectMenu import DisplayPokemonSelectMenu
 from src.Button import Button
-from src.User import User
 from src.DataManagement import DataManagement
 
 

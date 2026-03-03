@@ -592,7 +592,7 @@
         ]
     },
     {
-        "active": false,
+        "active": true,
         "category": "Pok\u00e9mon Insectopic",
         "evolution": {
             "next": [

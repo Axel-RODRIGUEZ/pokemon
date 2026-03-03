@@ -1,24 +1,13 @@
-from random import randint, choice
+from random import randint, choice, random
 from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
-if __name__ == "__main__":
-    from DisplayBattle import DisplayBattle
-    from Pokemon import Pokemon
-    from User import User
-    from DataManagement import DataManagement
-    from Ui import Ui
-    from Button import Button
-    from PokedexMenu import PokedexMenu
-else:
-    from src.DisplayBattle import DisplayBattle
-    from src.Pokemon import Pokemon
-    from src.User import User
-    from src.DataManagement import DataManagement
-    from src.Ui import Ui
-    from src.Button import Button
-    from src.PokedexMenu import PokedexMenu
-from random import random
 
-
+from src.DisplayBattle import DisplayBattle
+from src.Pokemon import Pokemon
+from src.User import User
+from src.DataManagement import DataManagement
+from src.Ui import Ui
+from src.Button import Button
+from src.PokedexMenu import PokedexMenu
 
 class Battle(Ui):
 
