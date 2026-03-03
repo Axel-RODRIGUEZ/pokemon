@@ -1,8 +1,6 @@
 import pygame
 from os import path
-from src.MainMenu import MainMenu
 from src.UserMenu import UserMenu
-from src.User import User
 from src.Button import Button
 
 
@@ -30,10 +28,6 @@ def main():
        screen = pygame.display.set_mode((1300, 731))
        clock = pygame.time.Clock()
        fonts = pygame.font.Font(FONT_PATH, 30), pygame.font.Font(FONT_PATH, 50), pygame.font.Font(FONT_PATH, 20)
-
-       WHITE = (255,255,255)
-       BLACK = (0,0,0)
-       PURPLE = (200, 50, 50)
 
        user_menu = UserMenu(screen,
                                    [Button("New Player",

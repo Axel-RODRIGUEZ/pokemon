@@ -1,5 +1,4 @@
 from src.Display import Display
-from src.User import User
 from src.Pokemon import Pokemon
 from pygame import Surface,font,image,display,transform, draw, time
 from os import path,pardir

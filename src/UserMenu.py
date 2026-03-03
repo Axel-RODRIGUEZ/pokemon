@@ -1,4 +1,4 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,time,mixer,KEYDOWN,K_BACKSPACE, K_RETURN
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,time,mixer
 
 from src.Ui import Ui
 from src.DisplayUserMenu import DisplayUserMenu
@@ -7,7 +7,6 @@ from src.UserSelectMenu import UserSelectMenu
 from src.UserNameInputMenu import UserNameInputMenu
 
 from src.Button import Button
-from src.User import User
 
 class UserMenu(Ui):
 
@@ -34,7 +33,6 @@ class UserMenu(Ui):
     def __run_UserNameInputMenu(self):
         WHITE = (255,255,255)
         BLACK = (0,0,0)
-        PURPLE = (200, 50, 50)
         username_menu = UserNameInputMenu(self._screen,
                             [Button("Confirm",(300,607), text = "Confirmer", color = WHITE,font_color= BLACK), 
                             Button("Cancel",(700,607), text = "Annuler",color = BLACK)],

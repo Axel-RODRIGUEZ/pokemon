@@ -1,4 +1,4 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,time,mixer,KEYDOWN,K_BACKSPACE, K_RETURN,draw
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,time,KEYDOWN,K_BACKSPACE, K_RETURN
 
 from src.Ui import Ui
 from src.StarterMenu import StarterMenu
