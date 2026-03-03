@@ -52,11 +52,11 @@ class Battle(Ui):
             level = 1
         wild_pokemon = Pokemon(
             name=random_pokemon["name"]["fr"],
-            max_hp=random_pokemon["stats"]["max_hp"]+level,
-            hp=random_pokemon["stats"]["max_hp"]+level,
-            attack=random_pokemon["stats"]["atk"]/3+(level*2),
-            defense=random_pokemon["stats"]["def"]+(level*2),
-            speed=random_pokemon["stats"]["vit"]+level,
+            max_hp=int(random_pokemon["stats"]["max_hp"]+level),
+            hp=int(random_pokemon["stats"]["max_hp"]+level),
+            attack=int(random_pokemon["stats"]["atk"]/3+(level*2)),
+            defense=int(random_pokemon["stats"]["def"]+(level*2)),
+            speed=int(random_pokemon["stats"]["vit"]+level),
             types=random_pokemon["types"],
             level=level
         )
@@ -215,8 +215,7 @@ class Battle(Ui):
         elif pokemon_to_check == self.__wild_pokemon:
             if self.__wild_pokemon.hp <= 0:
                     print("Le pokémon sauvage est mort !")
-                    self.__fighting_pokemon.increase_xp(int((self.__wild_pokemon.get_level() ** 3)/3+4096))
-                    print(self.__fighting_pokemon.get_xp())
+                    self.__fighting_pokemon.increase_xp(int((self.__wild_pokemon.get_level() ** 3)/3))
                     self.__fighting_pokemon.check_xp()
                     self.__user.update_pokemon(self.__fighting_pokemon)
                     pokemon_to_capture = self.__best_stats_between_wild_and_user_pokemon()
@@ -246,19 +245,32 @@ class Battle(Ui):
 
     def __instantiate_pokemon_from_pokedex(self, name: str):
 
+        main_available = False
         for pokemon in self.__user.pokedex:
-            if pokemon["name"]["fr"] == name:
-                return Pokemon(
-                            name=pokemon["name"]["fr"],
-                            max_hp=pokemon["stats"]["max_hp"],
-                            hp=pokemon["stats"]["hp"],
-                            attack=pokemon["stats"]["atk"],
-                            defense=pokemon["stats"]["def"],
-                            speed=pokemon["stats"]["vit"],
-                            types=pokemon["types"],
-                            level=pokemon["stats"]["level"],
-                            xp=pokemon["stats"]["xp"] 
-                        )
+            if pokemon["name"]["fr"] == name and pokemon["ko"] == False:
+                pokemon_to_instantiate = pokemon
+                main_available = True
+        
+        if not main_available:
+            for pokemon in self.__user.pokedex:
+                if pokemon["ko"] == False:
+                    pokemon_to_instantiate = pokemon
+                    self.__user.main = pokemon["name"]["fr"]
+                    break
+
+        return Pokemon(
+                        name=pokemon_to_instantiate["name"]["fr"],
+                        max_hp=pokemon_to_instantiate["stats"]["max_hp"],
+                        hp=pokemon_to_instantiate["stats"]["hp"],
+                        attack=pokemon_to_instantiate["stats"]["atk"],
+                        defense=pokemon_to_instantiate["stats"]["def"],
+                        speed=pokemon_to_instantiate["stats"]["vit"],
+                        types=pokemon_to_instantiate["types"],
+                        level=pokemon_to_instantiate["stats"]["level"],
+                        xp=pokemon_to_instantiate["stats"]["xp"] 
+                    )
+
+
 
 
     def __change_fighting_pokemon(self):
@@ -273,6 +285,7 @@ class Battle(Ui):
 
         if new_poke_name != None:
             self.__fighting_pokemon = self.__instantiate_pokemon_from_pokedex(new_poke_name)
+            self.__user.main = new_poke_name
             self.__battle_display.set_fighting_pokemon(self.__fighting_pokemon)
             self.__battle_display.update_fighting_pokemon_sprite()
     
@@ -311,7 +324,6 @@ class Battle(Ui):
         successful_run_away = False
         check = True
         animation_state = None 
-        missed = None
         self.__check_turn()
 
         while is_running:
@@ -330,6 +342,7 @@ class Battle(Ui):
                                         self.__check_turn()
                                     case "run_away":
                                         successful_run_away = self.__run_away()
+                                        self.__check_turn()
                                     case "pokemons":
                                         self.__change_fighting_pokemon()
                              
@@ -359,6 +372,9 @@ class Battle(Ui):
             if check != True:
                 break
 
+            self._clock.tick(60)
+            self.__battle_display.update(self._buttons)
+
             if animation_state is not None:
                 pokemon, missed = animation_state
                 if missed:
@@ -367,7 +383,5 @@ class Battle(Ui):
                     done = self.__battle_display.pokemon_damage_animation(pokemon)
                 if done:
                     animation_state = None
-
-            self.__battle_display.update(missed, self._buttons)
-            self._clock.tick(60)
+            
         return is_running
