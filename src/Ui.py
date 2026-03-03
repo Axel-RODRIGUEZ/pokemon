@@ -1,6 +1,5 @@
 from pygame import Surface,font, time
 from src.Button import Button
-from src.User import User
 from abc import ABC, abstractmethod
 
 class Ui(ABC):
