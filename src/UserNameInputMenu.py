@@ -1,5 +1,5 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,time,mixer,KEYDOWN,K_BACKSPACE, K_RETURN,draw
-
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,time,KEYDOWN,K_BACKSPACE, K_RETURN,transform,image
+from os import path, pardir
 from src.Ui import Ui
 from src.StarterMenu import StarterMenu
 from src.Button import Button
@@ -14,19 +14,32 @@ class UserNameInputMenu(Ui):
                  fonts: list[font.Font, font.Font],
                  clock: time.Clock):
         Ui.__init__(self, screen, buttons, fonts, clock)
-        self.__usernameinputmenu_display = DisplayUserNameInputMenu(self._screen, self._fonts)  
+        self.__usernameinputmenu_display = DisplayUserNameInputMenu(self._screen, self._fonts)
+        BASE_DIR = path.dirname(path.abspath(__file__))
+        self.__sprites_path = path.join(BASE_DIR, pardir, "assets", 'images', 'sprites', 'fronts')  
     
     def __run_StarterMenu(self, typed_text):
         WHITE = (255,255,255)
         BLACK = (0,0,0)
-        PURPLE = (200, 50, 50)
+        #PURPLE = (200, 50, 50)
         user = User(is_new= True,name_input= typed_text)
 
+        pokemon_1 = path.join(self.__sprites_path, '1.png')
+        sprite_1 = image.load(pokemon_1)
+        sprite_1 = transform.scale(sprite_1, (300,300))
+        pokemon_2 = path.join(self.__sprites_path, '4.png')
+        sprite_2 = image.load(pokemon_2)
+        sprite_2 = transform.scale(sprite_2, (300,300))
+        pokemon_3 = path.join(self.__sprites_path, '7.png')
+        sprite_3 = image.load(pokemon_3).convert_alpha()
+        sprite_3 = transform.scale(sprite_3, (300,300))
+        
+
         starter_menu = StarterMenu(self._screen,
-                                   [Button("Pokemon 1",(150,215),(300,300), text = "Pokemon 1", color = WHITE,font_color= BLACK), 
-                                    Button("Pokemon 2",(500,215),(300,300), text = "Pokemon 2",color = BLACK),
-                                    Button("Pokemon 3",(850,215),(300,300),text = "Pokemon 3",color = PURPLE),
-                                    Button("Quit",(957,607),(250,70),text = "Retour",color = PURPLE)],
+                                   [Button("Pokemon 1",(150,215),(300,300), bg_image=sprite_1, hover_bg_image= sprite_1), 
+                                    Button("Pokemon 2",(500,215),(300,300), bg_image = sprite_2, hover_bg_image= sprite_2),
+                                    Button("Pokemon 3",(850,215),(300,300), bg_image= sprite_3, hover_bg_image= sprite_3),
+                                    Button("Quit",(957,607),(250,70),text = "Retour",color = BLACK)],
                                     user,
                                     self._fonts,
                                     self._clock
