@@ -49,6 +49,8 @@ class StarterMenu(Ui):
                                     self.__user.pokedex.append(self.__starters[1])
                                 case "Pokemon 3":
                                     self.__user.pokedex.append(self.__starters[2])
+                                case "Quit":
+                                    return True
                             self.__user.main = self.__user.pokedex[0]["name"]["fr"]
                             self.__user.save_pokedex()
                             self.__user.update_available_pokemons()

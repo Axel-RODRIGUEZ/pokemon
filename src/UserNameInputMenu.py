@@ -26,7 +26,7 @@ class UserNameInputMenu(Ui):
                                    [Button("Pokemon 1",(150,215),(300,300), text = "Pokemon 1", color = WHITE,font_color= BLACK), 
                                     Button("Pokemon 2",(500,215),(300,300), text = "Pokemon 2",color = BLACK),
                                     Button("Pokemon 3",(850,215),(300,300),text = "Pokemon 3",color = PURPLE),
-                                    Button("Quit",(850,215),(250,70),text = "Retour",color = PURPLE)],
+                                    Button("Quit",(957,607),(250,70),text = "Retour",color = PURPLE)],
                                     user,
                                     self._fonts,
                                     self._clock
