@@ -1,4 +1,4 @@
-from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT, time
+from pygame import Surface,font,event,mouse,MOUSEBUTTONDOWN,QUIT,time,quit
 
 from src.Ui import Ui
 from src.DisplayMainMenu import DisplayMainMenu
@@ -42,6 +42,7 @@ class MainMenu(Ui):
                 
                 if current_event.type == QUIT:
                     is_running = False
+                    return is_running
 
             menu_display.update(self._buttons)
 

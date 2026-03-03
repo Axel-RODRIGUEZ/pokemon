@@ -28,8 +28,8 @@ class UserMenu(Ui):
         buttons.append(Button("return", (957,607), text="Retour"))
 
         users_pokedex = UserSelectMenu(self._screen, buttons, self._fonts, self._clock)
-        users_pokedex.run()
-        return True
+        is_running = users_pokedex.run()
+        return is_running
 
     def __run_UserNameInputMenu(self):
         WHITE = (255,255,255)
